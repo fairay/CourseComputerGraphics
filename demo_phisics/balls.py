@@ -40,7 +40,7 @@ class Ball:
     r = 20
     x, y = 0, 0
     dx, dy = 0, 0
-    mu = 0.5
+    mu = 1
     surf = None
     rect = None
     color = (200, 0, 0)
@@ -123,16 +123,16 @@ class Ball:
                 other.dy = other.dy + d2
 
             # Решение коллизии
-            p3 = (self.r*2-dist)*2
+            p3 = (self.r*2-dist)
             p1 = p3*(a/dist)
             p2 = p3*(b/dist)
             if v_self + v_other:    k = v_self / (v_self + v_other)
             else: k = 1/2
             
-            self.dx = self.dx + p1 * k
-            self.dy = self.dy + p2 * k
-            other.dx = other.dx - p1 * (1-k)
-            other.dy = other.dy - p2 * (1-k)
+            self.x = self.x + p1 * k
+            self.y = self.y + p2 * k
+            other.x = other.x - p1 * (1-k)
+            other.y = other.y - p2 * (1-k)
             
     
     def draw(self, sc):
@@ -142,7 +142,7 @@ class Ball:
 
 def billiard_start():
     arr = []
-    ball = Ball(100, xy_size[1]//2, 250, 0)#random.randint(-20, 20))
+    ball = Ball(100, xy_size[1]//2, 250, 0*random.randint(-40, 40))
     arr.append(ball)
 
     r = Ball.r
@@ -173,6 +173,7 @@ balls[0].set_speed(random.randint(-200, 200), random.randint(-100, 100))
 
 
 balls = billiard_start()
+random.shuffle(balls)
 # balls.append(Ball(100, 100, random.randint(-100, 100), random.randint(-100, 100)))
 
 t = time.time()
