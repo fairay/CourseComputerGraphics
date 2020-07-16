@@ -50,7 +50,6 @@ class Ball:
         self.dx, self.dy = dx, dy
         
         self.surf = pygame.Surface([self.r*2, self.r*2],pygame.SRCALPHA)
-        # self.surf.fill(bg_color)
         self.surf.set_colorkey(bg_color)
         pygame.draw.circle(self.surf, self.color,
                            (self.r, self.r), self.r, self.r)
