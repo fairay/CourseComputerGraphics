@@ -95,7 +95,7 @@ class Ball:
     r = ball_r
     x, y = 0, 0
     dx, dy = 0, 0
-    mu = 1
+    mu = 2
     surf = None
     rect = None
     # color = (200, 0, 0)
@@ -118,6 +118,8 @@ class Ball:
 
     def get_pos(self):
         return [self.x, self.y]
+    def is_still(self):
+        return self.dx + self.dy == 0
     def get_speed(self):
         return sqrt(self.dx**2 + self.dy**2)
     def get_speed_vector(self):
@@ -142,9 +144,11 @@ class Ball:
         if self.x <= x_l + self.r:
             self.dx = -self.dx
             self.x += 2*(x_l+self.r - self.x)
+            return True
         elif self.x >= x_r - self.r:
             self.dx = -self.dx
             self.x += 2*(x_r-self.r - self.x)
+            return True
 
         y_d = min_pos[1]
         y_u = max_pos[1]
@@ -152,9 +156,12 @@ class Ball:
         if self.y <= y_d + self.r:
             self.dy = -self.dy
             self.y += 2*(y_d+self.r - self.y)
+            return True
         elif self.y >= y_u - self.r:
             self.dy = -self.dy
             self.y += 2*(y_u-self.r - self.y)
+            return True
+        return False
 
     def apply_border(self, border):
         x, y = border.get_collision_point(self.x, self.y, self.r)
@@ -174,8 +181,6 @@ class Ball:
 
         self.dx = self.dx - d1*2
         self.dy = self.dy - d2*2
-
-
 
         # Решение коллизии
         p3 = (self.r - d)
@@ -272,7 +277,7 @@ class Ball:
 
 def billiard_start():
     arr = []
-    ball = Ball(100, xy_size[1]//2, 250, 0*random.randint(-40, 40))
+    ball = Ball(100, xy_size[1]//2, 0, 0)
     ball.set_color((115, 6, 14))
     arr.append(ball)
 
@@ -283,7 +288,7 @@ def billiard_start():
             arr.append(Ball(st+i*sqrt(3)*r, xy_size[1]//2 - i*r + 2*j*r, 0, 0))
             #arr.append(Ball(st+i*sqrt(3)*r + i*5, xy_size[1]//2 - i*r + 2.1*j*r, 0, 0))
 
-    random.shuffle(arr)
+    # random.shuffle(arr)
     return arr
 def random_start():
     balls = []
@@ -308,17 +313,15 @@ def test_start():
     balls.append(Ball(800, 429, 72, -79))
     return balls
 
+
 def default_borders():
     arr = []
     wide = 25
-    gap = 2*ball_r * 1.1
+    gap = 2*ball_r * 1.15
 
-    v_size = xy_size[1] / 2 - gap/2 - (gap*sqrt(2)/2 + wide)
-    v_indent = gap/2 + v_size/2
-    arr.append(Border((xy_size[0] - wide // 2, 300 - v_indent), (wide, v_size)))
-    arr.append(Border((xy_size[0] - wide // 2, 300 + v_indent), (wide, v_size)))
-    arr.append(Border((wide // 2, 300 - v_indent), (wide, v_size)))
-    arr.append(Border((wide // 2, 300 + v_indent), (wide, v_size)))
+    v_size = xy_size[1] - 2*(gap*sqrt(2)/2 + wide)
+    arr.append(Border((xy_size[0] - wide // 2, 300), (wide, v_size)))
+    arr.append(Border((wide // 2, 300), (wide, v_size)))
 
     h_size = xy_size[0] / 2 - gap/2 - (gap*sqrt(2)/2 + wide)
     h_indent = gap/2 + h_size/2
@@ -330,8 +333,14 @@ def default_borders():
     return arr
 
 
+def is_balls_still(ball_arr):
+    for ball in ball_arr:
+        if not ball.is_still():
+            return False
+    return True
+
+
 balls = billiard_start()
-# balls = test_start()
 borders = default_borders()
 
 t = time.time()
@@ -339,11 +348,13 @@ time_speed = 1.0
 time_boost = 1.5
 
 while True:
+    pos = pygame.mouse.get_pos()
     event_list = pygame.event.get()
     for event in event_list:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_PAGEUP:
                 time_speed *= time_boost
@@ -351,9 +362,21 @@ while True:
             elif event.key == pygame.K_PAGEDOWN:
                 time_speed /= time_boost
                 print("Time speed:", time_speed)
-        elif event.type == pygame.MOUSEBUTTONUP:
-            pos = pygame.mouse.get_pos()
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
             print(pos)
+            if is_balls_still(balls):
+                d = dist(pos, balls[0].get_pos())
+                v = d * 1.1
+
+                dx = v * ((pos[0] - balls[0].get_pos()[0]) / d)
+                dy = v * ((pos[1] - balls[0].get_pos()[1]) / d)
+                balls[0].set_speed(dx, dy)
+                print("Hit! Velocity = ", dx, dy)
+
+    bg.fill(bg_color)
+    if is_balls_still(balls):
+        pygame.draw.line(bg, (0, 20, 100), balls[0].get_pos(), pos, 3)
 
     dt = time.time() - t
     t = time.time()
@@ -364,7 +387,8 @@ while True:
     
     for ball in balls:
         ball.update(dt*time_speed)
-        # ball.apply_screen_borders((0, 0), xy_size)
+        if ball.apply_screen_borders((0, 0), xy_size):
+            balls.remove(ball)
         for bord in borders:
             ball.apply_border(bord)
 
