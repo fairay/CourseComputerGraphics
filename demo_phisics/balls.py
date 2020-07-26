@@ -317,7 +317,7 @@ def test_start():
 def default_borders():
     arr = []
     wide = 25
-    gap = 2*ball_r * 1.15
+    gap = 2*ball_r * 2.15
 
     v_size = xy_size[1] - 2*(gap*sqrt(2)/2 + wide)
     arr.append(Border((xy_size[0] - wide // 2, 300), (wide, v_size)))

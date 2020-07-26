@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>895</width>
-    <height>520</height>
+    <width>1100</width>
+    <height>876</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,23 +18,23 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>661</width>
-      <height>451</height>
+      <y>10</y>
+      <width>1024</width>
+      <height>768</height>
      </rect>
     </property>
    </widget>
-   <widget class="Line" name="line">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>0</y>
-      <width>16</width>
-      <height>471</height>
+      <x>20</x>
+      <y>780</y>
+      <width>801</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
+    <property name="text">
+     <string>Есть асбест</string>
     </property>
    </widget>
   </widget>
@@ -43,7 +43,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>895</width>
+     <width>1100</width>
      <height>17</height>
     </rect>
    </property>
