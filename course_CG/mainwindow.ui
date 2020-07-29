@@ -17,10 +17,10 @@
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>10</y>
-      <width>1024</width>
-      <height>768</height>
+      <width>800</width>
+      <height>600</height>
      </rect>
     </property>
    </widget>
@@ -35,6 +35,32 @@
     </property>
     <property name="text">
      <string>Есть асбест</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fps_count">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>20</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>20</y>
+      <width>35</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>FPS:</string>
     </property>
    </widget>
   </widget>
