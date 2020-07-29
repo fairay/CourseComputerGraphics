@@ -12,7 +12,7 @@
 #include <time.h>
 using namespace std;
 
-typedef QRgb** Rgb_matrix;
+typedef QRgb** RgbMap;
 
 
 namespace Ui {
@@ -36,10 +36,10 @@ private:
 
     QSize _scene_size;
     QImage _img;
-    QPixmap _pmap;
+    // QPixmap _pmap;
     QGraphicsPixmapItem* q_pmap;
     QColor _draw_color = Qt::black;
-    Rgb_matrix _rgb_map;
+    RgbMap _rgb_map;
 
     vector<QColor> _color_arr = { Qt::red, Qt::green, Qt::blue, Qt::white, Qt::magenta, Qt::yellow };
     void _fill_img(QColor color);
