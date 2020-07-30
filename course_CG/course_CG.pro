@@ -26,10 +26,22 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    3d_prmitives/point.cpp \
+    3d_prmitives/vector.cpp \
+    3d_prmitives/polygon.cpp \
+    errors/base_error.cpp \
+    errors/primitives_error.cpp \
+    3d_prmitives/model.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    3d_prmitives/model.h \
+    3d_prmitives/point.h \
+    3d_prmitives/vector.h \
+    3d_prmitives/polygon.h \
+    errors/base_error.h \
+    errors/primitives_error.h
 
 FORMS += \
         mainwindow.ui

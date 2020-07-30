@@ -37,7 +37,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // Cоздание матрицы изображения
     _rgb_map = create_rgb_map(_scene_size.width(), _scene_size.height());
 
-    ui->graphicsView->setSceneRect(0, 0, _scene_size.width()-2, _scene_size.height()-2);
+    ui->graphicsView->setSceneRect(0, 0, _scene_size.width(), _scene_size.height());
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setScene(&(*_qscene));
 
     _img = QImage(_scene_size.width(), _scene_size.height(), QImage::Format_RGB32);
