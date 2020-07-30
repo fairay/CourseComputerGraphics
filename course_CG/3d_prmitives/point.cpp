@@ -1,4 +1,5 @@
 #include "point.h"
+#include "vertex.h"
 
 Point::Point() {}
 Point::Point(double x_, double y_, double z_):
@@ -16,3 +17,9 @@ Vertex::Vertex(const Vertex& other):
 Vertex::Vertex(const Point& other):
     Point(other) {}
 Vertex::~Vertex() {}
+
+void Vertex::print()
+{
+    printf("Vertex: (%lf, %lf, %lf) -> \t", x, y, z);
+    printf("[%lf, %lf, %lf]\n", n.x, n.y, n.z);
+}

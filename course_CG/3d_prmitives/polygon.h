@@ -1,7 +1,7 @@
 #ifndef POLYGON_H
 #define POLYGON_H
 
-#include "point.h"
+#include "vertex.h"
 #include "vector.h"
 #include "errors/primitives_error.h"
 
@@ -21,6 +21,10 @@ public:
     Polygon() = delete;
     Polygon(QRgb color, vector<shared_ptr<Vertex>> vertex_arr);
     ~Polygon();
+
+    void correct_n(const Point& inside_point);
+
+    void print();
 
 private:
     void find_normal();

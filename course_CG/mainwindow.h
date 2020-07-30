@@ -10,10 +10,10 @@
 #include <memory>
 #include <iostream>
 #include <time.h>
+#include "3d_prmitives/model.h"
 using namespace std;
 
 typedef QRgb** RgbMap;
-
 
 namespace Ui {
 class MainWindow;

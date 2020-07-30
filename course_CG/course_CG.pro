@@ -41,7 +41,8 @@ HEADERS += \
     3d_prmitives/vector.h \
     3d_prmitives/polygon.h \
     errors/base_error.h \
-    errors/primitives_error.h
+    errors/primitives_error.h \
+    3d_prmitives/vertex.h
 
 FORMS += \
         mainwindow.ui

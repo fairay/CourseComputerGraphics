@@ -23,4 +23,23 @@ void Polygon::find_normal()
     n.x = (p2.y - p1.y)*(p3.z - p1.z) - (p3.y - p1.y)*(p2.z - p1.z);
     n.y = (p2.z - p1.z)*(p3.x - p1.x) - (p3.z - p1.z)*(p2.x - p1.x);
     n.z = (p2.x - p1.x)*(p3.y - p1.y) - (p3.x - p1.x)*(p2.y - p1.y);
+
+    n.normalize();
+}
+
+void Polygon::correct_n(const Point &inside_point)
+{
+    Vector out_v(inside_point, *v_arr[0]);
+    if (n.scalar_mult(out_v) < 0)
+        n.invert();
+}
+
+void Polygon::print()
+{
+    printf("\n\n Polygon -> [%lf, %lf, %lf]\n", n.x, n.y, n.z);
+    for (auto p : v_arr)
+    {
+        printf("\t");
+        p->print();
+    }
 }
