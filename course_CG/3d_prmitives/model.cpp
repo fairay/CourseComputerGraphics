@@ -7,7 +7,22 @@ Model::Model(const vector<Point>& arr)
 {
     this->add_vertexes(arr);
 }
+Model::Model(const Model& other)
+{
+    _center = other._center;
+    for (auto v : other.v_arr)
+        this->add_vertex(*v);
 
+    for (auto p : other.p_arr)
+    {
+        vector<shared_ptr<Vertex>> vertex_arr;
+        for (auto v_other : p->v_arr)
+            for (auto v_this : this->v_arr)
+                if (*v_other == *v_this)
+                    vertex_arr.push_back(v_this);
+        this->_add_side(p->color, vertex_arr);
+    }
+}
 
 void Model::add_vertexes(const vector<Point> &arr)
 {

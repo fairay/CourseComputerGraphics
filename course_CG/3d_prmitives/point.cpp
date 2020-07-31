@@ -18,6 +18,14 @@ Vertex::Vertex(const Point& other):
     Point(other) {}
 Vertex::~Vertex() {}
 
+bool Vertex::operator == (const Vertex& other)
+{
+    if (fabs(this->x-other.x) < 1e-5) return false;
+    else if (fabs(this->y-other.y) < 1e-5) return false;
+    else if (fabs(this->z-other.z) < 1e-5) return false;
+    else return true;
+}
+
 void Vertex::print()
 {
     printf("Vertex: (%lf, %lf, %lf) -> \t", x, y, z);

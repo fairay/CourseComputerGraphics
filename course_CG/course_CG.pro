@@ -31,10 +31,16 @@ SOURCES += \
     3d_prmitives/vector.cpp \
     3d_prmitives/polygon.cpp \
     errors/base_error.cpp \
-    errors/primitives_error.cpp \
     3d_prmitives/model.cpp \
     3d_prmitives/ball_model.cpp \
-    3d_prmitives/box_model.cpp
+    3d_prmitives/box_model.cpp \
+    errors/objects.cpp \
+    errors/primitives.cpp \
+    objects/scene_object.cpp \
+    objects/simple_object.cpp \
+    objects/leg.cpp \
+    objects/camera.cpp \
+    objects/light_source.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,14 +49,20 @@ HEADERS += \
     3d_prmitives/vector.h \
     3d_prmitives/polygon.h \
     errors/base_error.h \
-    errors/primitives_error.h \
     3d_prmitives/vertex.h \
     3d_prmitives/ball_model.h \
     3d_prmitives/box_model.h \
     commands/test.h \
     managers/test.h \
     scene/scene.h \
-    scene/interface.h
+    scene/interface.h \
+    objects/scene_object.h \
+    errors/primitives.h \
+    errors/objects.h \
+    objects/simple_object.h \
+    objects/leg.h \
+    objects/camera.h \
+    objects/light_source.h
 
 FORMS += \
         mainwindow.ui

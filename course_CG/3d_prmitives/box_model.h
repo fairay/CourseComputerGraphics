@@ -7,7 +7,7 @@ class BoxModel: public Model
 {
 public:
     BoxModel(QRgb color, const Point& p1, const Point& p2);
-    ~BoxModel();
+    virtual ~BoxModel();
 
 private:
     QRgb _color;

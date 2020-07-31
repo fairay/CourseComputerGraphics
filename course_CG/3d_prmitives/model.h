@@ -9,7 +9,8 @@ class Model
 public:
     Model();
     Model(const vector<Point>& arr);
-    ~Model();
+    explicit Model(const Model& other);
+    virtual ~Model();
 
     void add_vertex(const Point& p);
     void add_vertexes(const vector<Point>& arr);

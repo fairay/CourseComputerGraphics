@@ -16,6 +16,8 @@ public:
     Vertex(const Point& other);
     ~Vertex();
 
+    bool operator == (const Vertex& other);
+
     void print();
     void normalize();
 };

@@ -9,7 +9,7 @@ class BallModel: public Model
 {
 public:
     BallModel(QRgb color, double r, const Point& center = Point(0,0,0));
-    ~BallModel();
+    virtual ~BallModel();
 
 private:
     QRgb _color;

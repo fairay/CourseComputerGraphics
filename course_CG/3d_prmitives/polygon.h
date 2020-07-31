@@ -3,7 +3,7 @@
 
 #include "vertex.h"
 #include "vector.h"
-#include "errors/primitives_error.h"
+#include "errors/primitives.h"
 
 #include <QColor>
 #include <vector>

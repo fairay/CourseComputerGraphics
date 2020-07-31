@@ -3,7 +3,7 @@
 
 #include <math.h>
 #include "point.h"
-#include "errors/primitives_error.h"
+#include "errors/primitives.h"
 
 class Vector
 {
