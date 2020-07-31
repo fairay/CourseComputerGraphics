@@ -1,0 +1,11 @@
+debug/main.o
+debug/mainwindow.o
+debug/point.o
+debug/vector.o
+debug/polygon.o
+debug/base_error.o
+debug/primitives_error.o
+debug/model.o
+debug/ball_model.o
+debug/box_model.o
+debug/moc_mainwindow.o

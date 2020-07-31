@@ -1,0 +1,11 @@
+release/main.o
+release/mainwindow.o
+release/point.o
+release/vector.o
+release/polygon.o
+release/base_error.o
+release/primitives_error.o
+release/model.o
+release/ball_model.o
+release/box_model.o
+release/moc_mainwindow.o

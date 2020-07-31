@@ -19,7 +19,7 @@ public:
     vector<shared_ptr<Vertex>> v_arr;
 
     Polygon() = delete;
-    Polygon(QRgb color, vector<shared_ptr<Vertex>> vertex_arr);
+    Polygon(QRgb color, vector<shared_ptr<Vertex>> vertex_arr, const Point &inside_point);
     ~Polygon();
 
     void correct_n(const Point& inside_point);

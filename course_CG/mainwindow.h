@@ -10,7 +10,8 @@
 #include <memory>
 #include <iostream>
 #include <time.h>
-#include "3d_prmitives/model.h"
+#include "3d_prmitives/ball_model.h"
+#include "3d_prmitives/box_model.h"
 using namespace std;
 
 typedef QRgb** RgbMap;

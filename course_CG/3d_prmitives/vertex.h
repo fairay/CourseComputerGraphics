@@ -17,6 +17,7 @@ public:
     ~Vertex();
 
     void print();
+    void normalize();
 };
 
 #endif // VERTEX_H

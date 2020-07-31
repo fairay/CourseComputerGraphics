@@ -23,3 +23,8 @@ void Vertex::print()
     printf("Vertex: (%lf, %lf, %lf) -> \t", x, y, z);
     printf("[%lf, %lf, %lf]\n", n.x, n.y, n.z);
 }
+
+void Vertex::normalize()
+{
+    n.normalize();
+}

@@ -32,7 +32,9 @@ SOURCES += \
     3d_prmitives/polygon.cpp \
     errors/base_error.cpp \
     errors/primitives_error.cpp \
-    3d_prmitives/model.cpp
+    3d_prmitives/model.cpp \
+    3d_prmitives/ball_model.cpp \
+    3d_prmitives/box_model.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,7 +44,13 @@ HEADERS += \
     3d_prmitives/polygon.h \
     errors/base_error.h \
     errors/primitives_error.h \
-    3d_prmitives/vertex.h
+    3d_prmitives/vertex.h \
+    3d_prmitives/ball_model.h \
+    3d_prmitives/box_model.h \
+    commands/test.h \
+    managers/test.h \
+    scene/scene.h \
+    scene/interface.h
 
 FORMS += \
         mainwindow.ui

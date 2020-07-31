@@ -1,6 +1,7 @@
 #include "polygon.h"
 
-Polygon::Polygon(QRgb color_, vector<shared_ptr<Vertex>> vertex_arr)
+Polygon::Polygon(QRgb color_, vector<shared_ptr<Vertex>> vertex_arr,
+                 const Point& inside_point)
 {
     this->color = color_;
     if (vertex_arr.size() < 3)
@@ -8,6 +9,7 @@ Polygon::Polygon(QRgb color_, vector<shared_ptr<Vertex>> vertex_arr)
     v_arr = vertex_arr;
 
     find_normal();
+    correct_n(inside_point);
     for (auto v : v_arr)
         v->n += this->n;
 }
@@ -31,7 +33,7 @@ void Polygon::correct_n(const Point &inside_point)
 {
     Vector out_v(inside_point, *v_arr[0]);
     if (n.scalar_mult(out_v) < 0)
-        n.invert();
+        this->n.invert();
 }
 
 void Polygon::print()
