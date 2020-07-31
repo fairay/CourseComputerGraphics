@@ -4,8 +4,16 @@ release/point.o
 release/vector.o
 release/polygon.o
 release/base_error.o
-release/primitives_error.o
 release/model.o
 release/ball_model.o
 release/box_model.o
+release/objects.o
+release/primitives.o
+release/scene_object.o
+release/simple_object.o
+release/leg.o
+release/camera.o
+release/light_source.o
+release/object_visitor.o
+release/visual.o
 release/moc_mainwindow.o

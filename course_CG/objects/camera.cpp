@@ -1,4 +1,5 @@
 #include "camera.h"
+#include "visitors/object_visitor.h"
 
 Camera::Camera(): _pos(Point(0, 0, 1000)) {}
 Camera::Camera(const Point& pos): _pos(pos) {}
@@ -16,12 +17,5 @@ Vector& Camera::get_dir() { return _dir; }
 const Point& Camera::get_pos() const  { return _pos; }
 const Vector& Camera::get_dir() const { return _dir; }
 
-void Camera::accept(ObjectVisitor& visitor)
-{
-
-}
-
-SceneObject* Camera::clone()
-{
-    return (new Camera(*this));
-}
+void Camera::accept(ObjectVisitor& visitor) { visitor.visit(*this); }
+SceneObject* Camera::clone() { return (new Camera(*this)); }

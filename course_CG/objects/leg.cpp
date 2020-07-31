@@ -1,4 +1,5 @@
 #include "leg.h"
+#include "visitors/object_visitor.h"
 
 TableLeg::TableLeg(double x, double y, double h)
 {
@@ -17,9 +18,8 @@ TableLeg::~TableLeg() {}
 
 void TableLeg::accept(ObjectVisitor& visitor)
 {
-
+    visitor.visit(*this);
 }
-
 SceneObject* TableLeg::clone()
 {
     return (new TableLeg(*this));

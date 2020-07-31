@@ -1,4 +1,5 @@
 #include "light_source.h"
+#include "visitors/object_visitor.h"
 
 LightSource::LightSource():_pos(Point(0, 0, 2000)) {}
 LightSource::LightSource(const Point& pos): _pos(pos) {}
@@ -20,9 +21,8 @@ void LightSource::set_intensity(double i) { _i = i; }
 
 void LightSource::accept(ObjectVisitor& visitor)
 {
-
+    visitor.visit(*this);
 }
-
 SceneObject* LightSource::clone()
 {
     return (new LightSource(*this));

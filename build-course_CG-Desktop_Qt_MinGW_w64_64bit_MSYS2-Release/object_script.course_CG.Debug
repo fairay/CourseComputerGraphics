@@ -4,8 +4,16 @@ debug/point.o
 debug/vector.o
 debug/polygon.o
 debug/base_error.o
-debug/primitives_error.o
 debug/model.o
 debug/ball_model.o
 debug/box_model.o
+debug/objects.o
+debug/primitives.o
+debug/scene_object.o
+debug/simple_object.o
+debug/leg.o
+debug/camera.o
+debug/light_source.o
+debug/object_visitor.o
+debug/visual.o
 debug/moc_mainwindow.o

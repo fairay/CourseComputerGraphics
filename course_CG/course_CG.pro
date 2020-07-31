@@ -40,7 +40,9 @@ SOURCES += \
     objects/simple_object.cpp \
     objects/leg.cpp \
     objects/camera.cpp \
-    objects/light_source.cpp
+    objects/light_source.cpp \
+    objects/visitors/object_visitor.cpp \
+    errors/visual.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -62,7 +64,11 @@ HEADERS += \
     objects/simple_object.h \
     objects/leg.h \
     objects/camera.h \
-    objects/light_source.h
+    objects/light_source.h \
+    objects/visitors/object_visitor.h \
+    visual/visualizer.h \
+    visual/drawer.h \
+    errors/visual.h
 
 FORMS += \
         mainwindow.ui
