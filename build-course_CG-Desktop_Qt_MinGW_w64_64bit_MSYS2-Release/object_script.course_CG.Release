@@ -16,4 +16,5 @@ release/camera.o
 release/light_source.o
 release/object_visitor.o
 release/visual.o
+release/drawer.o
 release/moc_mainwindow.o

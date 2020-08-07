@@ -7,6 +7,9 @@
 class Model
 {
 public:
+    vector<shared_ptr<Polygon>> p_arr;
+    vector<shared_ptr<Vertex>> v_arr;
+
     Model();
     Model(const vector<Point>& arr);
     explicit Model(const Model& other);
@@ -20,8 +23,6 @@ public:
     void normalize_vertexes();
 
 protected:
-    vector<shared_ptr<Polygon>> p_arr;
-    vector<shared_ptr<Vertex>> v_arr;
     Point _center;
 
     void _add_side(QRgb color, vector<shared_ptr<Vertex>> vertex_arr);

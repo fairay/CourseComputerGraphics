@@ -8,6 +8,32 @@ Point::Point(const Point& other):
     x(other.x), y(other.y), z(other.z) {}
 Point::~Point() {}
 
+void Point::rotate(const Point& c, const Vector& v)
+{
+    rotate_ox(c, v.x);
+    rotate_oy(c, v.y);
+    rotate_oz(c, v.z);
+}
+
+void Point::rotate_ox(const Point& c, double a)
+{
+    double y1 = c.y + (y-c.y)*cos(a) - (z-c.z)*sin(a);
+    double z1 = c.z + (y-c.y)*sin(a) + (z-c.z)*cos(a);
+    y = y1; z = z1;
+}
+void Point::rotate_oy(const Point& c, double a)
+{
+    double x1 = c.x + (x-c.x)*cos(a) + (z-c.z)*sin(a);
+    double z1 = c.z - (x-c.x)*sin(a) + (z-c.z)*cos(a);
+    x = x1; z = z1;
+}
+void Point::rotate_oz(const Point& c, double a)
+{
+    double x1 = c.x + (x-c.x)*cos(a) - (y-c.y)*sin(a);
+    double y1 = c.y + (x-c.x)*sin(a) + (y-c.y)*cos(a);
+    x = x1; y = y1;
+}
+
 
 Vertex::Vertex() {}
 Vertex::Vertex(double x_, double y_, double z_):

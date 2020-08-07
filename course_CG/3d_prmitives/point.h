@@ -1,6 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
+class Vector;
 
 class Point
 {
@@ -11,6 +12,13 @@ public:
     Point(double x_, double y_, double z_);
     Point(const Point& other);
     ~Point();
+
+    void rotate(const Point& c, const Vector& v);
+
+private:
+    void rotate_ox(const Point& c, double a);
+    void rotate_oy(const Point& c, double a);
+    void rotate_oz(const Point& c, double a);
 };
 
 

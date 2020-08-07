@@ -13,11 +13,11 @@ public:
     virtual ~DrawerError();
 };
 
-class SceneExpired: public DrawerError
+class ImageExpired: public DrawerError
 {
 public:
-    SceneExpired(const string file_, long line_n_);
-    virtual ~SceneExpired();
+    ImageExpired(const string file_, long line_n_);
+    virtual ~ImageExpired();
 };
 
 class NoSceneCamera: public DrawerError

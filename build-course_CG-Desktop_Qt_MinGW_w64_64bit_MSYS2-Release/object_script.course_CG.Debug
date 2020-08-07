@@ -16,4 +16,5 @@ debug/camera.o
 debug/light_source.o
 debug/object_visitor.o
 debug/visual.o
+debug/drawer.o
 debug/moc_mainwindow.o

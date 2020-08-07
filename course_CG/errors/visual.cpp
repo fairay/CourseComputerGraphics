@@ -9,14 +9,14 @@ DrawerError::DrawerError(const string file_, long line_n_):
 DrawerError::~DrawerError() = default;
 
 
-SceneExpired::SceneExpired(const string file_, long line_n_):
+ImageExpired::ImageExpired(const string file_, long line_n_):
     DrawerError(file_, line_n_)
 {
-    type += "SceneExpired";
-    add_info = "scene pointer expired";
+    type += "Image Expired";
+    add_info = "image pointer expired";
     fill_msg();
 }
-SceneExpired::~SceneExpired() = default;
+ImageExpired::~ImageExpired() = default;
 
 NoSceneCamera::NoSceneCamera(const string file_, long line_n_):
     DrawerError(file_, line_n_)

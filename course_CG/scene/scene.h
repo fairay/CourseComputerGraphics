@@ -7,6 +7,7 @@ public:
     Scene();
     ~Scene();
 
+private:
 
 };
 

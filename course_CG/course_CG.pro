@@ -42,7 +42,10 @@ SOURCES += \
     objects/camera.cpp \
     objects/light_source.cpp \
     objects/visitors/object_visitor.cpp \
-    errors/visual.cpp
+    errors/visual.cpp \
+    visual/drawer.cpp \
+    visual/visualizer.cpp \
+    errors/managers.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -54,8 +57,6 @@ HEADERS += \
     3d_prmitives/vertex.h \
     3d_prmitives/ball_model.h \
     3d_prmitives/box_model.h \
-    commands/test.h \
-    managers/test.h \
     scene/scene.h \
     scene/interface.h \
     objects/scene_object.h \
@@ -68,7 +69,10 @@ HEADERS += \
     objects/visitors/object_visitor.h \
     visual/visualizer.h \
     visual/drawer.h \
-    errors/visual.h
+    errors/visual.h \
+    commands/base_command.h \
+    managers/base_manager.h \
+    errors/managers.h
 
 FORMS += \
         mainwindow.ui
