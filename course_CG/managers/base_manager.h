@@ -8,17 +8,18 @@
 
 using namespace std;
 
-class SceneManager
+class IManager
 {
 public:
-    SceneManager(weak_ptr<Scene> scene_ptr);
-    virtual ~SceneManager() = 0;
+    IManager(weak_ptr<Scene> scene_ptr);
+    virtual ~IManager() = 0;
 
     virtual void execute() = 0;
 
 protected:
     weak_ptr<Scene> _scene;
 };
+
 
 
 #endif // BASE_MANAGER_H

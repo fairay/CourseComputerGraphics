@@ -15,7 +15,7 @@ public:
     Visualizer(shared_ptr<QDrawer>& drawer);
     ~Visualizer();
 
-    void set_draw(shared_ptr<QDrawer>& drawer);
+    void set_draw(const shared_ptr<QDrawer>& drawer);
     void set_camera(const Camera& camera);
     void set_light(const LightSource& light);
 

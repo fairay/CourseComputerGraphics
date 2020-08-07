@@ -20,6 +20,8 @@ public:
     explicit VisibleObject(const VisibleObject& other);
     virtual ~VisibleObject() = 0;
 
+    shared_ptr<Model> get_model();
+
     virtual bool is_drawable() const final {return true;}
 
 protected:

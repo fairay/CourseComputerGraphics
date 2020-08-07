@@ -5,7 +5,7 @@ Visualizer::Visualizer(shared_ptr<QDrawer>& drawer):
     _draw(drawer) {}
 Visualizer::~Visualizer() {}
 
-void Visualizer::set_draw(shared_ptr<QDrawer> &drawer) { _draw = drawer; }
+void Visualizer::set_draw(const shared_ptr<QDrawer> &drawer) { _draw = drawer; }
 void Visualizer::set_light(const LightSource &light) { _light = light; }
 void Visualizer::set_camera(const Camera &camera) { _camera = camera; }
 

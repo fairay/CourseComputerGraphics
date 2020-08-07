@@ -14,6 +14,7 @@ class QDrawer
 {
 public:
     QDrawer(weak_ptr<QImage> image);
+    explicit QDrawer(const QDrawer& other);
     virtual ~QDrawer();
 
     void fill_rgb(QRgb color);

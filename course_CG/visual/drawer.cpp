@@ -22,6 +22,14 @@ QDrawer::QDrawer(weak_ptr<QImage> image)
     h = size.height();
     _init_map();
 }
+QDrawer::QDrawer(const QDrawer& other)
+{
+    _img = other._img;
+    w = other.w;
+    h = other.h;
+
+    _init_map();
+}
 QDrawer::~QDrawer()
 {
     _free_map();
