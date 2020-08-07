@@ -17,4 +17,14 @@ debug/light_source.o
 debug/object_visitor.o
 debug/visual.o
 debug/drawer.o
+debug/visualizer.o
+debug/managers.o
+debug/base_manager.o
+debug/draw.o
+debug/scene.o
+debug/base_command.o
+debug/draw_cmd.o
+debug/init_draw_cmd.o
+debug/draw_mng.o
+debug/init_draw_mng.o
 debug/moc_mainwindow.o

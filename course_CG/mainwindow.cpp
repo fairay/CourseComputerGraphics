@@ -28,7 +28,8 @@ void fill_rgb_map(RgbMap& mat, int w, int h, QColor color)
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    _qscene(new QGraphicsScene(-10, -10, 10, 10))
+    _qscene(new QGraphicsScene(-10, -10, 10, 10)),
+    _scene(new Scene())
 {
     ui->setupUi(this);
     _scene_size = ui->graphicsView->size();
@@ -42,15 +43,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setScene(&(*_qscene));
 
-    _img = QImage(_scene_size.width(), _scene_size.height(), QImage::Format_RGB32);
-    // Создание объекта, отображающего _img
-    q_pmap = _qscene->addPixmap(QPixmap::fromImage(_img));
+    _img = shared_ptr<QImage>(new QImage(_scene_size.width(), _scene_size.height(), QImage::Format_RGB32));
+    _test_init();
 
-    // Пример рисования с помощью setPixelColor (неоптимальный вариант закраски)
-    _img.setPixelColor(1, 1, Qt::red);
-    _img.setPixelColor(101, 100, Qt::white);
-    _img.setPixelColor(102, 100, Qt::red);
-    q_pmap->setPixmap(QPixmap::fromImage(_img));
+    command::InitDraw cmd(_img);
+    _scene.execute(cmd);
+    _paint();
 }
 
 MainWindow::~MainWindow()
@@ -59,6 +57,28 @@ MainWindow::~MainWindow()
     free_rgb_map(_rgb_map, _scene_size.height());
 }
 
+
+/// Отображение сцены
+void MainWindow::_paint()
+{
+    command::DrawScene cmd;
+    _scene.execute(cmd);
+    q_pmap->setPixmap(QPixmap::fromImage(*_img));
+    QCoreApplication::processEvents();
+}
+
+/// Тестовый запуск
+void MainWindow::_test_init()
+{
+    // Создание объекта, отображающего _img
+    q_pmap = _qscene->addPixmap(QPixmap::fromImage(*_img));
+
+    // Пример рисования с помощью setPixelColor (неоптимальный вариант закраски)
+    _img->setPixelColor(1, 1, Qt::red);
+    _img->setPixelColor(101, 100, Qt::white);
+    _img->setPixelColor(102, 100, Qt::red);
+    q_pmap->setPixmap(QPixmap::fromImage(*_img));
+}
 
 /// Перекраска сцены
 void MainWindow::_fill_img(QColor color)
@@ -72,16 +92,18 @@ void MainWindow::_fill_img(QColor color)
     // Перенос матрицы цветов на _img
     size_t row_size = static_cast<size_t>(w) * sizeof(QRgb);
     for (int y=0; y < h; y++)
-        memcpy(_img.scanLine(y), &_rgb_map[y][0], row_size);
+        memcpy(_img->scanLine(y), &_rgb_map[y][0], row_size);
 
     // Копирование _img на экран, обновление
-    q_pmap->setPixmap(QPixmap::fromImage(_img));
+    q_pmap->setPixmap(QPixmap::fromImage(*_img));
     QCoreApplication::processEvents();
 }
 
 /// Тест FPS
 void MainWindow::on_pushButton_clicked()
 {
+    _paint();
+    return;
     time_t time = clock();
     size_t count = 0;
     while(clock() - time < 1000)

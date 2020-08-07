@@ -17,4 +17,14 @@ release/light_source.o
 release/object_visitor.o
 release/visual.o
 release/drawer.o
+release/visualizer.o
+release/managers.o
+release/base_manager.o
+release/draw.o
+release/scene.o
+release/base_command.o
+release/draw_cmd.o
+release/init_draw_cmd.o
+release/draw_mng.o
+release/init_draw_mng.o
 release/moc_mainwindow.o

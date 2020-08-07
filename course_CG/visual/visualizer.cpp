@@ -21,7 +21,7 @@ void Visualizer::draw_model(Model &m)
 void Visualizer::clear()
 {
     _draw->fill_z(-10000);
-    _draw->fill_rgb(Qt::gray);
+    _draw->fill_rgb(QColor(Qt::gray).rgba());
 }
 
 void Visualizer::show()

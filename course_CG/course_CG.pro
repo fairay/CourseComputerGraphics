@@ -47,12 +47,13 @@ SOURCES += \
     visual/visualizer.cpp \
     errors/managers.cpp \
     managers/base_manager.cpp \
-    managers/draw.cpp \
     objects/visitors/draw.cpp \
     scene/scene.cpp \
-    managers/init_draw.cpp \
-    commands/draw.cpp \
-    commands/init_draw.cpp
+    commands/base_command.cpp \
+    commands/draw_cmd.cpp \
+    commands/init_draw_cmd.cpp \
+    managers/draw_mng.cpp \
+    managers/init_draw_mng.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -84,7 +85,8 @@ HEADERS += \
     objects/visitors/draw.h \
     managers/init_draw.h \
     commands/draw.h \
-    commands/init_draw.h
+    commands/init_draw.h \
+    commands/all.h
 
 FORMS += \
         mainwindow.ui
