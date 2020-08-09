@@ -2,11 +2,17 @@
 
 inline QRgb i_color(QRgb a, double i)
 {
-    char* a_ptr = reinterpret_cast<char*>(&a);
-    a_ptr[0] = static_cast<char>(a_ptr[0] * i);
-    a_ptr[1] = static_cast<char>(a_ptr[1] * i);
-    a_ptr[2] = static_cast<char>(a_ptr[2] * i);
-    return a;
+    QColor c(a);
+    int r, g, b;
+    c.getRgb(&r, &g, &b);
+    r *= i; g *= i; b *= i;
+    c.setRgb(r, g, b);
+    return c.rgba();
+//    char* a_ptr = reinterpret_cast<char*>(&a);
+//    a_ptr[1] = static_cast<char>(a_ptr[1] * i);
+//    a_ptr[2] = static_cast<char>(a_ptr[2] * i);
+//    a_ptr[3] = static_cast<char>(a_ptr[3] * i);
+//    return a;
 }
 
 
