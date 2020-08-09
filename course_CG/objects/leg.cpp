@@ -3,7 +3,7 @@
 
 TableLeg::TableLeg(double x, double y, double h)
 {
-    _color = QColor(Qt::gray).rgba();
+    _color = QColor(Qt::magenta).rgba();
     Point p1(x-_wide, y-_wide, 0);
     Point p2(x+_wide, y+_wide, h);
     Model* m_ptr = new BoxModel(_color, p1, p2);

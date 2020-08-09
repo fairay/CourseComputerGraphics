@@ -1,12 +1,11 @@
 #include "drawer.h"
 
-inline QRgb i_color(QRgb a, double aPers)
+inline QRgb i_color(QRgb a, double i)
 {
     char* a_ptr = reinterpret_cast<char*>(&a);
-    double bPers = 1 - aPers;
-    a_ptr[0] = static_cast<char>(a_ptr[0] * aPers + 255 * bPers);
-    a_ptr[1] = static_cast<char>(a_ptr[1] * aPers + 255 * bPers);
-    a_ptr[2] = static_cast<char>(a_ptr[2] * aPers + 255 * bPers);
+    a_ptr[0] = static_cast<char>(a_ptr[0] * i);
+    a_ptr[1] = static_cast<char>(a_ptr[1] * i);
+    a_ptr[2] = static_cast<char>(a_ptr[2] * i);
     return a;
 }
 
@@ -55,7 +54,10 @@ void QDrawer::fill_z(double depth)
 void QDrawer::draw_point(const Point &p, QRgb color)
 {
     int x = static_cast<int>(p.x);
+    if (x < 0 || x > w) return;
     int y = static_cast<int>(p.y);
+    if (y < 0 || y > h) return;
+
     if (p.z > _z_map[y][x])
     {
         _color_map[y][x] = color;
@@ -65,9 +67,12 @@ void QDrawer::draw_point(const Point &p, QRgb color)
 void QDrawer::draw_point(const Point &p, QRgb color, double i)
 {
     int x = static_cast<int>(p.x);
+    if (x < 0 || x > w) return;
     int y = static_cast<int>(p.y);
+    if (y < 0 || y > h) return;
     if (p.z > _z_map[y][x])
     {
+        cout << "Mix";
         _color_map[y][x] = i_color(color, i);
         _z_map[y][x] = p.z;
     }
@@ -84,7 +89,6 @@ void QDrawer::transfer_to_qimage()
     for (int y=0; y < h; y++)
         memcpy(i.scanLine(y), &_color_map[y][0], row_size);
 }
-
 
 void QDrawer::_init_map()
 {

@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QWidget>
+#include <QKeyEvent>
 
 #include <memory>
 #include <iostream>
@@ -33,6 +34,7 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void keyPressEvent(QKeyEvent*);
 
 private:
     Ui::MainWindow *ui;

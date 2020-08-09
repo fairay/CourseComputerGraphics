@@ -1,11 +1,13 @@
 #ifndef VISUALIZER_H
 #define VISUALIZER_H
 
-#include "objects/camera.h"
-#include "objects/light_source.h"
-#include "drawer.h"
 #include "memory"
 #include "math.h"
+
+#include "objects/camera.h"
+#include "objects/light_source.h"
+#include "projected_model.h"
+#include "drawer.h"
 
 using namespace std;
 class Visualizer
@@ -30,6 +32,7 @@ private:
     LightSource _light;
 
     Point _proj_point(const Point& p);
+    double _light_point(const Vertex& v);
 
 };
 #endif // VISUALIZER_H

@@ -115,3 +115,17 @@ void MainWindow::on_pushButton_clicked()
     cout << "FPS: " << count << endl;
     ui->fps_count->setNum(static_cast<int>(count));
 }
+
+void MainWindow::keyPressEvent(QKeyEvent* event)
+{
+    cout << event->key() << endl;
+
+    switch (event->key())
+    {
+    case Qt::Key_W:
+        cout << "W\n\n";
+        break;
+    default:
+        break;
+    }
+}

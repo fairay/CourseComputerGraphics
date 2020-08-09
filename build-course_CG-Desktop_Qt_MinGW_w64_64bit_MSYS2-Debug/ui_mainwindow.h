@@ -11,8 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -27,8 +27,9 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
-    QFrame *line;
     QPushButton *pushButton;
+    QLabel *fps_count;
+    QLabel *label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -37,24 +38,25 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(978, 643);
+        MainWindow->resize(1100, 876);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(20, 10, 701, 581));
-        line = new QFrame(centralWidget);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setGeometry(QRect(720, 10, 16, 581));
-        line->setFrameShape(QFrame::VLine);
-        line->setFrameShadow(QFrame::Sunken);
+        graphicsView->setGeometry(QRect(10, 10, 800, 600));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(740, 10, 231, 41));
+        pushButton->setGeometry(QRect(20, 780, 801, 41));
+        fps_count = new QLabel(centralWidget);
+        fps_count->setObjectName(QString::fromUtf8("fps_count"));
+        fps_count->setGeometry(QRect(870, 20, 121, 20));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(820, 20, 35, 21));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 978, 17));
+        menuBar->setGeometry(QRect(0, 0, 1100, 17));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -72,6 +74,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\230\320\263\321\200\320\260 \320\221\320\270\320\273\321\214\321\217\321\200\320\264", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "\320\225\321\201\321\202\321\214 \320\260\321\201\320\261\320\265\321\201\321\202", nullptr));
+        fps_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        label->setText(QApplication::translate("MainWindow", "FPS:", nullptr));
     } // retranslateUi
 
 };

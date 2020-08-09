@@ -1,13 +1,17 @@
 #include "point.h"
 #include "vertex.h"
 
-Point::Point() {}
+Point::Point(): x(0), y(0), z(0) {}
 Point::Point(double x_, double y_, double z_):
     x(x_), y(y_), z(z_) {}
 Point::Point(const Point& other):
     x(other.x), y(other.y), z(other.z) {}
 Point::~Point() {}
 
+void Point::print()
+{
+    printf("Point: (%lf, %lf, %lf)\n", x, y, z);
+}
 void Point::rotate(const Point& c, const Vector& v)
 {
     rotate_ox(c, v.x);

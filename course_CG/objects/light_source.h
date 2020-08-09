@@ -2,6 +2,7 @@
 #define LIGHT_SOURCE_H
 
 #include "simple_object.h"
+#define LIGHT_REFLECT 1.0
 
 class LightSource: public InvisibleObject
 {

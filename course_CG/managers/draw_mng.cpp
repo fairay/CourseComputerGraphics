@@ -20,7 +20,7 @@ void DrawManager::execute()
     shared_ptr<ObjectVisitor> visitor(new DrawVisitor(visual));
 
     visual->clear();
-//    for (auto obj: *_scene.lock())
-//        obj->accept(*visitor);
+    for (auto obj: *_scene.lock())
+        obj->accept(*visitor);
     visual->show();
 }
