@@ -11,13 +11,13 @@ ProjEdge::ProjEdge(Point& p1, double i1,
     x0 = p1.x;
     z0 = p1.z;
     i0 = i1;
-    y0 = static_cast<int>(p1.y - p2.y);
+    y0 = ymax - static_cast<int>(p2.y);
 
     if (y0)
     {
-        dx = (p1.x - p2.x) / y0;
-        dz = (p1.z - p2.z) / y0;
-        di = (i1 - i2) / y0;
+        dx = (p2.x - p1.x) / y0;
+        dz = (p2.z - p2.z) / y0;
+        di = (i2 - i1) / y0;
     }
     else
     {
@@ -132,21 +132,26 @@ void ProjSide::add_edge(const ProjEdge &edge)
 bool ProjSide::step()
 {
     temp_y -= 1;
-    for (auto i=active_edges.begin(); i!=active_edges.end(); i++)
+    for (auto i=active_edges.begin(); i < active_edges.end();)
     {
+        cout << "+";
         if (i->step())
         {
             active_edges.erase(i);
-            if (i==active_edges.end()) break;
+            cout << "Delete active" << endl;
+            // if (i==active_edges.end()) break;
         }
+        else
+            i++;
     }
+    cout << endl;
 
     auto i = waiting_edges.begin();
-    while (i!=waiting_edges.end() && i->ymax == temp_y)
+    while (i < waiting_edges.end() && i->ymax == temp_y)
     {
         active_edges.push_back(*i);
         waiting_edges.erase(i);
-        if (i==waiting_edges.end()) break;
+        // if (i==waiting_edges.end()) break;
         i++;
     }
     return is_done();

@@ -19,7 +19,8 @@ void Visualizer::draw_model(Model &m)
 
     for (auto poly : m.p_arr)
     {
-        cout << "\n\n-----\n\n" << endl;
+        cout << "\n\n-----" << endl;
+        poly->print();
         ProjSide proj;
         QRgb color = poly->color;
         size_t p_n = poly->v_arr.size();
@@ -99,7 +100,7 @@ double Visualizer::_light_point(const Vertex &v)
     Vector dir(v, _light.get_pos());
     double i = dir.scalar_mult(v.n) / dir.length();
     i *= _light.get_intensity() * LIGHT_REFLECT;
-    i = max(0.0, i);
+    i = max(0.05, i);
     cout << "I = " << i << endl;
     return i;
 }

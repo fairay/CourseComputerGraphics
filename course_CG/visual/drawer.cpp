@@ -6,6 +6,7 @@ inline QRgb i_color(QRgb a, double i)
     int r, g, b;
     c.getRgb(&r, &g, &b);
     r *= i; g *= i; b *= i;
+    // printf("(%4.2f, %d, %d, %d)\t", i, r, g, b);
     c.setRgb(r, g, b);
     return c.rgba();
 //    char* a_ptr = reinterpret_cast<char*>(&a);

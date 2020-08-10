@@ -1,6 +1,6 @@
 #include "vector.h"
 
-Vector::Vector() {}
+Vector::Vector(): x(0), y(0), z(0) {}
 Vector::Vector(double x_, double y_, double z_):
     x(x_), y(y_), z(z_) {}
 Vector::Vector(const Vector& other):
