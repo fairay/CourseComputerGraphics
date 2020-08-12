@@ -2,7 +2,7 @@
 
 Scene::Scene()
 {
-    set_camera(Camera(Point(0, 0, 500)));
+    set_camera(Camera(Point(0, 0, 500), Vector(0, 0, 0)));
     set_light(LightSource(Point(0, 0, 1000), 1));
     add_object(new TableLeg(200, 200, 200));
 }

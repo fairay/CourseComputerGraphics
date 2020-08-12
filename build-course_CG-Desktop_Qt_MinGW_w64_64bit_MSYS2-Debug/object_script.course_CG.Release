@@ -28,4 +28,7 @@ release/draw_mng.o
 release/init_draw_mng.o
 release/draw_visitor.o
 release/projected_model.o
+release/trans_action.o
+release/trasform_mng.o
+release/transform_cmd.o
 release/moc_mainwindow.o

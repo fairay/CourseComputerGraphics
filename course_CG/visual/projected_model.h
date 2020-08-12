@@ -36,6 +36,7 @@ public:
     int temp_y;
 
     ProjSide();
+    ProjSide(ProjSide&& other);
     ~ProjSide();
 
     void init();

@@ -54,7 +54,10 @@ SOURCES += \
     managers/draw_mng.cpp \
     managers/init_draw_mng.cpp \
     objects/visitors/draw_visitor.cpp \
-    visual/projected_model.cpp
+    visual/projected_model.cpp \
+    transform/trans_action.cpp \
+    managers/trasform_mng.cpp \
+    commands/transform_cmd.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -88,7 +91,11 @@ HEADERS += \
     commands/draw.h \
     commands/init_draw.h \
     commands/all.h \
-    visual/projected_model.h
+    visual/projected_model.h \
+    transform/transformator.h \
+    transform/trans_action.h \
+    managers/tranfrorm.h \
+    commands/transform.h
 
 FORMS += \
         mainwindow.ui

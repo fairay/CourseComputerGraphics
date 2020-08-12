@@ -8,7 +8,7 @@ InitDrawManager::~InitDrawManager() {}
 void InitDrawManager::execute()
 {
     if (_scene.expired())
-        throw err::ScenePtrExpired(__FILE__, __LINE__-1, "DrawManager");
+        throw err::ScenePtrExpired(__FILE__, __LINE__-1, "InitDraw Manager");
 
     _scene.lock()->set_drawer(_draw);
 }

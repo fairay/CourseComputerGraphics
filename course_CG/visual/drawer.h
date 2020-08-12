@@ -28,6 +28,7 @@ private:
     RgbMap _color_map;
     ZMap _z_map;
     int w, h;
+    int w12, h12;
 
     void _init_map();
     void _free_map();

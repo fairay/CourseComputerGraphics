@@ -79,6 +79,14 @@ bool ProjEdge::is_horizontal() const
 
 ///
 ProjSide::ProjSide() {}
+ProjSide::ProjSide(ProjSide&& other):
+    edges(other.edges)
+{
+    this->temp_y = other.temp_y;
+    this->edges = std::move(other.edges);
+    this->active_edges = std::move(other.active_edges);
+    this->waiting_edges = std::move(other.waiting_edges);
+}
 ProjSide::~ProjSide()
 {
     edges.clear();

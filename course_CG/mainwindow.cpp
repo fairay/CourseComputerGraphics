@@ -124,8 +124,11 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     {
     case Qt::Key_W:
         cout << "W\n\n";
+        command::MoveCamera cmd(Vector(0, 0, -10));
+        _scene.execute(cmd);
+        _paint();
         break;
-    default:
-        break;
+    //default:
+    //    break;
     }
 }

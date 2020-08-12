@@ -33,6 +33,6 @@ private:
 
     Point _proj_point(const Point& p);
     double _light_point(const Vertex& v);
-
+    void _proj_side(ProjSide& proj, const vector<shared_ptr<Vertex>>& arr);
 };
 #endif // VISUALIZER_H

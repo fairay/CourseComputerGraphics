@@ -22,24 +22,14 @@ void Visualizer::draw_model(Model &m)
         cout << "\n\n-----" << endl;
         poly->print();
         ProjSide proj;
+        _proj_side(proj, poly->v_arr);
         QRgb color = poly->color;
-        size_t p_n = poly->v_arr.size();
-
-        for (size_t i=0; i < p_n; i++)
-        {
-            Point p1 = _proj_point(*poly->v_arr[i]);
-            Point p2 = _proj_point(*poly->v_arr[(i+1)%p_n]);
-            double i1 = _light_point(*poly->v_arr[i]);
-            double i2 = _light_point(*poly->v_arr[(i+1)%p_n]);
-            proj.add_edge(ProjEdge(p1, i1, p2, i2));
-            cout << "Add edge" << endl;
-        }
 
         cout << "Let's draw!" << endl;
         proj.init();
         while (!proj.is_done())
         {
-            cout << proj.temp_y << endl;
+            cout << "Draw row: " << proj.temp_y << endl;
             int x = static_cast<int>(proj.active_edges[0].x);
             double z = proj.active_edges[0].z;
             Point p(x, proj.temp_y, z);
@@ -47,7 +37,6 @@ void Visualizer::draw_model(Model &m)
             double i = proj.active_edges[0].i;
             double di = (i-proj.active_edges[1].i) / (x-proj.active_edges[1].x);
             double dz = (z-proj.active_edges[1].z) / (x-proj.active_edges[1].x);
-            cout << "|" << endl;
             for (; p.x < proj.active_edges[1].x; p.x++)
             {
                 _draw->draw_point(p, color, i);
@@ -56,8 +45,6 @@ void Visualizer::draw_model(Model &m)
             }
             proj.step();
         }
-
-        cout << "\nSide done!" << endl;
     }
 
 }
@@ -93,6 +80,20 @@ Point Visualizer::_proj_point(const Point& p)
     res.y = cam_pos.y + (res.y - cam_pos.y)*k;
     res.print();
     return res;
+}
+
+void Visualizer::_proj_side(ProjSide& proj, const vector<shared_ptr<Vertex>>& arr)
+{
+    size_t p_n = arr.size();
+
+    for (size_t i=0; i < p_n; i++)
+    {
+        Point p1 = _proj_point(*arr[i]);
+        Point p2 = _proj_point(*arr[(i+1)%p_n]);
+        double i1 = _light_point(*arr[i]);
+        double i2 = _light_point(*arr[(i+1)%p_n]);
+        proj.add_edge(ProjEdge(p1, i1, p2, i2));
+    }
 }
 
 double Visualizer::_light_point(const Vertex &v)

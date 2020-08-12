@@ -24,8 +24,8 @@ QDrawer::QDrawer(weak_ptr<QImage> image)
 
     _img = image;
     QSize size = _img.lock()->size();
-    w = size.width();
-    h = size.height();
+    w = size.width();       w12 = w/2;
+    h = size.height();      h12 = h/2;
     _init_map();
 }
 QDrawer::QDrawer(const QDrawer& other)
@@ -33,6 +33,8 @@ QDrawer::QDrawer(const QDrawer& other)
     _img = other._img;
     w = other.w;
     h = other.h;
+    w12 = other.w12;
+    h12 = other.h12;
 
     _init_map();
 }
@@ -60,9 +62,9 @@ void QDrawer::fill_z(double depth)
 
 void QDrawer::draw_point(const Point &p, QRgb color)
 {
-    int x = static_cast<int>(p.x);
+    int x = static_cast<int>(p.x) + w12;
     if (x < 0 || x > w) return;
-    int y = static_cast<int>(p.y);
+    int y = -static_cast<int>(p.y) + h12;
     if (y < 0 || y > h) return;
 
     if (p.z > _z_map[y][x])
@@ -73,13 +75,13 @@ void QDrawer::draw_point(const Point &p, QRgb color)
 }
 void QDrawer::draw_point(const Point &p, QRgb color, double i)
 {
-    int x = static_cast<int>(p.x);
+    int x = static_cast<int>(p.x) + w12;
     if (x < 0 || x > w) return;
-    int y = static_cast<int>(p.y);
+    int y = -static_cast<int>(p.y) + h12;
     if (y < 0 || y > h) return;
+
     if (p.z > _z_map[y][x])
     {
-        cout << "Mix";
         _color_map[y][x] = i_color(color, i);
         _z_map[y][x] = p.z;
     }
@@ -105,15 +107,16 @@ void QDrawer::_init_map()
 
     _z_map = new double*[h];
     for (int i=0; i<h; i++)
-    {
         _z_map[i] = new double[w];
-
-    }
 
 }
 void QDrawer::_free_map()
 {
     for (int i=0; i<h; i++)
         delete _color_map[i];
-    delete _color_map;
+    for (int i=0; i<h; i++)
+        delete _z_map[i];
+
+    delete _color_map;    
+    delete _z_map;
 }

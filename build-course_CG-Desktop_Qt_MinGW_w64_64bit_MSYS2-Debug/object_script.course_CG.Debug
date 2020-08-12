@@ -28,4 +28,7 @@ debug/draw_mng.o
 debug/init_draw_mng.o
 debug/draw_visitor.o
 debug/projected_model.o
+debug/trans_action.o
+debug/trasform_mng.o
+debug/transform_cmd.o
 debug/moc_mainwindow.o
