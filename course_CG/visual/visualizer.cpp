@@ -19,17 +19,12 @@ void Visualizer::draw_model(Model &m)
 
     for (auto poly : m.p_arr)
     {
-        cout << "\n\n-----" << endl;
-        poly->print();
         ProjSide proj;
         _proj_side(proj, poly->v_arr);
         QRgb color = poly->color;
-
-        cout << "Let's draw!" << endl;
         proj.init();
         while (!proj.is_done())
         {
-            cout << "Draw row: " << proj.temp_y << endl;
             int x = static_cast<int>(proj.active_edges[0].x);
             double z = proj.active_edges[0].z;
             Point p(x, proj.temp_y, z);
@@ -46,7 +41,6 @@ void Visualizer::draw_model(Model &m)
             proj.step();
         }
     }
-
 }
 
 void Visualizer::clear()
@@ -78,7 +72,6 @@ Point Visualizer::_proj_point(const Point& p)
 
     res.x = cam_pos.x + (res.x - cam_pos.x)*k;
     res.y = cam_pos.y + (res.y - cam_pos.y)*k;
-    res.print();
     return res;
 }
 
@@ -102,6 +95,5 @@ double Visualizer::_light_point(const Vertex &v)
     double i = dir.scalar_mult(v.n) / dir.length();
     i *= _light.get_intensity() * LIGHT_REFLECT;
     i = max(0.05, i);
-    cout << "I = " << i << endl;
     return i;
 }

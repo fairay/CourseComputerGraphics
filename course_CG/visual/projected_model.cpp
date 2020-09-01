@@ -5,7 +5,10 @@ ProjEdge::ProjEdge(Point& p1, double i1,
                    Point& p2, double i2)
 {
     if (p1.y < p2.y)
+    {
         swap(p1, p2);
+        swap(i1, i2);
+    }
 
     ymax = static_cast<int>(p1.y);
     x0 = p1.x;
@@ -16,7 +19,7 @@ ProjEdge::ProjEdge(Point& p1, double i1,
     if (y0)
     {
         dx = (p2.x - p1.x) / y0;
-        dz = (p2.z - p2.z) / y0;
+        dz = (p2.z - p1.z) / y0;
         di = (i2 - i1) / y0;
     }
     else
@@ -92,7 +95,6 @@ ProjSide::~ProjSide()
     edges.clear();
     active_edges.clear();
     waiting_edges.clear();
-    cout << "ProjSide cleared" << endl;
 }
 
 void ProjSide::init()
@@ -107,11 +109,7 @@ void ProjSide::init()
 void ProjSide::add_edge(const ProjEdge &edge)
 {
     if (edge.is_horizontal())
-    {
-        cout << "Horizonal, didn't add" << endl;
         return;
-    }
-    cout << "Add edge, ymax = " << edge.ymax << endl;
     edges.push_back(edge);
 
     for (size_t i=edges.size()-1; i>0; i--)
@@ -132,32 +130,33 @@ void ProjSide::add_edge(const ProjEdge &edge)
             break;
     }
 
-    for (auto e : edges) {
-        e.print();
-    }
-
 }
 bool ProjSide::step()
 {
     temp_y -= 1;
     for (auto i=active_edges.begin(); i < active_edges.end();)
     {
-        cout << "+";
         if (i->step())
         {
             active_edges.erase(i);
-            cout << "Delete active" << endl;
             // if (i==active_edges.end()) break;
         }
         else
             i++;
     }
-    cout << endl;
 
     auto i = waiting_edges.begin();
     while (i < waiting_edges.end() && i->ymax == temp_y)
     {
         active_edges.push_back(*i);
+        for (size_t j=active_edges.size()-1; j>0; j--)
+        {
+            if (active_edges[j-1].x > active_edges[j].x)
+                swap(active_edges[j-1], active_edges[j]);
+            else
+                break;
+        }
+
         waiting_edges.erase(i);
         // if (i==waiting_edges.end()) break;
         i++;
@@ -166,6 +165,5 @@ bool ProjSide::step()
 }
 bool ProjSide::is_done()
 {
-    cout << "LAE lenght:" << active_edges.size() << endl;
     return active_edges.size() == 0;
 }

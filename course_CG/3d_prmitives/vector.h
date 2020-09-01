@@ -24,6 +24,7 @@ public:
 
     void normalize();
     void invert();
+    void print();
 };
 
 #endif // VECTOR_H

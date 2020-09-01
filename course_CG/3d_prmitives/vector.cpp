@@ -54,3 +54,7 @@ void Vector::invert()
     y = -y;
     z = -z;
 }
+void Vector::print()
+{
+    printf("-> [%7.3f, %7.3f, %7.3f]\n", x, y, z);
+}

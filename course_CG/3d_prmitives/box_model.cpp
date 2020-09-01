@@ -27,7 +27,6 @@ BoxModel::BoxModel(QRgb color, const Point& p1, const Point& p2)
     add_side(color, {3, 0, 4, 7});
 
     this->normalize_vertexes();
-    this->_print();
 }
 
 BoxModel::~BoxModel() {}

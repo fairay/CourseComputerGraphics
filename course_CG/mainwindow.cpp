@@ -120,14 +120,25 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
 {
     cout << event->key() << endl;
 
+    using namespace command;
+    shared_ptr<ICommand> ptr;
     switch (event->key())
     {
+    case Qt::Key_U:
+        cout << "Up \n\n";
+        ptr = shared_ptr<ICommand>(new RotateCamera(Vector(3, 0, 0)));
+        _scene.execute(*ptr);
+        this->_paint();
+        break;
+
     case Qt::Key_W:
-        cout << "W\n\n";
-        command::MoveCamera cmd(Vector(0, 0, -10));
-        _scene.execute(cmd);
+        cout << "Forward\n\n";
+        ptr = shared_ptr<ICommand>(new MoveCamera(Vector(0, 0, -10)));
+        _scene.execute(*ptr);
         _paint();
         break;
+
+
     //default:
     //    break;
     }

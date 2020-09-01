@@ -80,7 +80,11 @@ void Rotate::execute(Vector& p)
 }
 void Rotate::execute(Camera &p)
 {
-    this->execute(p.get_dir());
+    Vector& v = p.get_dir();
+    v.x += _dir.x;
+    v.y += _dir.y;
+    v.z += _dir.z;
+    p.get_dir().print();
 }
 
 void Rotate::rotate_x(double&, double& y_, double& z_)
