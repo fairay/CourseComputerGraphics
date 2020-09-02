@@ -10,6 +10,18 @@ Move::Move(double dx, double dy, double dz):
     _delta(dx, dy, dz) {}
 Move::~Move() {}
 
+void Move::rotate(const Vector& v)
+{
+    cout << "Before";
+    _delta.print();
+
+    Rotate act(v);
+    act.execute(_delta);
+
+    cout << "After";
+    _delta.print();
+}
+
 void Move::execute(double& x, double& y, double& z)
 {
     x += _delta.x;
@@ -41,18 +53,29 @@ void Move::execute(Camera &p)
 Rotate::Rotate(const Vector& v):
     _c()
 {
-    _dir.x = _to_radians(v.x);
-    _dir.y = _to_radians(v.y);
-    _dir.z = _to_radians(v.z);
+    _dir.x = (v.x);
+    _dir.y = (v.y);
+    _dir.z = (v.z);
 }
 Rotate::Rotate(const Point& p, const Vector& v):
     _c(p)
 {
-    _dir.x = _to_radians(v.x);
-    _dir.y = _to_radians(v.y);
-    _dir.z = _to_radians(v.z);
+    _dir.x = (v.x);
+    _dir.y = (v.y);
+    _dir.z = (v.z);
 }
 Rotate::~Rotate() {}
+
+void Rotate::to_radians()
+{
+    _dir.x = _to_radians(_dir.x);
+    _dir.y = _to_radians(_dir.y);
+    _dir.z = _to_radians(_dir.z);
+}
+
+void Rotate::rotate(const Vector&)
+{
+}
 
 void Rotate::execute(double& x, double& y, double& z)
 {
@@ -153,6 +176,10 @@ double Rotate::_to_radians(double a)
 Scale::Scale(const Vector& v): _c(), _sc(v) {}
 Scale::Scale(const Point& p, const Vector& v): _c(p), _sc(v) {}
 Scale::~Scale() {}
+
+void Scale::rotate(const Vector&)
+{
+}
 
 void Scale::execute(double& x, double& y, double& z)
 {

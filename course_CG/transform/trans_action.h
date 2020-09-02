@@ -14,6 +14,8 @@ public:
     Action();
     virtual ~Action() = 0;
 
+    virtual void rotate(const Vector& v) = 0;
+
     virtual void execute(double& x, double& y, double& z) = 0;
     virtual void execute(Camera& p) = 0;
     virtual void execute(Vertex& p) = 0;
@@ -31,6 +33,8 @@ public:
     Move(double dx, double dy, double dz);
     virtual ~Move();
 
+    virtual void rotate(const Vector& v);
+
     virtual void execute(double& x, double& y, double& z);
     virtual void execute(Camera& p);
     virtual void execute(Vertex& p);
@@ -46,6 +50,9 @@ public:
     Rotate(const Vector& v);
     Rotate(const Point& p, const Vector& v);
     virtual ~Rotate();
+    void to_radians();
+
+    virtual void rotate(const Vector& v);
 
     virtual void execute(double& x, double& y, double& z);
     virtual void execute(Camera& p);
@@ -73,6 +80,8 @@ public:
     Scale(const Vector& v);
     Scale(const Point& p, const Vector& v);
     virtual ~Scale();
+
+    virtual void rotate(const Vector& v);
 
     virtual void execute(double& x, double& y, double& z);
     virtual void execute(Camera& p);

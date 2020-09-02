@@ -28,7 +28,12 @@ void MoveLight::execute(weak_ptr<Scene> scene)
 
 
 Rotate::Rotate(const Point& c, const Vector& v):
-    Transform(shared_ptr<Transformator>(new Transformator(new transform::Rotate(c, v)))) {}
+    Transform(shared_ptr<Transformator>(new Transformator(new transform::Rotate(c, v))))
+{
+    transform::Rotate* ptr= new transform::Rotate(c, v);
+    ptr->to_radians();
+    _trans = shared_ptr<Transformator>(new Transformator(ptr));
+}
 Rotate::~Rotate() {}
 void Rotate::execute(weak_ptr<Scene>) {}
 

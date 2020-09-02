@@ -13,6 +13,9 @@ public:
 
     void set_trans(Action* trans)
     { _trans = unique_ptr<Action>(trans);}
+    void rotate(const Vector& v)
+    { _trans->rotate(v); }
+
     void transform(double& x, double& y, double& z)
     { _trans->execute(x, y, z); }
     void transform(Vertex& p)

@@ -11,12 +11,14 @@ void Visualizer::set_camera(const Camera &camera) { _camera = camera; }
 
 void Visualizer::draw_model(Model &m)
 {
+
     for (auto p : m.v_arr)
     {
         Point pro = _proj_point(*p);
         _draw->draw_point(pro, m.p_arr[0]->color);
     }
 
+    cout << "Here" << endl;
     for (auto poly : m.p_arr)
     {
         ProjSide proj;
@@ -40,6 +42,7 @@ void Visualizer::draw_model(Model &m)
             }
             proj.step();
         }
+        cout << "Done" << endl;
     }
 }
 
@@ -68,7 +71,7 @@ Point Visualizer::_proj_point(const Point& p)
         k = 1e20;
     else
         k = 100 / (cam_pos.z - res.z);
-        //k = cam_pos.z / (cam_pos.z - res.z);
+//        k = cam_pos.z / (cam_pos.z - res.z);
 
     res.x = cam_pos.x + (res.x - cam_pos.x)*k;
     res.y = cam_pos.y + (res.y - cam_pos.y)*k;

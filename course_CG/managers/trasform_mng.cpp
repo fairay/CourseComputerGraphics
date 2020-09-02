@@ -12,6 +12,7 @@ void Transform::exe_camera()
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "Transform Manager");
 
+    _trans->rotate(_scene.lock()->get_camera()->get_dir());
     _trans->transform(*_scene.lock()->get_camera());
 }
 void Transform::exe_light()

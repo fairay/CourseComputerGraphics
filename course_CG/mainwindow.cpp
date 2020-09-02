@@ -125,21 +125,53 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     switch (event->key())
     {
     case Qt::Key_U:
-        cout << "Up \n\n";
-        ptr = shared_ptr<ICommand>(new RotateCamera(Vector(3, 0, 0)));
-        _scene.execute(*ptr);
-        this->_paint();
+        _rotate_camera(3, 0, 0);
+        break;
+    case Qt::Key_J:
+        _rotate_camera(-3, 0, 0);
+        break;
+    case Qt::Key_H:
+        _rotate_camera(0, 0, -3);
+        break;
+    case Qt::Key_K:
+        _rotate_camera(0, 0, 3);
         break;
 
+
     case Qt::Key_W:
-        cout << "Forward\n\n";
-        ptr = shared_ptr<ICommand>(new MoveCamera(Vector(0, 0, -10)));
-        _scene.execute(*ptr);
-        _paint();
+        _move_camera(0, 0, -10);
+        break;
+    case Qt::Key_A:
+        _move_camera(-10, 0, 0);
+        break;
+    case Qt::Key_S:
+        _move_camera(0, 0, 10);
+        break;
+    case Qt::Key_D:
+        _move_camera(10, 0, 0);
         break;
 
 
     //default:
     //    break;
     }
+}
+
+
+void MainWindow::_move_camera(double x, double y, double z)
+{
+    using namespace command;
+    shared_ptr<ICommand> ptr;
+    ptr = shared_ptr<ICommand>(new MoveCamera(Vector(x, y, z)));
+    _scene.execute(*ptr);
+    this->_paint();
+}
+
+void MainWindow::_rotate_camera(double x, double y, double z)
+{
+    using namespace command;
+    shared_ptr<ICommand> ptr;
+    ptr = shared_ptr<ICommand>(new RotateCamera(Vector(x, y, z)));
+    _scene.execute(*ptr);
+    this->_paint();
 }

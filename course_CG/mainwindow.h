@@ -53,6 +53,9 @@ private:
     void _test_init();
 
     void _paint();
+
+    void _move_camera(double x, double y, double z);
+    void _rotate_camera(double x, double y, double z);
 };
 
 #endif // MAINWINDOW_H
