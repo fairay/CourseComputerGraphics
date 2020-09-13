@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1033817f-ab2c-4ffe-89f1-26581cb92221" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../build-course_CG-Desktop_Qt_MinGW_w64_64bit_MSYS2-Release/ui_mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/../build-course_CG-Desktop_Qt_MinGW_w64_64bit_MSYS2-Release/ui_mainwindow.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../course_CG/course_CG.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../course_CG/course_CG.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../course_CG/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../course_CG/mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../course_CG/mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/../course_CG/mainwindow.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../course_CG/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../course_CG/mainwindow.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/balls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="98">
-              <caret line="320" lean-forward="true" selection-start-line="320" selection-end-line="320" />
+              <caret line="320" selection-start-line="320" selection-end-line="320" />
             </state>
           </provider>
         </entry>
@@ -37,11 +33,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="y" value="1" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
     <option name="width" value="1938" />
-    <option name="height" value="1028" />
+    <option name="height" value="1029" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -49,6 +44,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -60,7 +56,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -126,9 +121,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="1" width="1292" height="685" extended-state="0" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.040584415" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04048583" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -153,7 +149,7 @@
     <entry file="file://$PROJECT_DIR$/balls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
-          <caret line="320" lean-forward="true" selection-start-line="320" selection-end-line="320" />
+          <caret line="320" selection-start-line="320" selection-end-line="320" />
         </state>
       </provider>
     </entry>

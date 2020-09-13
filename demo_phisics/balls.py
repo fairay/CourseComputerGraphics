@@ -1,4 +1,4 @@
-# Анимация в pygame
+# Демо-модель физического поведения бильярдных шаров
 
 import pygame
 import sys
@@ -95,7 +95,7 @@ class Ball:
     r = ball_r
     x, y = 0, 0
     dx, dy = 0, 0
-    mu = 2
+    mu = 4
     surf = None
     rect = None
     # color = (200, 0, 0)
@@ -170,7 +170,6 @@ class Ball:
         d = dist((self.x, self.y), (x, y))
         a = self.x - x
         b = self.y - y
-        print("Collide!", a, b)
 
         p1 = a * b / (d ** 2)
         p2 = (a / d) ** 2
@@ -189,46 +188,6 @@ class Ball:
 
         self.x = self.x + p1
         self.y = self.y + p2
-
-        """
-        if border.is_inside(self.x + self.r, self.y):
-            self.dx = -self.dx
-            self.x += 2 * (border.get_left() - self.r - self.x)
-        elif border.is_inside(self.x - self.r, self.y):
-            self.dx = -self.dx
-            self.x += 2 * (border.get_right() + self.r - self.x)
-        elif border.is_inside(self.x, self.y + self.r):
-            self.dy = -self.dy
-            self.y += 2 * (border.get_down() - self.r - self.y)
-        elif border.is_inside(self.x, self.y - self.r):
-            self.dy = -self.dy
-            self.y += 2 * (border.get_up() + self.r - self.y)
-        else:
-            x, y = border.get_lu_corner()
-            dist = sqrt((self.x - x)**2 + (self.y - y)**2)
-            if dist < self.r:
-                print("Collide!")
-                a = self.x - x
-                b = self.y - y
-
-                p1 = a * b / (dist ** 2)
-                p2 = (a / dist) ** 2
-                p3 = (b / dist) ** 2
-
-                d1 = self.dy * p1 + self.dx * p2
-                d2 = self.dx * p1 + self.dy * p3
-
-                self.dx = self.dx - d1
-                self.dy = self.dy - d2
-
-                # Решение коллизии
-                p3 = (self.r - dist)
-                p1 = p3 * (a / dist)
-                p2 = p3 * (b / dist)
-
-                self.x = self.x + p1
-                self.y = self.y + p2
-        """
 
 
     def dist(self, other):
@@ -347,7 +306,7 @@ t = time.time()
 time_speed = 1.0
 time_boost = 1.5
 
-while True:
+while len(balls):
     pos = pygame.mouse.get_pos()
     event_list = pygame.event.get()
     for event in event_list:
@@ -358,21 +317,18 @@ while True:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_PAGEUP:
                 time_speed *= time_boost
-                print("Time speed:", time_speed)
             elif event.key == pygame.K_PAGEDOWN:
                 time_speed /= time_boost
-                print("Time speed:", time_speed)
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             print(pos)
             if is_balls_still(balls):
                 d = dist(pos, balls[0].get_pos())
-                v = d * 1.1
+                v = min(d * 1.1, 450)
 
                 dx = v * ((pos[0] - balls[0].get_pos()[0]) / d)
                 dy = v * ((pos[1] - balls[0].get_pos()[1]) / d)
                 balls[0].set_speed(dx, dy)
-                print("Hit! Velocity = ", dx, dy)
 
     bg.fill(bg_color)
     if is_balls_still(balls):
@@ -388,7 +344,11 @@ while True:
     for ball in balls:
         ball.update(dt*time_speed)
         if ball.apply_screen_borders((0, 0), xy_size):
-            balls.remove(ball)
+            if balls.index(ball) == 0:
+                balls.clear()
+                print("Ударный шар выбит, игра завершена")
+            else:
+                balls.remove(ball)
         for bord in borders:
             ball.apply_border(bord)
 
