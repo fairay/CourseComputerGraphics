@@ -12,12 +12,12 @@ void Visualizer::set_camera(const Camera &camera) { _camera = camera; }
 void Visualizer::draw_model(Model &m)
 {
 
-    for (auto p : m.v_arr)
-    {
-        Point pro = _proj_point(*p);
-        _draw->draw_point(pro, m.p_arr[0]->color);
-    }
-
+//     Drawing points
+//    for (auto p : m.v_arr)
+//    {
+//        Point pro = _proj_point(*p);
+//        _draw->draw_point(pro, m.p_arr[0]->color);
+//    }
     for (auto poly : m.p_arr)
     {
         ProjSide proj;

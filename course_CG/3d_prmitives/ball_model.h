@@ -2,7 +2,7 @@
 #define BALL_MODEL_H
 
 #include "model.h"
-#define MESH_STEP 2
+#define MESH_STEP 25
 #define PI 3.14159265359
 
 class BallModel: public Model

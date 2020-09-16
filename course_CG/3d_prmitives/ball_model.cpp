@@ -20,10 +20,6 @@ BallModel::BallModel(QRgb color, double r, const Point& center)
     _add_vertex_row(h, poly_n);
     for (size_t i=0; i<poly_n; i++)
     {
-//        vector<size_t> i_arr = {0,
-//                                i+1,
-//                                (i+1) % poly_n + 1};
-//        add_side(color, i_arr);
         add_side(color, {0, i+1, (i+1) % poly_n + 1});
     }
     h += lvl_step;
@@ -35,9 +31,14 @@ BallModel::BallModel(QRgb color, double r, const Point& center)
         for (size_t i=0; i<poly_n; i++)
         {
             vector<size_t> i_arr = {v_count-poly_n + i,
-                                    v_count-poly_n + (i+1)%poly_n,
+                                    // v_count-poly_n + (i+1)%poly_n,
                                     v_count + i,
                                     v_count + (i+1)%poly_n};
+            add_side(color, i_arr);
+            i_arr = {v_count-poly_n + i,
+                     v_count-poly_n + (i+1)%poly_n,
+//                     v_count + i,
+                     v_count + (i+1)%poly_n};
             add_side(color, i_arr);
         }
         h += lvl_step;
