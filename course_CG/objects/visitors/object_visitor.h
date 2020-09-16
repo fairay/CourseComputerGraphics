@@ -4,6 +4,7 @@
 #include "objects/camera.h"
 #include "objects/leg.h"
 #include "objects/light_source.h"
+#include "objects/cue_ball.h"
 
 class ObjectVisitor
 {
@@ -15,6 +16,7 @@ public:
     virtual void visit(LightSource& point) = 0;
 
     virtual void visit(TableLeg& point) = 0;
+    virtual void visit(CueBall& point) = 0;
 };
 
 #endif // OBJECT_VISITOR_H

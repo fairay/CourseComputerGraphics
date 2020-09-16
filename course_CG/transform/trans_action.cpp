@@ -15,7 +15,8 @@ void Move::rotate(const Vector& v)
     cout << "Before";
     _delta.print();
 
-    Rotate act(v);
+    Vector v_copy{-v.x, -v.y, v.z};
+    Rotate act(v_copy);
     act.execute(_delta);
 
     cout << "After";

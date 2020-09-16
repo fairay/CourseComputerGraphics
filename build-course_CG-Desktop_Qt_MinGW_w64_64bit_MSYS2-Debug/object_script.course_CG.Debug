@@ -31,4 +31,5 @@ debug/projected_model.o
 debug/trans_action.o
 debug/trasform_mng.o
 debug/transform_cmd.o
+debug/cue_ball.o
 debug/moc_mainwindow.o

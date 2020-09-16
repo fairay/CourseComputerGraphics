@@ -131,10 +131,10 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
         _rotate_camera(-3, 0, 0);
         break;
     case Qt::Key_H:
-        _rotate_camera(0, 0, -3);
+        _rotate_camera(0, 3, 0);
         break;
     case Qt::Key_K:
-        _rotate_camera(0, 0, 3);
+        _rotate_camera(0, -3, 0);
         break;
 
 

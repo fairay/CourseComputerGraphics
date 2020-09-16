@@ -18,7 +18,6 @@ void Visualizer::draw_model(Model &m)
         _draw->draw_point(pro, m.p_arr[0]->color);
     }
 
-    cout << "Here" << endl;
     for (auto poly : m.p_arr)
     {
         ProjSide proj;
@@ -42,7 +41,6 @@ void Visualizer::draw_model(Model &m)
             }
             proj.step();
         }
-        cout << "Done" << endl;
     }
 }
 
@@ -70,11 +68,13 @@ Point Visualizer::_proj_point(const Point& p)
     if (fabs(cam_pos.z - res.z) < 1e-5)
         k = 1e20;
     else
-        k = 100 / (cam_pos.z - res.z);
+        k = 500 / (cam_pos.z - res.z);
 //        k = cam_pos.z / (cam_pos.z - res.z);
 
-    res.x = cam_pos.x + (res.x - cam_pos.x)*k;
-    res.y = cam_pos.y + (res.y - cam_pos.y)*k;
+//     res.x = cam_pos.x + (res.x - cam_pos.x)*k;
+//     res.y = cam_pos.y + (res.y - cam_pos.y)*k;
+    res.x = (res.x - cam_pos.x)*k;
+    res.y = (res.y - cam_pos.y)*k;
     return res;
 }
 
@@ -97,6 +97,6 @@ double Visualizer::_light_point(const Vertex &v)
     Vector dir(v, _light.get_pos());
     double i = dir.scalar_mult(v.n) / dir.length();
     i *= _light.get_intensity() * LIGHT_REFLECT;
-    i = max(0.05, i);
+    i = max(0.2, i);
     return i;
 }

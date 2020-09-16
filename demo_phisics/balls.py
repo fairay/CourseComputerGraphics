@@ -321,7 +321,6 @@ while len(balls):
                 time_speed /= time_boost
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            print(pos)
             if is_balls_still(balls):
                 d = dist(pos, balls[0].get_pos())
                 v = min(d * 1.1, 450)
@@ -360,5 +359,5 @@ while len(balls):
         ball.draw(screen)
     for bord in borders:
         bord.draw(screen)
-    
-    clock.tick(fps)
+        clock.tick(fps)
+

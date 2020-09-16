@@ -139,7 +139,6 @@ bool ProjSide::step()
         if (i->step())
         {
             active_edges.erase(i);
-            // if (i==active_edges.end()) break;
         }
         else
             i++;
@@ -158,8 +157,6 @@ bool ProjSide::step()
         }
 
         waiting_edges.erase(i);
-        // if (i==waiting_edges.end()) break;
-        i++;
     }
     return is_done();
 }

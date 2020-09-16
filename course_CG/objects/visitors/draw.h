@@ -14,6 +14,7 @@ public:
     virtual void visit(LightSource& obj);
 
     virtual void visit(TableLeg& obj);
+    virtual void visit(CueBall& obj);
 private:
     shared_ptr<Visualizer> _visual;
 };

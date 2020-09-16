@@ -57,7 +57,8 @@ SOURCES += \
     visual/projected_model.cpp \
     transform/trans_action.cpp \
     managers/trasform_mng.cpp \
-    commands/transform_cmd.cpp
+    commands/transform_cmd.cpp \
+    objects/cue_ball.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -95,7 +96,8 @@ HEADERS += \
     transform/transformator.h \
     transform/trans_action.h \
     managers/tranfrorm.h \
-    commands/transform.h
+    commands/transform.h \
+    objects/cue_ball.h
 
 FORMS += \
         mainwindow.ui

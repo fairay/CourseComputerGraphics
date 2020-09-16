@@ -14,8 +14,8 @@ void Point::print()
 }
 void Point::rotate(const Point& c, const Vector& v)
 {
-    rotate_ox(c, v.x);
     rotate_oy(c, v.y);
+    rotate_ox(c, v.x);
     rotate_oz(c, v.z);
 }
 
@@ -38,6 +38,12 @@ void Point::rotate_oz(const Point& c, double a)
     x = x1; y = y1;
 }
 
+double Point::distance(const Point& other)
+{
+    return sqrt((this->x - other.x)*(this->x - other.x) +
+                (this->y - other.y)*(this->y - other.y) +
+                (this->z - other.z)*(this->z - other.z));
+}
 
 Vertex::Vertex() {}
 Vertex::Vertex(double x_, double y_, double z_):

@@ -31,4 +31,5 @@ release/projected_model.o
 release/trans_action.o
 release/trasform_mng.o
 release/transform_cmd.o
+release/cue_ball.o
 release/moc_mainwindow.o

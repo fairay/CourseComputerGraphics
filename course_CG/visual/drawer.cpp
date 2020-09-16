@@ -63,9 +63,9 @@ void QDrawer::fill_z(double depth)
 void QDrawer::draw_point(const Point &p, QRgb color)
 {
     int x = static_cast<int>(p.x) + w12;
-    if (x < 0 || x > w) return;
+    if (x < 0 || x >= w) return;
     int y = -static_cast<int>(p.y) + h12;
-    if (y < 0 || y > h) return;
+    if (y < 0 || y >= h) return;
 
     if (p.z > _z_map[y][x])
     {
@@ -76,9 +76,9 @@ void QDrawer::draw_point(const Point &p, QRgb color)
 void QDrawer::draw_point(const Point &p, QRgb color, double i)
 {
     int x = static_cast<int>(p.x) + w12;
-    if (x < 0 || x > w) return;
+    if (x < 0 || x >= w) return;
     int y = -static_cast<int>(p.y) + h12;
-    if (y < 0 || y > h) return;
+    if (y < 0 || y >= h) return;
 
     if (p.z > _z_map[y][x])
     {

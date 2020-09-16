@@ -3,10 +3,13 @@
 
 #include <memory>
 #include <vector>
+
 #include "objects/scene_object.h"
 #include "objects/camera.h"
 #include "objects/light_source.h"
 #include "objects/leg.h"
+#include "objects/cue_ball.h"
+
 #include "visual/drawer.h"
 
 using scene_iter = vector<shared_ptr<SceneObject>>::iterator;
