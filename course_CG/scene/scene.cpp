@@ -2,12 +2,12 @@
 
 Scene::Scene()
 {
-    set_camera(Camera(Point(0, 0, 1000), Vector(0, 0, 0)));
+    set_camera(Camera(Point(0, 0, 700), Vector(0, 0, 0)));
     set_light(LightSource(Point(0, 0, 1000), 1));
 
-    add_object(new TableLeg(300, 0, 200));
-//    add_object(new TableLeg(0, 300, 200));
-    add_object(new TableLeg(-300, 0, 200));
+//    add_object(new TableLeg(300, 0, 200));
+//    add_object(new TableLeg(0, 0, 200));
+//    add_object(new TableLeg(-300, 0, 200));
     add_object(new CueBall(Point(0, 0, 0), 150));
 
 }

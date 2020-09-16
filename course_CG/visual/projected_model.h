@@ -43,6 +43,7 @@ public:
     void add_edge(const ProjEdge& edge);
     bool step(); // returns is_done
     bool is_done();
+    bool is_empty();
 private:
 };
 

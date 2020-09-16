@@ -164,3 +164,7 @@ bool ProjSide::is_done()
 {
     return active_edges.size() == 0;
 }
+bool ProjSide::is_empty()
+{
+    return this->edges.size() == 0;
+}

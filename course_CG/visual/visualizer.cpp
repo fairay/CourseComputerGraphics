@@ -22,6 +22,9 @@ void Visualizer::draw_model(Model &m)
     {
         ProjSide proj;
         _proj_side(proj, poly->v_arr);
+        if (proj.is_empty())
+            continue;
+
         QRgb color = poly->color;
         proj.init();
         while (!proj.is_done())
