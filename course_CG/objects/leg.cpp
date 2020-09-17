@@ -1,11 +1,11 @@
 #include "leg.h"
 #include "visitors/object_visitor.h"
 
-TableLeg::TableLeg(double x, double y, double h)
+TableLeg::TableLeg(double x, double z, double h)
 {
-    _color = QColor(Qt::green).rgba();
-    Point p1(x-_wide, y-_wide, 0);
-    Point p2(x+_wide, y+_wide, h);
+    _color = QColor(Qt::darkYellow).rgba();
+    Point p1(x-_wide, 0, z-_wide);
+    Point p2(x+_wide, h, z+_wide);
     Model* m_ptr = new BoxModel(_color, p1, p2);
     this->_model = shared_ptr<Model>(m_ptr);
 }

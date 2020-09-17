@@ -27,6 +27,12 @@ public:
     virtual ~NoSceneCamera();
 };
 
+class UndrawableSide: public DrawerError
+{
+public:
+    UndrawableSide(const string file_, long line_n_);
+    virtual ~UndrawableSide();
+};
 } // err
 
 #endif // VISUAL_H

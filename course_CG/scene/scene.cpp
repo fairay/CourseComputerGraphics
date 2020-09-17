@@ -2,14 +2,19 @@
 
 Scene::Scene()
 {
-    set_camera(Camera(Point(0, 0, 700), Vector(0, 0, 0)));
-    set_light(LightSource(Point(0, 0, 1000), 1));
+    set_camera(Camera(Point(500, 1900, 3000), Vector(-0.5, 0.2, 0)));
+    set_light(LightSource(Point(0, 1200, 1000), 1));
 
-//    add_object(new TableLeg(300, 0, 200));
+//    add_object(new TableLeg(300, 0, 400));
 //    add_object(new TableLeg(0, 0, 200));
 //    add_object(new TableLeg(-300, 0, 200));
-    add_object(new CueBall(Point(0, 0, 0), 150));
+//    add_object(new CueBall(Point(0, 300, 0), 110));
 
+    add_object(new TableLeg(-600, -1300, 750));
+    add_object(new TableLeg(600, -1300, 750));
+    add_object(new TableLeg(-600, 1300, 750));
+    add_object(new TableLeg(600, 1300, 750));
+    add_object(new Plate(750, 1530, 2800));
 }
 Scene::~Scene() {}
 

@@ -58,7 +58,8 @@ SOURCES += \
     transform/trans_action.cpp \
     managers/trasform_mng.cpp \
     commands/transform_cmd.cpp \
-    objects/cue_ball.cpp
+    objects/cue_ball.cpp \
+    objects/plate.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -97,7 +98,8 @@ HEADERS += \
     transform/trans_action.h \
     managers/tranfrorm.h \
     commands/transform.h \
-    objects/cue_ball.h
+    objects/cue_ball.h \
+    objects/plate.h
 
 FORMS += \
         mainwindow.ui

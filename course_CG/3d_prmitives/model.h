@@ -29,7 +29,4 @@ protected:
     void _print();
 };
 
-
-
-
 #endif // MODEL_H

@@ -102,14 +102,14 @@ void MainWindow::_fill_img(QColor color)
 /// Тест FPS
 void MainWindow::on_pushButton_clicked()
 {
-    _paint();
-    return;
+
     time_t time = clock();
     size_t count = 0;
     while(clock() - time < 1000)
     {
         // заполнение экрана очередным цветом
-        _fill_img(_color_arr[count % _color_arr.size()]);
+        _paint();
+//        _fill_img(_color_arr[count % _color_arr.size()]);
         count++;
     }
     cout << "FPS: " << count << endl;
@@ -139,16 +139,16 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
 
 
     case Qt::Key_W:
-        _move_camera(0, 0, -10);
+        _move_camera(0, 0, -15);
         break;
     case Qt::Key_A:
-        _move_camera(-10, 0, 0);
+        _move_camera(-15, 0, 0);
         break;
     case Qt::Key_S:
-        _move_camera(0, 0, 10);
+        _move_camera(0, 0, 15);
         break;
     case Qt::Key_D:
-        _move_camera(10, 0, 0);
+        _move_camera(15, 0, 0);
         break;
 
 

@@ -79,7 +79,9 @@ SOURCES       = ../course_CG/main.cpp \
 		../course_CG/visual/projected_model.cpp \
 		../course_CG/transform/trans_action.cpp \
 		../course_CG/managers/trasform_mng.cpp \
-		../course_CG/commands/transform_cmd.cpp debug/moc_mainwindow.cpp
+		../course_CG/commands/transform_cmd.cpp \
+		../course_CG/objects/cue_ball.cpp \
+		../course_CG/objects/plate.cpp debug/moc_mainwindow.cpp
 OBJECTS       = debug/main.o \
 		debug/mainwindow.o \
 		debug/point.o \
@@ -113,6 +115,8 @@ OBJECTS       = debug/main.o \
 		debug/trans_action.o \
 		debug/trasform_mng.o \
 		debug/transform_cmd.o \
+		debug/cue_ball.o \
+		debug/plate.o \
 		debug/moc_mainwindow.o
 
 DIST          =  ../course_CG/mainwindow.h \
@@ -150,7 +154,9 @@ DIST          =  ../course_CG/mainwindow.h \
 		../course_CG/transform/transformator.h \
 		../course_CG/transform/trans_action.h \
 		../course_CG/managers/tranfrorm.h \
-		../course_CG/commands/transform.h ../course_CG/main.cpp \
+		../course_CG/commands/transform.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/objects/plate.h ../course_CG/main.cpp \
 		../course_CG/mainwindow.cpp \
 		../course_CG/3d_prmitives/point.cpp \
 		../course_CG/3d_prmitives/vector.cpp \
@@ -182,7 +188,9 @@ DIST          =  ../course_CG/mainwindow.h \
 		../course_CG/visual/projected_model.cpp \
 		../course_CG/transform/trans_action.cpp \
 		../course_CG/managers/trasform_mng.cpp \
-		../course_CG/commands/transform_cmd.cpp
+		../course_CG/commands/transform_cmd.cpp \
+		../course_CG/objects/cue_ball.cpp \
+		../course_CG/objects/plate.cpp
 QMAKE_TARGET  = course_CG
 DESTDIR        = debug/ #avoid trailing-slash linebreak
 TARGET         = course_CG.exe
@@ -202,10 +210,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) course_CG.zip $(SOURCES) $(DIST) ../course_CG/course_CG.pro ../../../msys64/mingw64/share/qt5/mkspecs/features/spec_pre.prf ../../../msys64/mingw64/share/qt5/mkspecs/qdevice.pri ../../../msys64/mingw64/share/qt5/mkspecs/features/device_config.prf ../../../msys64/mingw64/share/qt5/mkspecs/common/sanitize.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/gcc-base.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/g++-base.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/angle.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/windows-vulkan.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/g++-win32.conf ../../../msys64/mingw64/share/qt5/mkspecs/qconfig.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_edid_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fb_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fontdatabase_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_packetprotocol_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldebug_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldevtools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickparticles_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickshapes_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quicktemplates2_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_theme_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uiplugin.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/features/qt_functions.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qt_config.prf ../../../msys64/mingw64/share/qt5/mkspecs/win32-g++/qmake.conf ../../../msys64/mingw64/share/qt5/mkspecs/features/spec_post.prf .qmake.stash ../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/toolchain.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/default_pre.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/win32/default_pre.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/resolve_config.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds_post.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/default_post.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/build_pass.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/resources.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qtquickcompiler.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/precompile_header.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/warn_on.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qt.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/moc.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/win32/opengl.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/uic.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qmake_use.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/file_copies.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/win32/windows.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/testcase_targets.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/exceptions.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/yacc.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/lex.prf ../course_CG/course_CG.pro ../../../msys64/mingw64/lib/Qt5Widgetsd.prl ../../../msys64/mingw64/lib/Qt5Guid.prl ../../../msys64/mingw64/lib/Qt5Cored.prl ../../../msys64/mingw64/lib/qtmaind.prl      ../../../msys64/mingw64/share/qt5/mkspecs/features/data/dummy.cpp ../course_CG/mainwindow.h ../course_CG/3d_prmitives/model.h ../course_CG/3d_prmitives/point.h ../course_CG/3d_prmitives/vector.h ../course_CG/3d_prmitives/polygon.h ../course_CG/errors/base_error.h ../course_CG/3d_prmitives/vertex.h ../course_CG/3d_prmitives/ball_model.h ../course_CG/3d_prmitives/box_model.h ../course_CG/scene/scene.h ../course_CG/scene/interface.h ../course_CG/objects/scene_object.h ../course_CG/errors/primitives.h ../course_CG/errors/objects.h ../course_CG/objects/simple_object.h ../course_CG/objects/leg.h ../course_CG/objects/camera.h ../course_CG/objects/light_source.h ../course_CG/objects/visitors/object_visitor.h ../course_CG/visual/visualizer.h ../course_CG/visual/drawer.h ../course_CG/errors/visual.h ../course_CG/commands/base_command.h ../course_CG/managers/base_manager.h ../course_CG/errors/managers.h ../course_CG/managers/draw.h ../course_CG/objects/visitors/draw.h ../course_CG/managers/init_draw.h ../course_CG/commands/draw.h ../course_CG/commands/init_draw.h ../course_CG/commands/all.h ../course_CG/visual/projected_model.h ../course_CG/transform/transformator.h ../course_CG/transform/trans_action.h ../course_CG/managers/tranfrorm.h ../course_CG/commands/transform.h  ../course_CG/main.cpp ../course_CG/mainwindow.cpp ../course_CG/3d_prmitives/point.cpp ../course_CG/3d_prmitives/vector.cpp ../course_CG/3d_prmitives/polygon.cpp ../course_CG/errors/base_error.cpp ../course_CG/3d_prmitives/model.cpp ../course_CG/3d_prmitives/ball_model.cpp ../course_CG/3d_prmitives/box_model.cpp ../course_CG/errors/objects.cpp ../course_CG/errors/primitives.cpp ../course_CG/objects/scene_object.cpp ../course_CG/objects/simple_object.cpp ../course_CG/objects/leg.cpp ../course_CG/objects/camera.cpp ../course_CG/objects/light_source.cpp ../course_CG/objects/visitors/object_visitor.cpp ../course_CG/errors/visual.cpp ../course_CG/visual/drawer.cpp ../course_CG/visual/visualizer.cpp ../course_CG/errors/managers.cpp ../course_CG/managers/base_manager.cpp ../course_CG/scene/scene.cpp ../course_CG/commands/base_command.cpp ../course_CG/commands/draw_cmd.cpp ../course_CG/commands/init_draw_cmd.cpp ../course_CG/managers/draw_mng.cpp ../course_CG/managers/init_draw_mng.cpp ../course_CG/objects/visitors/draw_visitor.cpp ../course_CG/visual/projected_model.cpp ../course_CG/transform/trans_action.cpp ../course_CG/managers/trasform_mng.cpp ../course_CG/commands/transform_cmd.cpp ../course_CG/mainwindow.ui    
+	$(ZIP) course_CG.zip $(SOURCES) $(DIST) ../course_CG/course_CG.pro ../../../msys64/mingw64/share/qt5/mkspecs/features/spec_pre.prf ../../../msys64/mingw64/share/qt5/mkspecs/qdevice.pri ../../../msys64/mingw64/share/qt5/mkspecs/features/device_config.prf ../../../msys64/mingw64/share/qt5/mkspecs/common/sanitize.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/gcc-base.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/g++-base.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/angle.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/windows-vulkan.conf ../../../msys64/mingw64/share/qt5/mkspecs/common/g++-win32.conf ../../../msys64/mingw64/share/qt5/mkspecs/qconfig.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_edid_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fb_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fontdatabase_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_packetprotocol_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldebug_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldevtools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickparticles_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickshapes_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quicktemplates2_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_theme_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uiplugin.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri ../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns_private.pri ../../../msys64/mingw64/share/qt5/mkspecs/features/qt_functions.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qt_config.prf ../../../msys64/mingw64/share/qt5/mkspecs/win32-g++/qmake.conf ../../../msys64/mingw64/share/qt5/mkspecs/features/spec_post.prf .qmake.stash ../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/toolchain.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/default_pre.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/win32/default_pre.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/resolve_config.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds_post.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/default_post.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/build_pass.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/resources.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qtquickcompiler.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/precompile_header.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/warn_on.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qt.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/moc.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/win32/opengl.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/uic.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/qmake_use.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/file_copies.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/win32/windows.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/testcase_targets.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/exceptions.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/yacc.prf ../../../msys64/mingw64/share/qt5/mkspecs/features/lex.prf ../course_CG/course_CG.pro ../../../msys64/mingw64/lib/Qt5Widgetsd.prl ../../../msys64/mingw64/lib/Qt5Guid.prl ../../../msys64/mingw64/lib/Qt5Cored.prl ../../../msys64/mingw64/lib/qtmaind.prl      ../../../msys64/mingw64/share/qt5/mkspecs/features/data/dummy.cpp ../course_CG/mainwindow.h ../course_CG/3d_prmitives/model.h ../course_CG/3d_prmitives/point.h ../course_CG/3d_prmitives/vector.h ../course_CG/3d_prmitives/polygon.h ../course_CG/errors/base_error.h ../course_CG/3d_prmitives/vertex.h ../course_CG/3d_prmitives/ball_model.h ../course_CG/3d_prmitives/box_model.h ../course_CG/scene/scene.h ../course_CG/scene/interface.h ../course_CG/objects/scene_object.h ../course_CG/errors/primitives.h ../course_CG/errors/objects.h ../course_CG/objects/simple_object.h ../course_CG/objects/leg.h ../course_CG/objects/camera.h ../course_CG/objects/light_source.h ../course_CG/objects/visitors/object_visitor.h ../course_CG/visual/visualizer.h ../course_CG/visual/drawer.h ../course_CG/errors/visual.h ../course_CG/commands/base_command.h ../course_CG/managers/base_manager.h ../course_CG/errors/managers.h ../course_CG/managers/draw.h ../course_CG/objects/visitors/draw.h ../course_CG/managers/init_draw.h ../course_CG/commands/draw.h ../course_CG/commands/init_draw.h ../course_CG/commands/all.h ../course_CG/visual/projected_model.h ../course_CG/transform/transformator.h ../course_CG/transform/trans_action.h ../course_CG/managers/tranfrorm.h ../course_CG/commands/transform.h ../course_CG/objects/cue_ball.h ../course_CG/objects/plate.h  ../course_CG/main.cpp ../course_CG/mainwindow.cpp ../course_CG/3d_prmitives/point.cpp ../course_CG/3d_prmitives/vector.cpp ../course_CG/3d_prmitives/polygon.cpp ../course_CG/errors/base_error.cpp ../course_CG/3d_prmitives/model.cpp ../course_CG/3d_prmitives/ball_model.cpp ../course_CG/3d_prmitives/box_model.cpp ../course_CG/errors/objects.cpp ../course_CG/errors/primitives.cpp ../course_CG/objects/scene_object.cpp ../course_CG/objects/simple_object.cpp ../course_CG/objects/leg.cpp ../course_CG/objects/camera.cpp ../course_CG/objects/light_source.cpp ../course_CG/objects/visitors/object_visitor.cpp ../course_CG/errors/visual.cpp ../course_CG/visual/drawer.cpp ../course_CG/visual/visualizer.cpp ../course_CG/errors/managers.cpp ../course_CG/managers/base_manager.cpp ../course_CG/scene/scene.cpp ../course_CG/commands/base_command.cpp ../course_CG/commands/draw_cmd.cpp ../course_CG/commands/init_draw_cmd.cpp ../course_CG/managers/draw_mng.cpp ../course_CG/managers/init_draw_mng.cpp ../course_CG/objects/visitors/draw_visitor.cpp ../course_CG/visual/projected_model.cpp ../course_CG/transform/trans_action.cpp ../course_CG/managers/trasform_mng.cpp ../course_CG/commands/transform_cmd.cpp ../course_CG/objects/cue_ball.cpp ../course_CG/objects/plate.cpp ../course_CG/mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug/main.o debug/mainwindow.o debug/point.o debug/vector.o debug/polygon.o debug/base_error.o debug/model.o debug/ball_model.o debug/box_model.o debug/objects.o debug/primitives.o debug/scene_object.o debug/simple_object.o debug/leg.o debug/camera.o debug/light_source.o debug/object_visitor.o debug/visual.o debug/drawer.o debug/visualizer.o debug/managers.o debug/base_manager.o debug/scene.o debug/base_command.o debug/draw_cmd.o debug/init_draw_cmd.o debug/draw_mng.o debug/init_draw_mng.o debug/draw_visitor.o debug/projected_model.o debug/trans_action.o debug/trasform_mng.o debug/transform_cmd.o debug/moc_mainwindow.o
+	-$(DEL_FILE) debug/main.o debug/mainwindow.o debug/point.o debug/vector.o debug/polygon.o debug/base_error.o debug/model.o debug/ball_model.o debug/box_model.o debug/objects.o debug/primitives.o debug/scene_object.o debug/simple_object.o debug/leg.o debug/camera.o debug/light_source.o debug/object_visitor.o debug/visual.o debug/drawer.o debug/visualizer.o debug/managers.o debug/base_manager.o debug/scene.o debug/base_command.o debug/draw_cmd.o debug/init_draw_cmd.o debug/draw_mng.o debug/init_draw_mng.o debug/draw_visitor.o debug/projected_model.o debug/trans_action.o debug/trasform_mng.o debug/transform_cmd.o debug/cue_ball.o debug/plate.o debug/moc_mainwindow.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -268,6 +276,8 @@ debug/moc_mainwindow.cpp: ../course_CG/mainwindow.h \
 		../course_CG/objects/simple_object.h \
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -345,6 +355,8 @@ debug/main.o: ../course_CG/main.cpp ../course_CG/mainwindow.h \
 		../course_CG/objects/simple_object.h \
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -399,6 +411,8 @@ debug/mainwindow.o: ../course_CG/mainwindow.cpp ../course_CG/mainwindow.h \
 		../course_CG/objects/simple_object.h \
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -526,7 +540,10 @@ debug/leg.o: ../course_CG/objects/leg.cpp ../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
 		../course_CG/objects/visitors/object_visitor.h \
 		../course_CG/objects/camera.h \
-		../course_CG/objects/light_source.h
+		../course_CG/objects/light_source.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/leg.o ../course_CG/objects/leg.cpp
 
 debug/camera.o: ../course_CG/objects/camera.cpp ../course_CG/objects/camera.h \
@@ -543,9 +560,12 @@ debug/camera.o: ../course_CG/objects/camera.cpp ../course_CG/objects/camera.h \
 		../../../msys64/mingw64/include/QtGui/QColor \
 		../../../msys64/mingw64/include/QtGui/qcolor.h \
 		../course_CG/objects/visitors/object_visitor.h \
+		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
-		../course_CG/objects/light_source.h
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/camera.o ../course_CG/objects/camera.cpp
 
 debug/light_source.o: ../course_CG/objects/light_source.cpp ../course_CG/objects/light_source.h \
@@ -564,7 +584,10 @@ debug/light_source.o: ../course_CG/objects/light_source.cpp ../course_CG/objects
 		../course_CG/objects/visitors/object_visitor.h \
 		../course_CG/objects/camera.h \
 		../course_CG/objects/leg.h \
-		../course_CG/3d_prmitives/box_model.h
+		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/light_source.o ../course_CG/objects/light_source.cpp
 
 debug/object_visitor.o: ../course_CG/objects/visitors/object_visitor.cpp ../course_CG/objects/visitors/object_visitor.h \
@@ -581,9 +604,12 @@ debug/object_visitor.o: ../course_CG/objects/visitors/object_visitor.cpp ../cour
 		../course_CG/errors/primitives.h \
 		../../../msys64/mingw64/include/QtGui/QColor \
 		../../../msys64/mingw64/include/QtGui/qcolor.h \
+		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
-		../course_CG/objects/light_source.h
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/object_visitor.o ../course_CG/objects/visitors/object_visitor.cpp
 
 debug/visual.o: ../course_CG/errors/visual.cpp ../course_CG/errors/visual.h \
@@ -642,6 +668,9 @@ debug/base_manager.o: ../course_CG/managers/base_manager.cpp ../course_CG/manage
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -666,6 +695,9 @@ debug/scene.o: ../course_CG/scene/scene.cpp ../course_CG/scene/scene.h \
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -690,6 +722,9 @@ debug/base_command.o: ../course_CG/commands/base_command.cpp ../course_CG/comman
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -717,6 +752,9 @@ debug/draw_cmd.o: ../course_CG/commands/draw_cmd.cpp ../course_CG/commands/draw.
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -749,6 +787,9 @@ debug/init_draw_cmd.o: ../course_CG/commands/init_draw_cmd.cpp ../course_CG/comm
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -779,6 +820,9 @@ debug/draw_mng.o: ../course_CG/managers/draw_mng.cpp ../course_CG/managers/draw.
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -809,6 +853,9 @@ debug/init_draw_mng.o: ../course_CG/managers/init_draw_mng.cpp ../course_CG/mana
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -833,9 +880,12 @@ debug/draw_visitor.o: ../course_CG/objects/visitors/draw_visitor.cpp ../course_C
 		../course_CG/errors/primitives.h \
 		../../../msys64/mingw64/include/QtGui/QColor \
 		../../../msys64/mingw64/include/QtGui/qcolor.h \
+		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
-		../course_CG/objects/light_source.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/visualizer.h \
 		../course_CG/visual/projected_model.h \
 		../course_CG/visual/drawer.h \
@@ -892,14 +942,16 @@ debug/trasform_mng.o: ../course_CG/managers/trasform_mng.cpp ../course_CG/manage
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
 		../course_CG/errors/visual.h \
 		../course_CG/errors/managers.h \
 		../course_CG/transform/transformator.h \
-		../course_CG/transform/trans_action.h \
-		../course_CG/3d_prmitives/ball_model.h
+		../course_CG/transform/trans_action.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/trasform_mng.o ../course_CG/managers/trasform_mng.cpp
 
 debug/transform_cmd.o: ../course_CG/commands/transform_cmd.cpp ../course_CG/commands/transform.h \
@@ -921,6 +973,9 @@ debug/transform_cmd.o: ../course_CG/commands/transform_cmd.cpp ../course_CG/comm
 		../course_CG/objects/light_source.h \
 		../course_CG/objects/leg.h \
 		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/plate.h \
 		../course_CG/visual/drawer.h \
 		../../../msys64/mingw64/include/QtGui/QImage \
 		../../../msys64/mingw64/include/QtGui/qimage.h \
@@ -929,9 +984,52 @@ debug/transform_cmd.o: ../course_CG/commands/transform_cmd.cpp ../course_CG/comm
 		../course_CG/errors/managers.h \
 		../course_CG/managers/tranfrorm.h \
 		../course_CG/transform/transformator.h \
-		../course_CG/transform/trans_action.h \
-		../course_CG/3d_prmitives/ball_model.h
+		../course_CG/transform/trans_action.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/transform_cmd.o ../course_CG/commands/transform_cmd.cpp
+
+debug/cue_ball.o: ../course_CG/objects/cue_ball.cpp ../course_CG/objects/cue_ball.h \
+		../course_CG/objects/simple_object.h \
+		../course_CG/objects/scene_object.h \
+		../course_CG/errors/objects.h \
+		../course_CG/errors/base_error.h \
+		../course_CG/3d_prmitives/model.h \
+		../course_CG/3d_prmitives/polygon.h \
+		../course_CG/3d_prmitives/vertex.h \
+		../course_CG/3d_prmitives/vector.h \
+		../course_CG/3d_prmitives/point.h \
+		../course_CG/errors/primitives.h \
+		../../../msys64/mingw64/include/QtGui/QColor \
+		../../../msys64/mingw64/include/QtGui/qcolor.h \
+		../course_CG/3d_prmitives/ball_model.h \
+		../course_CG/objects/visitors/object_visitor.h \
+		../course_CG/objects/camera.h \
+		../course_CG/objects/light_source.h \
+		../course_CG/objects/leg.h \
+		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/plate.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/cue_ball.o ../course_CG/objects/cue_ball.cpp
+
+debug/plate.o: ../course_CG/objects/plate.cpp ../course_CG/objects/plate.h \
+		../course_CG/objects/simple_object.h \
+		../course_CG/objects/scene_object.h \
+		../course_CG/errors/objects.h \
+		../course_CG/errors/base_error.h \
+		../course_CG/3d_prmitives/model.h \
+		../course_CG/3d_prmitives/polygon.h \
+		../course_CG/3d_prmitives/vertex.h \
+		../course_CG/3d_prmitives/vector.h \
+		../course_CG/3d_prmitives/point.h \
+		../course_CG/errors/primitives.h \
+		../../../msys64/mingw64/include/QtGui/QColor \
+		../../../msys64/mingw64/include/QtGui/qcolor.h \
+		../course_CG/3d_prmitives/box_model.h \
+		../course_CG/objects/visitors/object_visitor.h \
+		../course_CG/objects/camera.h \
+		../course_CG/objects/light_source.h \
+		../course_CG/objects/leg.h \
+		../course_CG/objects/cue_ball.h \
+		../course_CG/3d_prmitives/ball_model.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/plate.o ../course_CG/objects/plate.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/moc_mainwindow.o debug/moc_mainwindow.cpp

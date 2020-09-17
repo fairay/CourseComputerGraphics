@@ -18,10 +18,25 @@ void Visualizer::draw_model(Model &m)
 //        Point pro = _proj_point(*p);
 //        _draw->draw_point(pro, m.p_arr[0]->color);
 //    }
+
     for (auto poly : m.p_arr)
     {
         ProjSide proj;
-        _proj_side(proj, poly->v_arr);
+        try
+        {
+            _proj_side(proj, poly->v_arr);
+        }
+        catch (err::UndrawableSide&)
+        {
+            cout << "Undrawable side" << endl;
+            continue;
+        }
+        catch (int)
+        {
+            cout << "Undrawable side2" << endl;
+            continue;
+        }
+
         if (proj.is_empty())
             continue;
 
@@ -68,8 +83,10 @@ Point Visualizer::_proj_point(const Point& p)
 
     double k;
 
-    if (fabs(cam_pos.z - res.z) < 1e-5)
-        k = 1e20;
+    if (cam_pos.z - res.z <= 0)
+        throw 2;
+        //throw err::UndrawableSide(__FILE__, __LINE__);
+        // k = 1e20;
     else
         k = 500 / (cam_pos.z - res.z);
 //        k = cam_pos.z / (cam_pos.z - res.z);
@@ -100,6 +117,7 @@ double Visualizer::_light_point(const Vertex &v)
     Vector dir(v, _light.get_pos());
     double i = dir.scalar_mult(v.n) / dir.length();
     i *= _light.get_intensity() * LIGHT_REFLECT;
-    i = max(0.2, i);
+    i = max(0.0, i);
+    i = BG_LIGHT + i*(1-BG_LIGHT);
     return i;
 }

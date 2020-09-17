@@ -26,3 +26,12 @@ NoSceneCamera::NoSceneCamera(const string file_, long line_n_):
     fill_msg();
 }
 NoSceneCamera::~NoSceneCamera() = default;
+
+UndrawableSide::UndrawableSide(const string file_, long line_n_):
+    DrawerError(file_, line_n_)
+{
+    type += "UndrawableSide";
+    add_info = "side is not vivible";
+    fill_msg();
+}
+UndrawableSide::~UndrawableSide() = default;

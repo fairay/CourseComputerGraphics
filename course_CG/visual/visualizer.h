@@ -9,6 +9,8 @@
 #include "projected_model.h"
 #include "drawer.h"
 
+#define BG_LIGHT 0.3
+
 using namespace std;
 class Visualizer
 {

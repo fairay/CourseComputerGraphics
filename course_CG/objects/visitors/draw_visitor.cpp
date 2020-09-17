@@ -11,9 +11,11 @@ void DrawVisitor::visit(TableLeg& obj)
 {
     _visual->draw_model(*obj.get_model());
 }
-
 void DrawVisitor::visit(CueBall& obj)
 {
     _visual->draw_model(*obj.get_model());
 }
-
+void DrawVisitor::visit(Plate &obj)
+{
+    _visual->draw_model(*obj.get_model());
+}

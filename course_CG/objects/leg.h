@@ -7,7 +7,7 @@
 class TableLeg: public VisibleObject
 {
 public:
-    TableLeg(double x, double y, double h);
+    TableLeg(double x, double z, double h);
     explicit TableLeg(const TableLeg& other);
     virtual ~TableLeg();
 

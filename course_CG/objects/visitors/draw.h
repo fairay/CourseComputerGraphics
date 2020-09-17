@@ -15,6 +15,7 @@ public:
 
     virtual void visit(TableLeg& obj);
     virtual void visit(CueBall& obj);
+    virtual void visit(Plate& point);
 private:
     shared_ptr<Visualizer> _visual;
 };

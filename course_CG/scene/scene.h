@@ -9,6 +9,7 @@
 #include "objects/light_source.h"
 #include "objects/leg.h"
 #include "objects/cue_ball.h"
+#include "objects/plate.h"
 
 #include "visual/drawer.h"
 
