@@ -10,11 +10,11 @@ ProjEdge::ProjEdge(Point& p1, double i1,
         swap(i1, i2);
     }
 
-    ymax = static_cast<int>(p1.y);
+    ymax = static_cast<int>(round(p1.y));
     x0 = p1.x;
     z0 = p1.z;
     i0 = i1;
-    y0 = ymax - static_cast<int>(p2.y);
+    y0 = ymax - static_cast<int>(round(p2.y));
 
     if (y0)
     {

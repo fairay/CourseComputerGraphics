@@ -19,6 +19,11 @@ void Visualizer::draw_model(Model &m)
 //        _draw->draw_point(pro, m.p_arr[0]->color);
 //    }
 
+    const int min_x = _draw->get_min_x();
+    const int min_y = _draw->get_min_y();
+    const int max_x = _draw->get_max_x();
+    const int max_y = _draw->get_max_y();
+
     for (auto poly : m.p_arr)
     {
         ProjSide proj;
@@ -26,14 +31,9 @@ void Visualizer::draw_model(Model &m)
         {
             _proj_side(proj, poly->v_arr);
         }
-        catch (err::UndrawableSide&)
-        {
-            cout << "Undrawable side" << endl;
-            continue;
-        }
         catch (int)
         {
-            cout << "Undrawable side2" << endl;
+            cout << "Undrawable side" << endl;
             continue;
         }
 
@@ -42,21 +42,39 @@ void Visualizer::draw_model(Model &m)
 
         QRgb color = poly->color;
         proj.init();
-        while (!proj.is_done())
+
+        while (!proj.is_done() && proj.temp_y>max_y)
+            proj.step();
+
+        while (!proj.is_done() && proj.temp_y>min_y)
         {
-            int x = static_cast<int>(proj.active_edges[0].x);
+            double x = proj.active_edges[0].x; // int x = static_cast<int>(...);
             double z = proj.active_edges[0].z;
             Point p(x, proj.temp_y, z);
 
             double i = proj.active_edges[0].i;
+            if (proj.active_edges[1].x - x < 1)
+            {
+                proj.step();
+                continue;
+            }
             double di = (i-proj.active_edges[1].i) / (x-proj.active_edges[1].x);
             double dz = (z-proj.active_edges[1].z) / (x-proj.active_edges[1].x);
-            for (; p.x < proj.active_edges[1].x; p.x++)
+
+            for (; p.x < min_x; p.x++)
+            {
+                p.z += dz;
+                i += di;
+            }
+
+            double to_x = min(proj.active_edges[1].x, static_cast<double>(max_x));
+            for (; p.x < to_x; p.x++)
             {
                 _draw->draw_point(p, color, i);
                 p.z += dz;
                 i += di;
             }
+
             proj.step();
         }
     }
@@ -64,7 +82,7 @@ void Visualizer::draw_model(Model &m)
 
 void Visualizer::clear()
 {
-    _draw->fill_z(-10000);
+    _draw->fill_z(-100000);
     _draw->fill_rgb(QColor(Qt::gray).rgba());
 }
 
@@ -82,11 +100,8 @@ Point Visualizer::_proj_point(const Point& p)
     res.rotate(cam_pos, _camera.get_dir());
 
     double k;
-
     if (cam_pos.z - res.z <= 0)
         throw 2;
-        //throw err::UndrawableSide(__FILE__, __LINE__);
-        // k = 1e20;
     else
         k = 500 / (cam_pos.z - res.z);
 //        k = cam_pos.z / (cam_pos.z - res.z);
@@ -95,6 +110,7 @@ Point Visualizer::_proj_point(const Point& p)
 //     res.y = cam_pos.y + (res.y - cam_pos.y)*k;
     res.x = (res.x - cam_pos.x)*k;
     res.y = (res.y - cam_pos.y)*k;
+    res.z = (res.z - cam_pos.z);
     return res;
 }
 

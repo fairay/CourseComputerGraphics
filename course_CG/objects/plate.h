@@ -15,7 +15,7 @@ public:
     virtual SceneObject* clone();
 private:
     QRgb _color;
-    const double _height = 100;
+    const double _height = 100;// 100;
 };
 
 

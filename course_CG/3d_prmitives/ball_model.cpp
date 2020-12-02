@@ -55,7 +55,6 @@ BallModel::BallModel(QRgb color, double r, const Point& center)
     }
 
     this->normalize_vertexes();
-    this->_print();
 }
 BallModel::~BallModel() {}
 

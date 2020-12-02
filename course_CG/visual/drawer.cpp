@@ -6,7 +6,6 @@ inline QRgb i_color(QRgb a, double i)
     int r, g, b;
     c.getRgb(&r, &g, &b);
     r *= i; g *= i; b *= i;
-    // printf("(%4.2f, %d, %d, %d)\t", i, r, g, b);
     c.setRgb(r, g, b);
     return c.rgba();
 //    char* a_ptr = reinterpret_cast<char*>(&a);
@@ -76,9 +75,9 @@ void QDrawer::draw_point(const Point &p, QRgb color)
 void QDrawer::draw_point(const Point &p, QRgb color, double i)
 {
     int x = static_cast<int>(p.x) + w12;
-    if (x < 0 || x >= w) return;
+    if (x < 0 || x >= w) {cout << "RET\n";return;}
     int y = -static_cast<int>(p.y) + h12;
-    if (y < 0 || y >= h) return;
+    if (y < 0 || y >= h) {cout << "RET\n";return;}
 
     if (p.z > _z_map[y][x])
     {
@@ -120,3 +119,8 @@ void QDrawer::_free_map()
     delete _color_map;    
     delete _z_map;
 }
+
+int QDrawer::get_min_x() const { return -w12; }
+int QDrawer::get_min_y() const { return -h12; }
+int QDrawer::get_max_x() const { return  w12; }
+int QDrawer::get_max_y() const { return  h12; }

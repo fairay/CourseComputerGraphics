@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     _qscene(new QGraphicsScene(-10, -10, 10, 10)),
     _scene(new Scene())
-{
+{    
     ui->setupUi(this);
     _scene_size = ui->graphicsView->size();
     cout << "Image size: " << _scene_size.width() << "x" << _scene_size.height() << endl;
@@ -49,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent) :
     command::InitDraw cmd(_img);
     _scene.execute(cmd);
     _paint();
+
+    setMouseTracking(true);
+    this->centralWidget()->setMouseTracking(true);
+    // ui->graphicsView->setMouseTracking(true);
 }
 
 MainWindow::~MainWindow()
@@ -155,6 +159,21 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     //default:
     //    break;
     }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *eventMove)
+{
+    static int pre_x = eventMove->x();
+    static int pre_y = eventMove->y();
+    const double k = 0.1;
+    if (eventMove->buttons() == Qt::RightButton)
+    {
+        _rotate_camera((pre_y - eventMove->y())*k,
+                       (pre_x - eventMove->x())*k,
+                       0);
+    }
+    pre_x = eventMove->x();
+    pre_y = eventMove->y();
 }
 
 

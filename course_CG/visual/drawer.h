@@ -23,6 +23,10 @@ public:
     void draw_point(const Point& p, QRgb color, double i);
     void transfer_to_qimage();
 
+    int get_min_x() const;
+    int get_min_y() const;
+    int get_max_x() const;
+    int get_max_y() const;
 private:
     weak_ptr<QImage> _img;
     RgbMap _color_map;

@@ -3,6 +3,7 @@
 
 #include "memory"
 #include "math.h"
+#include "algorithm"
 
 #include "objects/camera.h"
 #include "objects/light_source.h"

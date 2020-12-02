@@ -51,6 +51,8 @@ private:
     shared_ptr<LightSource> _light;
 
     shared_ptr<QDrawer> _draw;
+
+    void _test1_init();
 };
 
 #endif // SCENE_H

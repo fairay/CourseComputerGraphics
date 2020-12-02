@@ -44,6 +44,7 @@ private:
     QSize _scene_size;
     shared_ptr<QImage> _img;
     // QPixmap _pmap;
+    void mouseMoveEvent(QMouseEvent *eventMove);
     QGraphicsPixmapItem* q_pmap;
     QColor _draw_color = Qt::black;
     RgbMap _rgb_map;
