@@ -25,6 +25,7 @@ public:
     void set_light(const LightSource& light);
 
     void draw_model(Model& m);
+    void draw_shadow(Model& m);
 
     void clear();
     void show();
@@ -33,9 +34,15 @@ private:
     shared_ptr<QDrawer> _draw;
     Camera _camera;
     LightSource _light;
+    Vector _light_dir;
 
     Point _proj_point(const Point& p);
+    Point _proj_point(const Point& p, const Point& v_pos, const Vector& v_dir);
+    Point _reproj_point(const Point &p);
+    Point _proj_light(const Point &p);
+
     double _light_point(const Vertex& v);
-    void _proj_side(ProjSide& proj, const vector<shared_ptr<Vertex>>& arr);
+    void _proj_side(ProjSide& proj, const vector<shared_ptr<Vertex>>& arr,
+                    const Point& v_pos, const Vector& v_dir);
 };
 #endif // VISUALIZER_H

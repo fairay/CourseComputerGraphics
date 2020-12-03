@@ -1,9 +1,10 @@
 #include "projected_model.h"
 
 ///
-ProjEdge::ProjEdge(Point& p1, double i1,
-                   Point& p2, double i2)
+ProjEdge::ProjEdge(const Point &p_1, double i1,
+                   const Point &p_2, double i2)
 {
+    Point p1=p_1, p2=p_2;
     if (p1.y < p2.y)
     {
         swap(p1, p2);
@@ -48,6 +49,7 @@ ProjEdge::ProjEdge(const ProjEdge& other)
     di = other.di;
     ymax = other.ymax;
 }
+
 ProjEdge::~ProjEdge() {}
 
 void ProjEdge::reset()
@@ -56,6 +58,8 @@ void ProjEdge::reset()
     z = z0;
     i = i0;
     y = y0;
+    if (i>1 || i<0.3)
+        cout << "------------------------------ " << i << endl;
 }
 bool ProjEdge::step()
 {
@@ -101,7 +105,7 @@ void ProjSide::init()
 {
     temp_y = edges[0].ymax;
     size_t i = 0;
-    while (edges[i].ymax == temp_y)
+    while (edges[i].ymax == temp_y && i < edges.size())
         active_edges.push_back(edges[i++]);
     for (; i < edges.size(); i++)
         waiting_edges.push_back(edges[i]);
@@ -129,7 +133,6 @@ void ProjSide::add_edge(const ProjEdge &edge)
         else
             break;
     }
-
 }
 bool ProjSide::step()
 {

@@ -18,9 +18,10 @@ public:
     virtual ~QDrawer();
 
     void fill_rgb(QRgb color);
-    void fill_z(double depth);
+    void fill_z();
     void draw_point(const Point& p, QRgb color);
-    void draw_point(const Point& p, QRgb color, double i);
+    void draw_point(const Point& p, QRgb color, double i, const Point& shad_p);
+    void draw_shadow(const Point& p);
     void transfer_to_qimage();
 
     int get_min_x() const;
@@ -31,8 +32,10 @@ private:
     weak_ptr<QImage> _img;
     RgbMap _color_map;
     ZMap _z_map;
+    ZMap _shadow_map;
     int w, h;
     int w12, h12;
+    const double _min_depth = -100000;
 
     void _init_map();
     void _free_map();

@@ -16,11 +16,18 @@ void DrawManager::execute()
     visual->set_draw(scene->get_drawer());
     visual->set_camera(*scene->get_camera());
     visual->set_light(*scene->get_light());
-
-    shared_ptr<ObjectVisitor> visitor(new DrawVisitor(visual));
-
     visual->clear();
+
+    scene->get_camera()->get_pos().print();
+    scene->get_camera()->get_dir().print();
+
+    shared_ptr<ObjectVisitor> svisitor(new ShadowVisitor(visual));
     for (auto obj: *_scene.lock())
-        obj->accept(*visitor);
+        obj->accept(*svisitor);
+
+    shared_ptr<ObjectVisitor> dvisitor(new DrawVisitor(visual));
+    for (auto obj: *_scene.lock())
+        obj->accept(*dvisitor);
+
     visual->show();
 }

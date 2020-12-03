@@ -20,4 +20,21 @@ private:
     shared_ptr<Visualizer> _visual;
 };
 
+
+class ShadowVisitor: public ObjectVisitor
+{
+public:
+    ShadowVisitor(shared_ptr<Visualizer>&);
+    virtual ~ShadowVisitor();
+
+    virtual void visit(Camera& obj);
+    virtual void visit(LightSource& obj);
+
+    virtual void visit(TableLeg& obj);
+    virtual void visit(CueBall& obj);
+    virtual void visit(Plate& point);
+private:
+    shared_ptr<Visualizer> _visual;
+};
+
 #endif // DRAW_H

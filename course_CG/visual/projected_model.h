@@ -13,8 +13,8 @@ public:
     double i, i0, di;
     int y, y0, ymax;
 
-    ProjEdge(Point& p1, double i1,
-             Point& p2, double i2);
+    ProjEdge(const Point& p1, double i1,
+             const Point& p2, double i2);
     ProjEdge(const ProjEdge& other);
     ~ProjEdge();
 

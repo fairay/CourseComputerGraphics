@@ -24,7 +24,7 @@ public:
     virtual ~DetailBox();
 
 private:
-    const int mesh_step = 600;
+    const int mesh_step = 400;
 
     void _add_point_row(const Point& up, const Point& down, double step, int n);
     void _add_poly_row(int cur_n, int row_n);

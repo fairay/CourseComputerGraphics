@@ -53,6 +53,7 @@ private:
     shared_ptr<QDrawer> _draw;
 
     void _test1_init();
+    void _test2_init();
 };
 
 #endif // SCENE_H

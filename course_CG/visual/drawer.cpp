@@ -8,6 +8,9 @@ inline QRgb i_color(QRgb a, double i)
     r *= i; g *= i; b *= i;
     c.setRgb(r, g, b);
     return c.rgba();
+//    if (i>1)
+//    {c.setRgb(0, 0, 0); cout << "OUT OF RANGE" << endl;}
+
 //    char* a_ptr = reinterpret_cast<char*>(&a);
 //    a_ptr[1] = static_cast<char>(a_ptr[1] * i);
 //    a_ptr[2] = static_cast<char>(a_ptr[2] * i);
@@ -50,12 +53,12 @@ void QDrawer::fill_rgb(QRgb color)
             _color_map[y][x] = color;
     }
 }
-void QDrawer::fill_z(double depth)
+void QDrawer::fill_z()
 {
     for (int y=0; y < h; y++)
     {
         for (int x=0; x < w; x++)
-            _z_map[y][x] = depth;
+            _z_map[y][x] = _min_depth;
     }
 }
 
@@ -72,7 +75,7 @@ void QDrawer::draw_point(const Point &p, QRgb color)
         _z_map[y][x] = p.z;
     }
 }
-void QDrawer::draw_point(const Point &p, QRgb color, double i)
+void QDrawer::draw_point(const Point &p, QRgb color, double i, const Point &shad_p)
 {
     int x = static_cast<int>(p.x) + w12;
     if (x < 0 || x >= w) {cout << "RET\n";return;}
@@ -81,9 +84,23 @@ void QDrawer::draw_point(const Point &p, QRgb color, double i)
 
     if (p.z > _z_map[y][x])
     {
+        int sx = static_cast<int>(shad_p.x) + w12;
+        int sy = -static_cast<int>(shad_p.y) + h12;
+        if (sy >= 0 && sy < h && sx >= 0 && sx < w &&  _shadow_map[sy][sx] > shad_p.z + 40)
+        {   i = 0.2;}
         _color_map[y][x] = i_color(color, i);
         _z_map[y][x] = p.z;
     }
+}
+void QDrawer::draw_shadow(const Point& p)
+{
+    int x = static_cast<int>(p.x) + w12;
+    if (x < 0 || x >= w) {return;}
+    int y = -static_cast<int>(p.y) + h12;
+    if (y < 0 || y >= h) {return;}
+
+    if (p.z > _z_map[y][x])
+        _shadow_map[y][x] = p.z;
 }
 
 void QDrawer::transfer_to_qimage()
@@ -101,23 +118,28 @@ void QDrawer::transfer_to_qimage()
 void QDrawer::_init_map()
 {
     _color_map = new QRgb*[h];
-    for (int i=0; i<h; i++)
-        _color_map[i] = new QRgb[w];
-
     _z_map = new double*[h];
-    for (int i=0; i<h; i++)
-        _z_map[i] = new double[w];
+    _shadow_map = new double*[h];
 
+    for (int i=0; i<h; i++)
+    {
+        _color_map[i] = new QRgb[w];
+        _z_map[i] = new double[w];
+        _shadow_map[i] = new double[w];
+    }
 }
 void QDrawer::_free_map()
 {
     for (int i=0; i<h; i++)
+    {
         delete _color_map[i];
-    for (int i=0; i<h; i++)
         delete _z_map[i];
+        delete _shadow_map[i];
+    }
 
     delete _color_map;    
     delete _z_map;
+    delete _shadow_map;
 }
 
 int QDrawer::get_min_x() const { return -w12; }

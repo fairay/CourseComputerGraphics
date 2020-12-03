@@ -14,9 +14,10 @@ public:
     ~Point();
 
     void rotate(const Point& c, const Vector& v);
+    void rerotate(const Point& c, const Vector& v);
     void print();
     double distance(const Point& other);
-private:
+
     void rotate_ox(const Point& c, double a);
     void rotate_oy(const Point& c, double a);
     void rotate_oz(const Point& c, double a);

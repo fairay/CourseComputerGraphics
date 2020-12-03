@@ -18,6 +18,13 @@ void Point::rotate(const Point& c, const Vector& v)
     rotate_ox(c, v.x);
     rotate_oz(c, v.z);
 }
+void Point::rerotate(const Point& c, const Vector& v)
+{
+    rotate_oz(c, -v.z);
+    rotate_ox(c, -v.x);
+    rotate_oy(c, -v.y);
+}
+
 
 void Point::rotate_ox(const Point& c, double a)
 {
