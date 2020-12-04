@@ -18,6 +18,7 @@ void Visualizer::set_light(const LightSource &light)
     double beta = atan(p.x / p.z);
     p.rotate_oy(Point(0,0,0), beta);
     double alpha = - atan(p.y/p.z);
+    if (p.z<0) alpha += PI;
 
     _light_dir = Vector(alpha, beta, 0);
     cout << "Light dir ";
@@ -77,25 +78,37 @@ void Visualizer::draw_model(Model &m)
                 proj.step();
                 continue;
             }
-            double di = (i-proj.active_edges[1].i) / (x-proj.active_edges[1].x);
-            double dz = (z-proj.active_edges[1].z) / (x-proj.active_edges[1].x);
+            double dx = x-proj.active_edges[1].x;
+            double di = (i-proj.active_edges[1].i) / dx;
+            double dz = (z-proj.active_edges[1].z) / dx;
+
+            Point l_p = _proj_light(_reproj_point(p));
+            Point l_end = _proj_light(_reproj_point(Point(proj.active_edges[1].x, proj.temp_y, proj.active_edges[1].z)));
+            double l_x = -(l_end.x - l_p.x) / dx,
+                   l_y = -(l_end.y - l_p.y) / dx,
+                   l_z = -(l_end.z - l_p.z) / dx;
 
             if (p.x < min_x)
             {
-                p.z += dz * (min_x-p.x);
-                i += di * (min_x-p.x);
+                double inc = min_x-p.x;
+                p.z += dz * inc;
+                i += di * inc;
+
+                l_p.x += l_x*inc; l_p.y += l_y*inc; l_p.z += l_z*inc;
+
                 p.x = min_x;
             }
 
-            Point shad_p;
             double to_x = min(proj.active_edges[1].x, static_cast<double>(max_x));
             for (; p.x < to_x; p.x++) // for (; p.x < to_x && i>BG_LIGHT; p.x++)
             {
-                shad_p = _reproj_point(p);
-                shad_p = _proj_light(shad_p);
-                _draw->draw_point(p, color, i, shad_p);
+//                shad_p = _reproj_point(p);
+//                shad_p = _proj_light(shad_p);
+                _draw->draw_point(p, color, i, l_p);
                 p.z += dz;
                 i += di;
+
+                l_p.x += l_x; l_p.y += l_y; l_p.z += l_z;
             }
 
             proj.step();

@@ -7,6 +7,7 @@
 
 #include "objects/camera.h"
 #include "objects/light_source.h"
+#include "3d_prmitives/ball_model.h"
 #include "projected_model.h"
 #include "drawer.h"
 

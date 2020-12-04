@@ -3,6 +3,7 @@
 
 #include <QImage>
 #include "memory"
+#include <math.h>
 #include "errors/visual.h"
 #include "3d_prmitives/point.h"
 
@@ -35,7 +36,7 @@ private:
     ZMap _shadow_map;
     int w, h;
     int w12, h12;
-    const double _min_depth = -100000;
+    const double _min_depth = -1e100;
 
     void _init_map();
     void _free_map();

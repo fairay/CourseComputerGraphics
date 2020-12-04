@@ -22,6 +22,7 @@ ProjEdge::ProjEdge(const Point &p_1, double i1,
         dx = (p2.x - p1.x) / y0;
         dz = (p2.z - p1.z) / y0;
         di = (i2 - i1) / y0;
+
     }
     else
     {
@@ -58,8 +59,6 @@ void ProjEdge::reset()
     z = z0;
     i = i0;
     y = y0;
-    if (i>1 || i<0.3)
-        cout << "------------------------------ " << i << endl;
 }
 bool ProjEdge::step()
 {
@@ -67,6 +66,8 @@ bool ProjEdge::step()
     z += dz;
     y -= 1;
     i += di;
+//    if (i>1 || i<0.29)
+//        cout << "------------------------------ " << i << endl;
     return y <= 0;
 }
 void ProjEdge::print()
