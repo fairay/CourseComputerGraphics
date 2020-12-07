@@ -19,7 +19,10 @@ void DrawVisitor::visit(Plate &obj)
 {
     _visual->draw_model(*obj.get_model());
 }
-
+void DrawVisitor::visit(Rail& obj)
+{
+    _visual->draw_model(*obj.get_model());
+}
 
 
 ShadowVisitor::ShadowVisitor(shared_ptr<Visualizer>& visual):
@@ -38,6 +41,10 @@ void ShadowVisitor::visit(CueBall& obj)
     _visual->draw_shadow(*obj.get_model());
 }
 void ShadowVisitor::visit(Plate &obj)
+{
+    _visual->draw_shadow(*obj.get_model());
+}
+void ShadowVisitor::visit(Rail &obj)
 {
     _visual->draw_shadow(*obj.get_model());
 }

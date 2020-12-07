@@ -10,6 +10,7 @@
 #include "objects/leg.h"
 #include "objects/cue_ball.h"
 #include "objects/plate.h"
+#include "objects/rails.h"
 
 #include "visual/drawer.h"
 

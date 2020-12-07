@@ -34,14 +34,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>Есть асбест</string>
+     <string>Замер FPS</string>
     </property>
    </widget>
    <widget class="QLabel" name="fps_count">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>20</y>
+      <x>80</x>
+      <y>750</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -53,8 +53,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>820</x>
-      <y>20</y>
+      <x>30</x>
+      <y>750</y>
       <width>35</width>
       <height>21</height>
      </rect>

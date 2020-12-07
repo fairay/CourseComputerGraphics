@@ -12,6 +12,8 @@
 #include "drawer.h"
 
 #define BG_LIGHT 0.3
+#define CAM_COEF 500
+#define LIGHT_COEF 500
 
 using namespace std;
 class Visualizer
@@ -38,12 +40,12 @@ private:
     Vector _light_dir;
 
     Point _proj_point(const Point& p);
-    Point _proj_point(const Point& p, const Point& v_pos, const Vector& v_dir);
+    Point _proj_point(const Point& p, const Point& v_pos, const Vector& v_dir, double coef);
     Point _reproj_point(const Point &p);
     Point _proj_light(const Point &p);
 
     double _light_point(const Vertex& v);
     void _proj_side(ProjSide& proj, const vector<shared_ptr<Vertex>>& arr,
-                    const Point& v_pos, const Vector& v_dir);
+                    const Point& v_pos, const Vector& v_dir, double coef);
 };
 #endif // VISUALIZER_H

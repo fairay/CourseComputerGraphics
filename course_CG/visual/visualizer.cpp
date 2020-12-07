@@ -49,11 +49,12 @@ void Visualizer::draw_model(Model &m)
         ProjSide proj;
         try
         {
-            _proj_side(proj, poly->v_arr, _camera.get_pos(), _camera.get_dir());
+            _proj_side(proj, poly->v_arr,
+                       _camera.get_pos(), _camera.get_dir(), CAM_COEF);
         }
         catch (int)
         {
-            cout << "Undrawable side" << endl;
+            // cout << "Undrawable side" << endl;
             continue;
         }
 
@@ -102,8 +103,6 @@ void Visualizer::draw_model(Model &m)
             double to_x = min(proj.active_edges[1].x, static_cast<double>(max_x));
             for (; p.x < to_x; p.x++) // for (; p.x < to_x && i>BG_LIGHT; p.x++)
             {
-//                shad_p = _reproj_point(p);
-//                shad_p = _proj_light(shad_p);
                 _draw->draw_point(p, color, i, l_p);
                 p.z += dz;
                 i += di;
@@ -128,7 +127,8 @@ void Visualizer::draw_shadow(Model& m)
         ProjSide proj;
         try
         {
-            _proj_side(proj, poly->v_arr, _light.get_pos(), _light_dir);
+            _proj_side(proj, poly->v_arr,
+                       _light.get_pos(), _light_dir, LIGHT_COEF);
         }
         catch (int)
         {
@@ -198,13 +198,13 @@ Point Visualizer::_proj_point(const Point& p)
     if (cam_pos.z - res.z <= 0)
         throw 2;
     else
-        k = 500 / (cam_pos.z - res.z);
+        k = CAM_COEF / (cam_pos.z - res.z);
 
     res.x = (res.x - cam_pos.x)*k;
     res.y = (res.y - cam_pos.y)*k;
     return res;
 }
-Point Visualizer::_proj_point(const Point& p, const Point& v_pos, const Vector& v_dir)
+Point Visualizer::_proj_point(const Point& p, const Point& v_pos, const Vector& v_dir, double coef)
 {
     Point res = p;
     res.rotate(v_pos, v_dir);
@@ -213,7 +213,7 @@ Point Visualizer::_proj_point(const Point& p, const Point& v_pos, const Vector& 
     if (v_pos.z - res.z <= 0)
         throw 2;
     else
-        k = 500 / (v_pos.z - res.z);
+        k = coef / (v_pos.z - res.z);
 
     res.x = (res.x - v_pos.x)*k;
     res.y = (res.y - v_pos.y)*k;
@@ -224,9 +224,8 @@ Point Visualizer::_reproj_point(const Point &p)
     Point res = p;
     Point cam_pos = _camera.get_pos();
     Vector cam_dir = _camera.get_dir();
-    // cam_dir.invert();
 
-    double k = 500 / (cam_pos.z - res.z);
+    double k = CAM_COEF / (cam_pos.z - res.z);
     res.x = cam_pos.x + res.x / k;
     res.y = cam_pos.y + res.y / k;
 
@@ -244,7 +243,7 @@ Point Visualizer::_proj_light(const Point &p)
     if (light_pos.z - res.z <= 0)
         k = 1e10;
     else
-        k = 500 / (light_pos.z - res.z);
+        k = LIGHT_COEF / (light_pos.z - res.z);
 
     res.x = (res.x - light_pos.x)*k;
     res.y = (res.y - light_pos.y)*k;
@@ -252,15 +251,15 @@ Point Visualizer::_proj_light(const Point &p)
 }
 
 void Visualizer::_proj_side(ProjSide& proj, const vector<shared_ptr<Vertex>>& arr,
-                            const Point &v_pos, const Vector &v_dir)
+                            const Point &v_pos, const Vector &v_dir, double coef)
 {
     size_t p_n = arr.size();
-    Point p_next, p_pre = _proj_point(*arr[0], v_pos, v_dir);
+    Point p_next, p_pre = _proj_point(*arr[0], v_pos, v_dir, coef);
     double i_next, i_pre = _light_point(*arr[0]);
 
     for (size_t i=0; i < p_n; i++)
     {
-        p_next = _proj_point(*arr[(i+1)%p_n], v_pos, v_dir);
+        p_next = _proj_point(*arr[(i+1)%p_n], v_pos, v_dir, coef);
         i_next = _light_point(*arr[(i+1)%p_n]);
         proj.add_edge(ProjEdge(p_pre, i_pre, p_next, i_next));
         p_pre = p_next;

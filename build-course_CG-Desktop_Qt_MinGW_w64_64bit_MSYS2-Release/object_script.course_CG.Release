@@ -33,4 +33,6 @@ release/trasform_mng.o
 release/transform_cmd.o
 release/cue_ball.o
 release/plate.o
+release/skirting.o
+release/rails.o
 release/moc_mainwindow.o

@@ -5,7 +5,7 @@ Scene::Scene()
     set_camera(Camera(Point(500, 800, 1000), Vector(-0.5, 0.2, 0)));
     set_light(LightSource(Point(0, 1200, 100), 500));
 
-     _test2_init();
+     _test1_init();
 }
 Scene::~Scene() {}
 
@@ -58,23 +58,10 @@ void Scene::remove_object(scene_iter &iter)
 
 void Scene::_test1_init()
 {
-    set_camera(Camera(Point(-1981.991154, 1453.140617, 1336.850766),
-                      Vector(-0.191,  -0.978,   0.000)));
-    set_light(LightSource(Point(0, 2200, -2100), 1500));
+    set_camera(Camera(Point(1557.147053, 1401.787040, -138.390842),
+                   Vector(-0.655,  -4.027,   0.000)));
 
-    add_object(new Plate(765, 1530, 2800));
-}
-
-
-void Scene::_test2_init()
-{
-     set_camera(Camera(Point(-548.043032, 1050.678560, 1.048028),
-                      Vector(-0.243,  -1.554,   0.000)));
-//    set_camera(Camera(Point(392.720653, 1346.635707, -2106.398275),
-//                          Vector(-0.231,  -3.163,   0.000)));
-
-    // set_light(LightSource(Point(0, 2200, -2100), 1500));
-     set_light(LightSource(Point(0, 2200, 1000), 1500));
+    set_light(LightSource(Point(0, 2200, 1000), 1500));
 
     add_object(new TableLeg(-600, -1300, 750));
     add_object(new TableLeg(600, -1300, 750));
@@ -82,6 +69,48 @@ void Scene::_test2_init()
     add_object(new TableLeg(600, 1300, 750));
 
     add_object(new Plate(765, 1530, 2800));
+    Point p1(1530/2, 865, 2800/2);
+    Point p12(1530/2, 865, 0);
+    Point p13(0, 865, 2800/2);
+    Point p24(0, 865, -2800/2);
+    Point p2(1530/2, 865, -2800/2);
+    double r = 57;
+    double R = r*1.4;
+    add_object(new SideRail(p1, p12, R));
+    add_object(new SideRail(p2, p12, R));
+    add_object(new HeadRail(p1, p13, R));
+    add_object(new HeadRail(p2, p24, R));
+    p1.x = -p1.x; p12.x = -p12.x; p2.x = -p2.x;
+    add_object(new SideRail(p1, p12, R));
+    add_object(new SideRail(p2, p12, R));
+    add_object(new HeadRail(p1, p13, R));
+    add_object(new HeadRail(p2, p24, R));
+
+    add_object(new CueBall(Point(0, 910, 0), 57));
+    add_object(new CueBall(Point(120, 910, 0), 57));
+    add_object(new CueBall(Point(240, 910, 0), 57));
+    add_object(new CueBall(Point(360, 910, 0), 57));
+}
+
+
+void Scene::_test2_init()
+{
+//    set_camera(Camera(Point(-548.043032, 1050.678560, 1.048028),
+//                  Vector(-0.243,  -1.554,   0.000)));
+    set_camera(Camera(Point(1557.147053, 1401.787040, -138.390842),
+                   Vector(-0.655,  -4.027,   0.000)));
+
+    set_light(LightSource(Point(0, 2200, 1000), 1500));
+
+    add_object(new TableLeg(-600, -1300, 750));
+    add_object(new TableLeg(600, -1300, 750));
+    add_object(new TableLeg(-600, 1300, 750));
+    add_object(new TableLeg(600, 1300, 750));
+
+    add_object(new Plate(765, 1530, 2800));
+    Point p1(1530/2, 865, 1400);
+    Point p2(1530/2, 865, 0);
+    add_object(new SideRail(p1, p2, 100));
 
     add_object(new CueBall(Point(0, 910, 0), 57));
     add_object(new CueBall(Point(120, 910, 0), 57));

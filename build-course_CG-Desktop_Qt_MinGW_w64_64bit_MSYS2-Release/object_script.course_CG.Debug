@@ -33,4 +33,6 @@ debug/trasform_mng.o
 debug/transform_cmd.o
 debug/cue_ball.o
 debug/plate.o
+debug/skirting.o
+debug/rails.o
 debug/moc_mainwindow.o

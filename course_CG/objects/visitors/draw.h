@@ -16,6 +16,7 @@ public:
     virtual void visit(TableLeg& obj);
     virtual void visit(CueBall& obj);
     virtual void visit(Plate& point);
+    virtual void visit(Rail& point);
 private:
     shared_ptr<Visualizer> _visual;
 };
@@ -33,6 +34,7 @@ public:
     virtual void visit(TableLeg& obj);
     virtual void visit(CueBall& obj);
     virtual void visit(Plate& point);
+    virtual void visit(Rail& point);
 private:
     shared_ptr<Visualizer> _visual;
 };

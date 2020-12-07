@@ -106,7 +106,7 @@ void MainWindow::_fill_img(QColor color)
 /// Тест FPS
 void MainWindow::on_pushButton_clicked()
 {
-
+    ui->fps_count->setNum(static_cast<int>(0));
     time_t time = clock();
     size_t count = 0;
     while(clock() - time < 1000)

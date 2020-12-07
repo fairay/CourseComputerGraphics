@@ -59,7 +59,9 @@ SOURCES += \
     managers/trasform_mng.cpp \
     commands/transform_cmd.cpp \
     objects/cue_ball.cpp \
-    objects/plate.cpp
+    objects/plate.cpp \
+    3d_prmitives/skirting.cpp \
+    objects/rails.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -99,7 +101,9 @@ HEADERS += \
     managers/tranfrorm.h \
     commands/transform.h \
     objects/cue_ball.h \
-    objects/plate.h
+    objects/plate.h \
+    3d_prmitives/skirting.h \
+    objects/rails.h
 
 FORMS += \
         mainwindow.ui
