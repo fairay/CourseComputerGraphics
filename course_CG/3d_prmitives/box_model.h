@@ -37,4 +37,6 @@ public:
     virtual ~SimpleBox();
 };
 
+
+
 #endif // BOX_MODEL_H

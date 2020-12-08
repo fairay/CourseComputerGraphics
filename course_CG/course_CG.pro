@@ -61,7 +61,8 @@ SOURCES += \
     objects/cue_ball.cpp \
     objects/plate.cpp \
     3d_prmitives/skirting.cpp \
-    objects/rails.cpp
+    objects/rails.cpp \
+    3d_prmitives/mplate.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -103,7 +104,8 @@ HEADERS += \
     objects/cue_ball.h \
     objects/plate.h \
     3d_prmitives/skirting.h \
-    objects/rails.h
+    objects/rails.h \
+    3d_prmitives/mplate.h
 
 FORMS += \
         mainwindow.ui

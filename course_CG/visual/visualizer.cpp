@@ -189,7 +189,6 @@ void Visualizer::show()
     _draw->transfer_to_qimage();
 }
 
-
 Point Visualizer::_proj_point(const Point& p)
 {
     Point res = p;
@@ -224,8 +223,8 @@ Point Visualizer::_proj_point(const Point& p, const Point& v_pos,
 //        k = coef / (v_pos.z - res.z);
 
 //    Point p0(0, 0, 0);
-//    p0.rotate(v_pos, v_dir);
-//    k = TEMP_COEF/(p0.distance(v_pos) + 10);
+//    // p0.rotate(v_pos, v_dir);
+//    k = coef/(p0.distance(v_pos) + 10);
 
     res.x = (res.x - v_pos.x)*k;
     res.y = (res.y - v_pos.y)*k;
@@ -237,11 +236,11 @@ Point Visualizer::_reproj_point(const Point &p)
     Point cam_pos = _camera.get_pos();
     Vector cam_dir = _camera.get_dir();
 
-    double k = CAM_COEF / (cam_pos.z - res.z);
+    // double k = CAM_COEF / (cam_pos.z - res.z);
 
     Point p0(0, 0, 0);
-    // p0.rotate(cam_pos, _camera.get_dir());
-    k = CAM_COEF/(p0.distance(cam_pos) + 10);
+    double k = CAM_COEF/(p0.distance(cam_pos) + 10);
+
     res.x = cam_pos.x + res.x / k;
     res.y = cam_pos.y + res.y / k;
 
@@ -256,10 +255,10 @@ Point Visualizer::_proj_light(const Point &p)
     res.rotate(light_pos, _light_dir);
 
     double k;
-    if (light_pos.z - res.z <= 0)
-        k = 1e10;
-    else
-        k = LIGHT_COEF / (light_pos.z - res.z);
+//    if (light_pos.z - res.z <= 0)
+//        k = 1e10;
+//    else
+//        k = LIGHT_COEF / (light_pos.z - res.z);
 
 //    Point p0(0, 0, 0);
 //    p0.rotate(light_pos, _light_dir);

@@ -35,4 +35,5 @@ debug/cue_ball.o
 debug/plate.o
 debug/skirting.o
 debug/rails.o
+debug/mplate.o
 debug/moc_mainwindow.o
