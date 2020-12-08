@@ -7,7 +7,7 @@
 class Plate: public VisibleObject
 {
 public:
-    Plate(double h, double len, double wide);
+    Plate(double h, double len, double wide, bool is_up);
     explicit Plate(const Plate& other);
     virtual ~Plate();
 

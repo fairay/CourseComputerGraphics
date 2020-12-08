@@ -70,7 +70,8 @@ void Scene::_test1_init()
     add_object(new TableLeg(-600, 1300, 750));
     add_object(new TableLeg(600, 1300, 750));
 
-    add_object(new Plate(765, 1530, 2800));
+    add_object(new Plate(765, 1530, 2800, true));
+    add_object(new Plate(765, 1530, 2800, false));
     Point p1(1530/2, 865, 2800/2);
     Point p12(1530/2, 865, 0);
     Point p13(0, 865, 2800/2);
@@ -109,7 +110,7 @@ void Scene::_test2_init()
     add_object(new TableLeg(-600, 1300, 750));
     add_object(new TableLeg(600, 1300, 750));
 
-    add_object(new Plate(765, 1530, 2800));
+    add_object(new Plate(765, 1530, 2800, true));
     Point p1(1530/2, 865, 1400);
     Point p2(1530/2, 865, 0);
     add_object(new SideRail(p1, p2, 100));
