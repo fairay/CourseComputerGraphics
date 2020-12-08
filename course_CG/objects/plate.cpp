@@ -3,7 +3,7 @@
 
 Plate::Plate(double h, double len, double wide)
 {
-    _color = QColor(Qt::green).rgba();
+    _color = QColor(Qt::darkGreen).rgba();
     Point p1(len/2, h, wide/2);
     Point p2(-len/2, h+_height, -wide/2);
     Model* m_ptr = new DetailBox(_color, p1, p2);

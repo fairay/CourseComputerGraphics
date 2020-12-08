@@ -44,7 +44,7 @@ LongSkirting::LongSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     add_vertex(Point(cor_p.x + xs*w,         yd, cor_p.z + zs*w));                    // 11
     add_vertex(Point(cor_p.x + xs*R/sqrt(2), yd, cor_p.z + zs*R/sqrt(2)));
     add_vertex(Point(cor_p.x + xs*R,         yd, cor_p.z));
-    add_vertex(Point(cor_p.x - xs*R/sqrt(2), y0, cor_p.z - zs*R*3/sqrt(2)));  // 14
+    add_vertex(Point(cor_p.x - xs*R/sqrt(8), y0, cor_p.z - zs*R*3/sqrt(2)));  // 14
     add_vertex(Point(cor_p.x + xs*w,         yd, cor_p.z));
     add_vertex(Point(cor_p.x + xs*w,         yd, cor_p.z - zs*R*3/sqrt(2)));
 
@@ -53,7 +53,7 @@ LongSkirting::LongSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     add_side(_color, {0, 4, 15, 11});
     add_side(_color, {4, 5, 16, 15});
 
-    add_vertex(Point(cor_p.x - xs*R/sqrt(2), y0, mid_p.z + zs*R)); // 17
+    add_vertex(Point(cor_p.x - xs*R/sqrt(8), y0, mid_p.z + zs*R)); // 17
     add_vertex(Point(mid_p.x + xs*R,         yd, mid_p.z + zs*R));
     add_vertex(Point(cor_p.x + xs*w,         yd, mid_p.z + zs*R));
     add_vertex(Point(mid_p.x + xs*R,         yd, mid_p.z));        // 20
@@ -114,9 +114,9 @@ ShortSkirting::ShortSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     add_vertex(Point(cor_p.x + xs*R/sqrt(2),    yd, cor_p.z + zs*R/sqrt(2)));
     add_vertex(Point(cor_p.x,                   yd, cor_p.z + zs*R));
     add_vertex(Point(cor_p.x,                   yd, cor_p.z + zs*w));          // 11
-    add_vertex(Point(cor_p.x - xs*R*3/sqrt(2),  y0, cor_p.z - zs*R/sqrt(2)));
+    add_vertex(Point(cor_p.x - xs*R*3/sqrt(2),  y0, cor_p.z - zs*R/sqrt(8)));
     add_vertex(Point(cor_p.x - xs*R*3/sqrt(2),  yd, cor_p.z + zs*w));          // 13
-    add_vertex(Point(mid_p.x,                   y0, cor_p.z - zs*R/sqrt(2)));
+    add_vertex(Point(mid_p.x,                   y0, cor_p.z - zs*R/sqrt(8)));
     add_vertex(Point(mid_p.x,                   yd, cor_p.z + zs*w));          // 14
 
     add_side(_color, {0, 1, 9, 8});

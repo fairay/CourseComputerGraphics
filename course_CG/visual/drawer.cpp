@@ -86,7 +86,7 @@ void QDrawer::draw_point(const Point &p, QRgb color, double i, const Point &shad
     {
         int sx = static_cast<int>(round(shad_p.x)) + w12;
         int sy = -static_cast<int>(round(shad_p.y)) + h12;
-        if (sy >= 0 && sy < h && sx >= 0 && sx < w &&  _shadow_map[sy][sx] > shad_p.z + 20)
+        if (sy >= 0 && sy < h && sx >= 0 && sx < w &&  _shadow_map[sy][sx] > shad_p.z + 12)
         {   i = 0.2; }
         _color_map[y][x] = i_color(color, i);
         _z_map[y][x] = p.z;

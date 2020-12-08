@@ -3,7 +3,7 @@
 
 TableLeg::TableLeg(double x, double z, double h)
 {
-    _color = QColor(Qt::darkYellow).rgba();
+    _color = QColor(121, 79, 39).rgba();
     Point p1(x-_wide, 0, z-_wide);
     Point p2(x+_wide, h, z+_wide);
     Model* m_ptr = new SimpleBox(_color, p1, p2);
