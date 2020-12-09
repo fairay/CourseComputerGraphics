@@ -36,6 +36,44 @@ private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent*);
 
+    void on_cam_move_f_clicked();
+
+    void on_cam_move_l_clicked();
+
+    void on_cam_move_r_clicked();
+
+    void on_cam_move_b_clicked();
+
+    void on_cam_move_u_clicked();
+
+    void on_cam_move_d_clicked();
+
+    void on_cam_rot_u_clicked();
+
+    void on_cam_rot_l_clicked();
+
+    void on_cam_rot_d_clicked();
+
+    void on_cam_rot_r_clicked();
+
+    void on_lig_move_f_clicked();
+
+    void on_lig_move_b_clicked();
+
+    void on_lig_move_l_clicked();
+
+    void on_lig_move_r_clicked();
+
+    void on_lig_move_u_clicked();
+
+    void on_lig_move_d_clicked();
+
+    void on_lig_i_valueChanged(int value);
+
+    void on_cam_info_clicked();
+
+    void on_lig_info_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QGraphicsScene> _qscene;
@@ -57,6 +95,9 @@ private:
 
     void _move_camera(double x, double y, double z);
     void _rotate_camera(double x, double y, double z);
+
+    void _move_light(double x, double y, double z);
+    void _change_light_i(double i);
 };
 
 #endif // MAINWINDOW_H

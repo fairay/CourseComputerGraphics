@@ -23,6 +23,17 @@ private:
     shared_ptr<Transformator> _trans;
 };
 
+class ChangeI: public IManager
+{
+public:
+    ChangeI(weak_ptr<Scene> scene_ptr, double i);
+    virtual ~ChangeI();
+
+    virtual void execute();
+private:
+    double _i;
+};
+
 } // namespace manager
 
 #endif // TRANFRORM_MANAGER_H

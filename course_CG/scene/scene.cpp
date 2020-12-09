@@ -63,7 +63,7 @@ void Scene::_test1_init()
     set_camera(Camera(Point(352.240427, 1223.275656, 743.714337),
                    Vector(-1.205,  -7.919,   0.000)));
 
-    set_light(LightSource(Point(0, 2200, 1000), 1500));
+    set_light(LightSource(Point(0, 2200, 1000), 75));
 
     //add_object(new Table());
     add_object(new Table(750, 2800, 1530, 57));

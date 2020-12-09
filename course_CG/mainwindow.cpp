@@ -185,7 +185,14 @@ void MainWindow::_move_camera(double x, double y, double z)
     _scene.execute(*ptr);
     this->_paint();
 }
-
+void MainWindow::_move_light(double x, double y, double z)
+{
+    using namespace command;
+    shared_ptr<ICommand> ptr;
+    ptr = shared_ptr<ICommand>(new MoveLight(Vector(x, y, z)));
+    _scene.execute(*ptr);
+    this->_paint();
+}
 void MainWindow::_rotate_camera(double x, double y, double z)
 {
     using namespace command;
@@ -193,4 +200,47 @@ void MainWindow::_rotate_camera(double x, double y, double z)
     ptr = shared_ptr<ICommand>(new RotateCamera(Vector(x, y, z)));
     _scene.execute(*ptr);
     this->_paint();
+}
+void MainWindow::_change_light_i(double i)
+{
+    using namespace command;
+    shared_ptr<ICommand> ptr;
+    ptr = shared_ptr<ICommand>(new SetLightI(i));
+    _scene.execute(*ptr);
+    this->_paint();
+}
+
+void MainWindow::on_cam_move_f_clicked() { _move_camera(0, 0, -15); }
+void MainWindow::on_cam_move_l_clicked() { _move_camera(-15, 0, 0); }
+void MainWindow::on_cam_move_r_clicked() { _move_camera(15, 0, 0); }
+void MainWindow::on_cam_move_b_clicked() { _move_camera(0, 0, 15); }
+void MainWindow::on_cam_move_u_clicked() { _move_camera(0, 15, 0); }
+void MainWindow::on_cam_move_d_clicked() { _move_camera(0, -15, 0); }
+
+void MainWindow::on_cam_rot_u_clicked() { _rotate_camera(3, 0, 0); }
+void MainWindow::on_cam_rot_l_clicked() { _rotate_camera(0, 3, 0); }
+void MainWindow::on_cam_rot_d_clicked() { _rotate_camera(-3, 0, 0); }
+void MainWindow::on_cam_rot_r_clicked() { _rotate_camera(0, -3, 0); }
+
+
+void MainWindow::on_lig_move_f_clicked() { _move_light(0, 0, -100); }
+void MainWindow::on_lig_move_b_clicked() { _move_light(0, 0, 100); }
+void MainWindow::on_lig_move_l_clicked() { _move_light(-100, 0, 0); }
+void MainWindow::on_lig_move_r_clicked() { _move_light(100, 0, 0); }
+void MainWindow::on_lig_move_u_clicked() { _move_light(0, 100, 0); }
+void MainWindow::on_lig_move_d_clicked() { _move_light(0, -100, 0); }
+
+void MainWindow::on_lig_i_valueChanged(int value)
+{
+    _change_light_i(value);
+}
+
+void MainWindow::on_cam_info_clicked()
+{
+
+}
+
+void MainWindow::on_lig_info_clicked()
+{
+
 }

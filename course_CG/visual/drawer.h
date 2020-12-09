@@ -7,6 +7,8 @@
 #include "errors/visual.h"
 #include "3d_prmitives/point.h"
 
+#define BG_LIGHT 0.3
+
 using RgbMap = QRgb**;
 using ZMap = double**;
 using namespace std;

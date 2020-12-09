@@ -8,6 +8,18 @@
 namespace command
 {
 
+class SetLightI: public ICommand
+{
+public:
+    SetLightI(double i);
+    virtual ~SetLightI();
+
+    virtual void execute(weak_ptr<Scene> scene);
+protected:
+    double _i;
+};
+
+
 class Transform: public ICommand
 {
 public:

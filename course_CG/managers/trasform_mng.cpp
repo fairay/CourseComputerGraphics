@@ -22,3 +22,16 @@ void Transform::exe_light()
 
     _trans->transform(_scene.lock()->get_light()->get_pos());
 }
+
+
+ChangeI::ChangeI(weak_ptr<Scene> scene_ptr, double i):
+    IManager(scene_ptr), _i(i) {}
+ChangeI::~ChangeI() {}
+
+void ChangeI::execute()
+{
+    if (_scene.expired())
+        throw err::ScenePtrExpired(__FILE__, __LINE__-1, "Change light I Manager");
+
+    _scene.lock()->get_light()->set_intensity(_i);
+}

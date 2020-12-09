@@ -2,6 +2,13 @@
 
 using namespace command;
 
+SetLightI::SetLightI(double i): _i(i) {}
+SetLightI::~SetLightI() {}
+void SetLightI::execute(weak_ptr<Scene> scene)
+{
+    manager::ChangeI(scene, _i).execute();
+}
+
 Transform::Transform(const shared_ptr<Transformator>& ptr): _trans(ptr) {}
 Transform::~Transform() {}
 void Transform::execute(weak_ptr<Scene>) {}

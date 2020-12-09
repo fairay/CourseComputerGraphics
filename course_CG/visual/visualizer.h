@@ -11,7 +11,6 @@
 #include "projected_model.h"
 #include "drawer.h"
 
-#define BG_LIGHT 0.3
 
 #define CAM_COEF 500
 #define LIGHT_COEF 0.2
