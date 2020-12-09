@@ -8,6 +8,7 @@
 #include "objects/cue_ball.h"
 #include "objects/plate.h"
 #include "objects/rails.h"
+#include "objects/table.h"
 
 class ObjectVisitor
 {
@@ -22,6 +23,7 @@ public:
     virtual void visit(CueBall& point) = 0;
     virtual void visit(Plate& point) = 0;
     virtual void visit(Rail& point) = 0;
+    virtual void visit(Table& point) = 0;
 };
 
 #endif // OBJECT_VISITOR_H

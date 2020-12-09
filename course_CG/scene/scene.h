@@ -11,6 +11,7 @@
 #include "objects/cue_ball.h"
 #include "objects/plate.h"
 #include "objects/rails.h"
+#include "objects/table.h"
 
 #include "visual/drawer.h"
 

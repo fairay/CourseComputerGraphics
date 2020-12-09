@@ -56,10 +56,11 @@ void QDrawer::fill_rgb(QRgb color)
 void QDrawer::fill_z()
 {
     for (int y=0; y < h; y++)
-    {
         for (int x=0; x < w; x++)
+        {
             _z_map[y][x] = _min_depth;
-    }
+            _shadow_map[y][x] = _min_depth;
+        }
 }
 
 void QDrawer::draw_point(const Point &p, QRgb color)

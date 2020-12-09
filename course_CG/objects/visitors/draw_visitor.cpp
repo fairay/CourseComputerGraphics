@@ -24,6 +24,12 @@ void DrawVisitor::visit(Rail& obj)
     _visual->draw_model(*obj.get_model());
 }
 
+void DrawVisitor::visit(Table& obj)
+{
+    for (auto sub_obj: obj)
+        sub_obj->accept(*this);
+}
+
 
 ShadowVisitor::ShadowVisitor(shared_ptr<Visualizer>& visual):
     _visual(visual) {}
@@ -47,4 +53,10 @@ void ShadowVisitor::visit(Plate &obj)
 void ShadowVisitor::visit(Rail &obj)
 {
     _visual->draw_shadow(*obj.get_model());
+}
+
+void ShadowVisitor::visit(Table& obj)
+{
+    for (auto sub_obj: obj)
+        sub_obj->accept(*this);
 }

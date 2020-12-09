@@ -62,7 +62,9 @@ SOURCES += \
     objects/plate.cpp \
     3d_prmitives/skirting.cpp \
     objects/rails.cpp \
-    3d_prmitives/mplate.cpp
+    3d_prmitives/mplate.cpp \
+    objects/composite_object.cpp \
+    objects/table.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -105,7 +107,9 @@ HEADERS += \
     objects/plate.h \
     3d_prmitives/skirting.h \
     objects/rails.h \
-    3d_prmitives/mplate.h
+    3d_prmitives/mplate.h \
+    objects/composite_object.h \
+    objects/table.h
 
 FORMS += \
         mainwindow.ui

@@ -9,7 +9,7 @@
 class Rail: public VisibleObject
 {
 public:
-    Rail();
+    Rail(double w);
     explicit Rail(const Rail& other);
     virtual ~Rail();
 
@@ -17,7 +17,7 @@ public:
     virtual SceneObject* clone();
 protected:
     QRgb _color;
-    const double _w = 170;
+    double _w = 170;
     const double _hu = 100, _hd = 100;
 };
 
@@ -25,7 +25,7 @@ protected:
 class SideRail: public Rail
 {
 public:
-    SideRail(const Point& cor_p, const Point& mid_p, double R);
+    SideRail(const Point& cor_p, const Point& mid_p, double R, double w);
     explicit SideRail(const SideRail& other);
     virtual ~SideRail();
 };
@@ -33,7 +33,7 @@ public:
 class HeadRail: public Rail
 {
 public:
-    HeadRail(const Point& cor_p, const Point& mid_p, double R);
+    HeadRail(const Point& cor_p, const Point& mid_p, double R, double w);
     explicit HeadRail(const HeadRail& other);
     virtual ~HeadRail();
 };

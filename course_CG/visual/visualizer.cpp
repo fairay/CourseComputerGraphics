@@ -21,8 +21,6 @@ void Visualizer::set_light(const LightSource &light)
     if (p.z<0) alpha += PI;
 
     _light_dir = Vector(alpha, beta, 0);
-    cout << "Light dir ";
-    _light_dir.print();
 }
 void Visualizer::set_camera(const Camera &camera) { _camera = camera; }
 

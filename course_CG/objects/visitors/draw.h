@@ -15,8 +15,10 @@ public:
 
     virtual void visit(TableLeg& obj);
     virtual void visit(CueBall& obj);
-    virtual void visit(Plate& point);
-    virtual void visit(Rail& point);
+    virtual void visit(Plate& obj);
+    virtual void visit(Rail& obj);
+
+    virtual void visit(Table& obj);
 private:
     shared_ptr<Visualizer> _visual;
 };
@@ -33,8 +35,10 @@ public:
 
     virtual void visit(TableLeg& obj);
     virtual void visit(CueBall& obj);
-    virtual void visit(Plate& point);
-    virtual void visit(Rail& point);
+    virtual void visit(Plate& obj);
+    virtual void visit(Rail& obj);
+
+    virtual void visit(Table& obj);
 private:
     shared_ptr<Visualizer> _visual;
 };

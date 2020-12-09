@@ -36,4 +36,6 @@ release/plate.o
 release/skirting.o
 release/rails.o
 release/mplate.o
+release/composite_object.o
+release/table.o
 release/moc_mainwindow.o

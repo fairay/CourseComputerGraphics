@@ -65,6 +65,10 @@ void Scene::_test1_init()
 
     set_light(LightSource(Point(0, 2200, 1000), 1500));
 
+    //add_object(new Table());
+    add_object(new Table(750, 2800, 1530, 57));
+
+    /*
     add_object(new TableLeg(-600, -1300, 750));
     add_object(new TableLeg(600, -1300, 750));
     add_object(new TableLeg(-600, 1300, 750));
@@ -88,6 +92,7 @@ void Scene::_test1_init()
     add_object(new SideRail(p2, p12, R));
     add_object(new HeadRail(p1, p13, R));
     add_object(new HeadRail(p2, p24, R));
+    */
 
     add_object(new CueBall(Point(0, 910, 0), 57));
     add_object(new CueBall(Point(120, 910, 0), 57));
@@ -113,7 +118,7 @@ void Scene::_test2_init()
     add_object(new Plate(765, 1530, 2800, true));
     Point p1(1530/2, 865, 1400);
     Point p2(1530/2, 865, 0);
-    add_object(new SideRail(p1, p2, 100));
+    add_object(new SideRail(p1, p2, 100, 100));
 
     add_object(new CueBall(Point(0, 910, 0), 57));
     add_object(new CueBall(Point(120, 910, 0), 57));

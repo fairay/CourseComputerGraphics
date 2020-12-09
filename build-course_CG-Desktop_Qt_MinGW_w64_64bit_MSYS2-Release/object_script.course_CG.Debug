@@ -36,4 +36,6 @@ debug/plate.o
 debug/skirting.o
 debug/rails.o
 debug/mplate.o
+debug/composite_object.o
+debug/table.o
 debug/moc_mainwindow.o

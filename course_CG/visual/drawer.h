@@ -20,6 +20,7 @@ public:
 
     void fill_rgb(QRgb color);
     void fill_z();
+
     void draw_point(const Point& p, QRgb color);
     void draw_point(const Point& p, QRgb color, double i, const Point& shad_p);
     void draw_shadow(const Point& p);

@@ -32,4 +32,14 @@ protected:
 };
 
 
+class BottomPlateModel: public PlateModel
+{
+public:
+    BottomPlateModel(QRgb color, const Point& p1, const Point& p2);
+    virtual ~BottomPlateModel();
+
+protected:
+    void _set_center(const Point& p1, const Point& p2);
+};
+
 #endif // MPLATE_H

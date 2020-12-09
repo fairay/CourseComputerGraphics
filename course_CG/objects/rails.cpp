@@ -1,8 +1,9 @@
 #include "rails.h"
 #include "visitors/object_visitor.h"
 
-Rail::Rail()
+Rail::Rail(double w)
 {
+    _w = w;
     QColor col;
     col.setRgb(101, 67, 33);
     _color = col.rgba();
@@ -22,7 +23,8 @@ SceneObject* Rail::clone()
 }
 
 
-SideRail::SideRail(const Point& cor_p, const Point& mid_p, double R): Rail()
+SideRail::SideRail(const Point& cor_p, const Point& mid_p,
+                   double R, double w): Rail(w)
 {
     Model* m_ptr = new LongSkirting(_color, cor_p, mid_p, _hu, _hd, _w, R);
     this->_model = shared_ptr<Model>(m_ptr);
@@ -31,7 +33,8 @@ SideRail::SideRail(const SideRail& other): Rail(other) {}
 SideRail::~SideRail() {}
 
 
-HeadRail::HeadRail(const Point& cor_p, const Point& mid_p, double R): Rail()
+HeadRail::HeadRail(const Point& cor_p, const Point& mid_p,
+                   double R, double w): Rail(w)
 {
     Model* m_ptr = new ShortSkirting(_color, cor_p, mid_p, _hu, _hd, _w, R);
     this->_model = shared_ptr<Model>(m_ptr);

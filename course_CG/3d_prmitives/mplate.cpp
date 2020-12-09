@@ -40,7 +40,6 @@ TopPlateModel::TopPlateModel(QRgb color, const Point& p1,
     {
         p.x += x_step;
         _add_point_row(p, z_step, z_n);
-        // _add_poly_row((z_n+1)*(2+i), z_n);
         if (i == 0 || i == x_n-1)
             _add_poly_row((z_n+1)*(2+i), z_n, true);
         else
@@ -104,7 +103,6 @@ void TopPlateModel::_set_center(const Point& p1, const Point& p2)
     _center.z = (p1.z + p2.z)/2;
 }
 
-
 void TopPlateModel::_add_point_row(const Point& min_p, double step, int n)
 {
     Point p = min_p;
@@ -129,3 +127,39 @@ void TopPlateModel::_add_poly_row(int cur_n, int row_n, bool is_edge)
     }
 }
 
+
+BottomPlateModel::BottomPlateModel(QRgb color, const Point& p1,
+                                   const Point& p2): PlateModel (color)
+{
+    Point min_p = _find_min_p(p1, p2);
+    Point max_p = _find_max_p(p1, p2);
+    _set_center(min_p, max_p);
+
+    add_vertex(Point(min_p.x,   min_p.y,    min_p.z));
+    add_vertex(Point(min_p.x,   min_p.y,    0));
+    add_vertex(Point(min_p.x,   min_p.y,    max_p.z));
+
+    add_vertex(Point(0,         min_p.y,    min_p.z));
+    add_vertex(Point(0,         min_p.y,    0));
+    add_vertex(Point(0,         min_p.y,    max_p.z));
+
+    add_vertex(Point(max_p.x,   min_p.y,    min_p.z));
+    add_vertex(Point(max_p.x,   min_p.y,    0));
+    add_vertex(Point(max_p.x,   min_p.y,    max_p.z));
+
+    add_side(color, {0, 1, 4, 3});
+    add_side(color, {2, 1, 4, 5});
+
+    add_side(color, {6, 7, 4, 3});
+    add_side(color, {8, 7, 4, 5});
+
+    normalize_vertexes();
+}
+BottomPlateModel::~BottomPlateModel() {}
+
+void BottomPlateModel::_set_center(const Point& p1, const Point& p2)
+{
+    _center.x = (p1.x + p2.x)/2;
+    _center.y = p1.y + 100;
+    _center.z = (p1.z + p2.z)/2;
+}
