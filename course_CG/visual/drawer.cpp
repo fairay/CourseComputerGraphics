@@ -118,7 +118,7 @@ void QDrawer::transfer_to_qimage()
     if (_img.expired())
         throw err::ImageExpired(__FILE__, __LINE__);
 
-    cout << "\n\nShowing image" << endl;
+    cout << "Showing image" << endl;
     QImage& i = *_img.lock();
     size_t row_size = static_cast<size_t>(w) * sizeof(QRgb);
     for (int y=0; y < h; y++)

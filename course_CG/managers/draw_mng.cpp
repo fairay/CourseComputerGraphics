@@ -18,9 +18,6 @@ void DrawManager::execute()
     visual->set_light(*scene->get_light());
     visual->clear();
 
-    scene->get_camera()->get_pos().print();
-    scene->get_camera()->get_dir().print();
-
     shared_ptr<ObjectVisitor> svisitor(new ShadowVisitor(visual));
     for (auto obj: *_scene.lock())
         obj->accept(*svisitor);

@@ -33,6 +33,7 @@ void Updater::_move_ball(shared_ptr<CueBall>& ball, double dt)
 
 void Updater::_collide_rail(CueBall &ball, const Point& p)
 {
+    cout << "Collide!" << endl;
     double d = ball.pos.distance2d(p);
     double a = ball.pos.x - p.x;
     double b = ball.pos.z - p.z;

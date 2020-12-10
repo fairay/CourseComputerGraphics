@@ -24,8 +24,8 @@ RailContour::RailContour(Point p1, Point p2, Point p3, Point p4)
     _v_arr.push_back(p3);
     _v_arr.push_back(p4);
 
-    _min_p = find_min_p(p1, p3);
-    _min_p = find_min_p(p2, p4);
+    _min_p = find_min_p(p1, p4);
+    _max_p = find_max_p(p1, p4);
 }
 RailContour::~RailContour() {}
 

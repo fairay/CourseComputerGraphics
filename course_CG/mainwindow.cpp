@@ -201,7 +201,7 @@ void MainWindow::_move_light(double x, double y, double z)
     shared_ptr<ICommand> ptr;
     ptr = shared_ptr<ICommand>(new MoveLight(Vector(x, y, z)));
     _scene.execute(*ptr);
-    this->_paint();
+    // this->_paint();
 }
 void MainWindow::_rotate_camera(double x, double y, double z)
 {
@@ -209,7 +209,7 @@ void MainWindow::_rotate_camera(double x, double y, double z)
     shared_ptr<ICommand> ptr;
     ptr = shared_ptr<ICommand>(new RotateCamera(Vector(x, y, z)));
     _scene.execute(*ptr);
-    this->_paint();
+    // this->_paint();
 }
 void MainWindow::_change_light_i(double i)
 {
@@ -217,7 +217,7 @@ void MainWindow::_change_light_i(double i)
     shared_ptr<ICommand> ptr;
     ptr = shared_ptr<ICommand>(new SetLightI(i));
     _scene.execute(*ptr);
-    this->_paint();
+    // this->_paint();
 }
 
 void MainWindow::on_cam_move_f_clicked() { _move_camera(0, 0, -15); }
