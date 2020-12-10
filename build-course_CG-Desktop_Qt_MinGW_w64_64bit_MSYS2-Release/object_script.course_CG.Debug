@@ -38,4 +38,9 @@ debug/rails.o
 debug/mplate.o
 debug/composite_object.o
 debug/table.o
+debug/rail_contour.o
+debug/updater.o
+debug/update_mng.o
+debug/update_visitor.o
+debug/update_cmd.o
 debug/moc_mainwindow.o

@@ -1,9 +1,9 @@
 #include "scene.h"
 
-Scene::Scene()
+Scene::Scene(): _upd(new Updater())
 {
     set_camera(Camera(Point(500, 800, 1000), Vector(-0.5, 0.2, 0)));
-    set_light(LightSource(Point(0, 1200, 100), 500));
+    set_light(LightSource(Point(50, 1200, 110), 500));
 
      _test1_init();
 }
@@ -42,6 +42,9 @@ void Scene::set_drawer(shared_ptr<QDrawer> &ptr)
     _draw = ptr;
 }
 
+shared_ptr<Updater> Scene::get_updater() {return _upd;}
+void Scene::set_updater(shared_ptr<Updater> &ptr) { _upd = ptr;}
+
 void Scene::add_object(SceneObject* obj)
 {
     _arr.push_back(shared_ptr<SceneObject>(obj));
@@ -50,11 +53,27 @@ void Scene::add_object(shared_ptr<SceneObject> obj)
 {
     _arr.push_back(obj);
 }
+void Scene::add_ball(const Point& pos_, double r_, QRgb color_)
+{
+    CueBall* ball = new CueBall(pos_, r_, color_);
+    shared_ptr<CueBall> ball_ptr(ball);
+    ball_ptr->set_ptr(ball_ptr);
+    add_object(ball);
+}
 void Scene::remove_object(scene_iter &iter)
 {
     _arr.erase(iter);
 }
 
+double Scene::get_dt()
+{
+    if (_cur_t < 0)
+        _cur_t = clock() / 1000.0;
+    double new_t = clock() / 1000.0;
+    double dt = new_t - _cur_t;
+    _cur_t = new_t;
+    return dt;
+}
 
 void Scene::_test1_init()
 {
@@ -93,11 +112,15 @@ void Scene::_test1_init()
     add_object(new HeadRail(p1, p13, R));
     add_object(new HeadRail(p2, p24, R));
     */
+    add_ball(Point(0, 910, 0), 57);
+    add_ball(Point(120, 910, 0), 57);
+    add_ball(Point(240, 910, 0), 57);
+    add_ball(Point(360, 910, 0), 57);
 
-    add_object(new CueBall(Point(0, 910, 0), 57));
-    add_object(new CueBall(Point(120, 910, 0), 57));
-    add_object(new CueBall(Point(240, 910, 0), 57));
-    add_object(new CueBall(Point(360, 910, 0), 57));
+//    add_object(new CueBall(Point(0, 910, 0), 57));
+//    add_object(new CueBall(Point(120, 910, 0), 57));
+//    add_object(new CueBall(Point(240, 910, 0), 57));
+//    add_object(new CueBall(Point(360, 910, 0), 57));
 }
 
 

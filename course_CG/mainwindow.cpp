@@ -49,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent) :
     command::InitDraw cmd(_img);
     _scene.execute(cmd);
     _paint();
+    command::InitUpd cmd2;
+    _scene.execute(cmd2);
+    _paint();
+
 
     setMouseTracking(true);
     this->centralWidget()->setMouseTracking(true);
@@ -61,6 +65,12 @@ MainWindow::~MainWindow()
     free_rgb_map(_rgb_map, _scene_size.height());
 }
 
+/// Обновление сцены
+void MainWindow::_upd()
+{
+    command::Update cmd0;
+    _scene.execute(cmd0);
+}
 
 /// Отображение сцены
 void MainWindow::_paint()
@@ -109,9 +119,9 @@ void MainWindow::on_pushButton_clicked()
     ui->fps_count->setNum(static_cast<int>(0));
     time_t time = clock();
     size_t count = 0;
-    while(clock() - time < 1000)
+    while(clock() - time < 1000 * 100)
     {
-        // заполнение экрана очередным цветом
+        _upd();
         _paint();
 //        _fill_img(_color_arr[count % _color_arr.size()]);
         count++;

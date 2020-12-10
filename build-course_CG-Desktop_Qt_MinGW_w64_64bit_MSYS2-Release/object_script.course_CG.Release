@@ -38,4 +38,9 @@ release/rails.o
 release/mplate.o
 release/composite_object.o
 release/table.o
+release/rail_contour.o
+release/updater.o
+release/update_mng.o
+release/update_visitor.o
+release/update_cmd.o
 release/moc_mainwindow.o

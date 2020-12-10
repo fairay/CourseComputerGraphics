@@ -9,12 +9,17 @@
 class Rail: public VisibleObject
 {
 public:
+    Point cor_top, cor_back;
+    Point mid_top, mid_back;
+
     Rail(double w);
     explicit Rail(const Rail& other);
     virtual ~Rail();
 
     virtual void accept(ObjectVisitor& visitor);
     virtual SceneObject* clone();
+
+    double get_width();
 protected:
     QRgb _color;
     double _w = 170;

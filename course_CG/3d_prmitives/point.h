@@ -17,12 +17,13 @@ public:
     void rerotate(const Point& c, const Vector& v);
     void print();
     double distance(const Point& other);
+    double distance2d(const Point &other);
 
     void rotate_ox(const Point& c, double a);
     void rotate_oy(const Point& c, double a);
     void rotate_oz(const Point& c, double a);
+
+    void move(const Vector& v);
 };
-
-
 
 #endif // POINT_H

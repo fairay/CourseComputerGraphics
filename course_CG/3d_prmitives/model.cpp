@@ -82,3 +82,13 @@ void Model::_print()
     for (auto v : p_arr)
         v->print();
 }
+
+
+
+void Model::move(const Vector& v)
+{
+    _center.move(v);
+    for (size_t i=0; i<v_arr.size(); i++)
+        v_arr[i]->move(v);
+}
+

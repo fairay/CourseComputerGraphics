@@ -17,6 +17,12 @@ LongSkirting::LongSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     int zs = sign_double(cor_p.z);  // z offset sign
     double yu = cor_p.y + hu;
 
+    _cor_top = Point(cor_p.x - xs*R/sqrt(2),    yu, cor_p.z - zs*R*3/sqrt(2));
+    _cor_back = Point(cor_p.x + xs*w,           yu, cor_p.z - zs*R*3/sqrt(2));
+
+    _mid_top = Point(cor_p.x - xs*R/sqrt(2),    yu, mid_p.z + zs*R);
+    _mid_back = Point(cor_p.x + xs*w,           yu, mid_p.z + zs*R);
+
     // Top vertexes
     add_vertex(Point(cor_p.x + xs*w,            yu, cor_p.z + zs*w));            // 0
     add_vertex(Point(cor_p.x + xs*R/sqrt(2),    yu, cor_p.z + zs*R/sqrt(2)));
@@ -41,6 +47,7 @@ LongSkirting::LongSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     // Bottom vertexes
     double yd = cor_p.y - hd;
     double y0 = cor_p.y;
+
     add_vertex(Point(cor_p.x + xs*w,         yd, cor_p.z + zs*w));                    // 11
     add_vertex(Point(cor_p.x + xs*R/sqrt(2), yd, cor_p.z + zs*R/sqrt(2)));
     add_vertex(Point(cor_p.x + xs*R,         yd, cor_p.z));
@@ -80,6 +87,10 @@ void LongSkirting::_set_center(const Point& cor_p, const Point& mid_p, double w)
     _center.z = (cor_p.z + mid_p.z)/2;
 }
 
+Point LongSkirting::get_cor_top() const { return _cor_top;}
+Point LongSkirting::get_cor_back() const { return _cor_back;}
+Point LongSkirting::get_mid_top() const { return _mid_top;}
+Point LongSkirting::get_mid_back() const { return _mid_back;}
 
 
 
@@ -91,6 +102,11 @@ ShortSkirting::ShortSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     int xs = sign_double(cor_p.x);  // x offset sign
     int zs = sign_double(cor_p.z);  // z offset sign
     double yu = cor_p.y + hu;
+
+    _cor_top = Point(cor_p.x - xs*R*3/sqrt(2),  yu, cor_p.z - zs*R/sqrt(2));
+    _cor_back = Point(cor_p.x - xs*R*3/sqrt(2), yu, cor_p.z + zs*w);
+    _mid_top = Point(mid_p.x,                   yu, cor_p.z - zs*R/sqrt(2));
+    _mid_back = Point(mid_p.x,                  yu, cor_p.z + zs*w);
 
     // Top vertexes
     add_vertex(Point(cor_p.x + xs*w,            yu, cor_p.z + zs*w));          // 0
@@ -141,4 +157,10 @@ void ShortSkirting::_set_center(const Point& cor_p, const Point& mid_p, double w
     else
         _center.z = cor_p.z - w/2;
 }
+
+Point ShortSkirting::get_cor_top() const { return _cor_top;}
+Point ShortSkirting::get_cor_back() const { return _cor_back;}
+Point ShortSkirting::get_mid_top() const { return _mid_top;}
+Point ShortSkirting::get_mid_back() const { return _mid_back;}
+
 

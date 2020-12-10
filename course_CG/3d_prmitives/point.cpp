@@ -45,10 +45,23 @@ void Point::rotate_oz(const Point& c, double a)
     x = x1; y = y1;
 }
 
+void Point::move(const Vector& v)
+{
+    this->x += v.x;
+    this->y += v.y;
+    this->z += v.z;
+}
+
+
 double Point::distance(const Point& other)
 {
     return sqrt((this->x - other.x)*(this->x - other.x) +
                 (this->y - other.y)*(this->y - other.y) +
+                (this->z - other.z)*(this->z - other.z));
+}
+double Point::distance2d(const Point& other)
+{
+    return sqrt((this->x - other.x)*(this->x - other.x) +
                 (this->z - other.z)*(this->z - other.z));
 }
 
@@ -79,3 +92,5 @@ void Vertex::normalize()
 {
     n.normalize();
 }
+
+

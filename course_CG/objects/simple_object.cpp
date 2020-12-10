@@ -14,5 +14,6 @@ shared_ptr<Model> VisibleObject::get_model()
     return _model;
 }
 
+
 InvisibleObject::InvisibleObject() {}
 InvisibleObject::~InvisibleObject() {}

@@ -64,7 +64,12 @@ SOURCES += \
     objects/rails.cpp \
     3d_prmitives/mplate.cpp \
     objects/composite_object.cpp \
-    objects/table.cpp
+    objects/table.cpp \
+    updater/rail_contour.cpp \
+    updater/updater.cpp \
+    managers/update_mng.cpp \
+    objects/visitors/update_visitor.cpp \
+    commands/update_cmd.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -110,7 +115,11 @@ HEADERS += \
     3d_prmitives/mplate.h \
     objects/composite_object.h \
     objects/table.h \
-    updater/updater.h
+    updater/updater.h \
+    updater/rail_contour.h \
+    managers/update_mng.h \
+    objects/visitors/update_visitor.h \
+    commands/update_cmd.h
 
 FORMS += \
         mainwindow.ui

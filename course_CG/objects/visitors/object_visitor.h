@@ -16,6 +16,9 @@ public:
     ObjectVisitor();
     virtual ~ObjectVisitor() = 0;
 
+    virtual bool get_flag();
+    virtual void reset_flag();
+
     virtual void visit(Camera& point) = 0;
     virtual void visit(LightSource& point) = 0;
 

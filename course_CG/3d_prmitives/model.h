@@ -22,6 +22,8 @@ public:
 
     void normalize_vertexes();
 
+    void move(const Vector& v);
+
 protected:
     Point _center;
 

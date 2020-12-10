@@ -14,6 +14,7 @@
 #include "objects/table.h"
 
 #include "visual/drawer.h"
+#include "updater/updater.h"
 
 using scene_iter = vector<shared_ptr<SceneObject>>::iterator;
 using scene_citer = vector<shared_ptr<SceneObject>>::const_iterator;
@@ -42,15 +43,22 @@ public:
     shared_ptr<QDrawer> get_drawer();
     void set_drawer(const QDrawer&);
     void set_drawer(shared_ptr<QDrawer>&);
+    shared_ptr<Updater> get_updater();
+    void set_updater(shared_ptr<Updater> &ptr);
+
+    double get_dt();
 
     void add_object(SceneObject* obj);
     void add_object(shared_ptr<SceneObject> obj);
+    void add_ball(const Point& pos_, double r_, QRgb color_=QColor(Qt::red).rgba());
     void remove_object(scene_iter& iter);
 
 private:
+    double _cur_t = -1;
     vector<shared_ptr<SceneObject>> _arr;
     shared_ptr<Camera> _cam;
     shared_ptr<LightSource> _light;
+    shared_ptr<Updater> _upd;
 
     shared_ptr<QDrawer> _draw;
 

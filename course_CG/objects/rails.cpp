@@ -26,7 +26,11 @@ SceneObject* Rail::clone()
 SideRail::SideRail(const Point& cor_p, const Point& mid_p,
                    double R, double w): Rail(w)
 {
-    Model* m_ptr = new LongSkirting(_color, cor_p, mid_p, _hu, _hd, _w, R);
+    LongSkirting* m_ptr = new LongSkirting(_color, cor_p, mid_p, _hu, _hd, _w, R);
+    cor_top = m_ptr->get_cor_top();
+    cor_back = m_ptr->get_cor_back();
+    mid_top = m_ptr->get_mid_top();
+    mid_back = m_ptr->get_mid_back();
     this->_model = shared_ptr<Model>(m_ptr);
 }
 SideRail::SideRail(const SideRail& other): Rail(other) {}
@@ -36,7 +40,11 @@ SideRail::~SideRail() {}
 HeadRail::HeadRail(const Point& cor_p, const Point& mid_p,
                    double R, double w): Rail(w)
 {
-    Model* m_ptr = new ShortSkirting(_color, cor_p, mid_p, _hu, _hd, _w, R);
+    ShortSkirting* m_ptr = new ShortSkirting(_color, cor_p, mid_p, _hu, _hd, _w, R);
+    cor_top = m_ptr->get_cor_top();
+    cor_back = m_ptr->get_cor_back();
+    mid_top = m_ptr->get_mid_top();
+    mid_back = m_ptr->get_mid_back();
     this->_model = shared_ptr<Model>(m_ptr);
 }
 HeadRail::HeadRail(const HeadRail& other): Rail(other) {}

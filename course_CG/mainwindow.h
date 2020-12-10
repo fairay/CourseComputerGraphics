@@ -37,41 +37,26 @@ private slots:
     void keyPressEvent(QKeyEvent*);
 
     void on_cam_move_f_clicked();
-
     void on_cam_move_l_clicked();
-
     void on_cam_move_r_clicked();
-
     void on_cam_move_b_clicked();
-
     void on_cam_move_u_clicked();
-
     void on_cam_move_d_clicked();
 
     void on_cam_rot_u_clicked();
-
     void on_cam_rot_l_clicked();
-
     void on_cam_rot_d_clicked();
-
     void on_cam_rot_r_clicked();
 
     void on_lig_move_f_clicked();
-
     void on_lig_move_b_clicked();
-
     void on_lig_move_l_clicked();
-
     void on_lig_move_r_clicked();
-
     void on_lig_move_u_clicked();
-
     void on_lig_move_d_clicked();
-
     void on_lig_i_valueChanged(int value);
 
     void on_cam_info_clicked();
-
     void on_lig_info_clicked();
 
 private:
@@ -91,6 +76,7 @@ private:
     void _fill_img(QColor color);
     void _test_init();
 
+    void _upd();
     void _paint();
 
     void _move_camera(double x, double y, double z);
