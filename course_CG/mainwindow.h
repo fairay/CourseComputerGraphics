@@ -19,6 +19,7 @@
 using namespace std;
 
 typedef QRgb** RgbMap;
+#define MAX_TIME 30*60
 
 namespace Ui {
 class MainWindow;
@@ -75,6 +76,7 @@ private:
     vector<QColor> _color_arr = { Qt::red, Qt::green, Qt::blue, Qt::white, Qt::magenta, Qt::yellow };
     void _fill_img(QColor color);
     void _test_init();
+    void _main_cycle();
 
     void _upd();
     void _paint();

@@ -112,7 +112,7 @@ void Scene::_test1_init()
     add_object(new HeadRail(p1, p13, R));
     add_object(new HeadRail(p2, p24, R));
     */
-    add_ball(Point(0, 910, 0), 57);
+    add_ball(Point(0, 910, 0), 57, QColor(130, 0, 0).rgba());
     add_ball(Point(120, 910, 0), 57);
     add_ball(Point(240, 910, 0), 57);
     add_ball(Point(360, 910, 0), 57);

@@ -114,20 +114,27 @@ void MainWindow::_fill_img(QColor color)
 }
 
 /// Тест FPS
-void MainWindow::on_pushButton_clicked()
+void MainWindow::_main_cycle()
 {
-    ui->fps_count->setNum(static_cast<int>(0));
     time_t time = clock();
-    size_t count = 0;
-    while(clock() - time < 1000 * 100)
+    time_t pre_time = time - 1;
+    while(clock() - time < 1000*MAX_TIME)
     {
         _upd();
         _paint();
-//        _fill_img(_color_arr[count % _color_arr.size()]);
-        count++;
+
+        time_t new_time = clock();
+        ui->fps_count->setNum(static_cast<int>(1000.0 / (new_time - pre_time)));
+        pre_time = new_time;
     }
-    cout << "FPS: " << count << endl;
-    ui->fps_count->setNum(static_cast<int>(count));
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->fps_count->setNum(static_cast<int>(0));
+    ui->pushButton->setVisible(false); //setEnabled(false);
+    _main_cycle();
+    ui->pushButton->setVisible(true);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* event)
@@ -193,7 +200,7 @@ void MainWindow::_move_camera(double x, double y, double z)
     shared_ptr<ICommand> ptr;
     ptr = shared_ptr<ICommand>(new MoveCamera(Vector(x, y, z)));
     _scene.execute(*ptr);
-    this->_paint();
+    // this->_paint();
 }
 void MainWindow::_move_light(double x, double y, double z)
 {

@@ -25,7 +25,7 @@ private:
     void _move_ball(shared_ptr<CueBall>& ball, double dt);
 
     void _collide_rail(CueBall& ball, const Point& col_p);
-    void _collide_balls(shared_ptr<CueBall>& ball1, shared_ptr<CueBall>& ball2);
+    void _collide_balls(CueBall& ball1, CueBall& ball2);
 };
 
 #endif // UPDATER_H

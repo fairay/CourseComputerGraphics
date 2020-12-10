@@ -2,7 +2,7 @@
 #include "visitors/object_visitor.h"
 
 CueBall::CueBall(const Point& pos_, double r_, QRgb color_):
-    r(r_), pos(pos_), v(100, 0, 100)
+    r(r_), pos(pos_), v(100, 0, 150)
 {
     _color = color_;
     Model* m_ptr = new BallModel(_color, r, pos);
