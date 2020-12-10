@@ -109,7 +109,8 @@ HEADERS += \
     objects/rails.h \
     3d_prmitives/mplate.h \
     objects/composite_object.h \
-    objects/table.h
+    objects/table.h \
+    updater/updater.h
 
 FORMS += \
         mainwindow.ui

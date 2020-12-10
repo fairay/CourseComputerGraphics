@@ -87,8 +87,17 @@ void QDrawer::draw_point(const Point &p, QRgb color, double i, const Point &shad
     {
         int sx = static_cast<int>(round(shad_p.x)) + w12;
         int sy = -static_cast<int>(round(shad_p.y)) + h12;
-        if (sy >= 0 && sy < h && sx >= 0 && sx < w &&  _shadow_map[sy][sx] > shad_p.z + 12)
-        {   i = BG_LIGHT; }
+        if (sy >= 0 && sy < h && sx >= 0 && sx < w)
+        {
+            double dz = _shadow_map[sy][sx] - shad_p.z;
+            if (dz > FULL_SHADOW_Z)
+                i = BG_LIGHT;
+            else if (dz > HALF_SHADOW_Z)
+            {
+                double k = (dz - HALF_SHADOW_Z)/(FULL_SHADOW_Z - HALF_SHADOW_Z);
+                i = BG_LIGHT*k + i*(1-k);
+            }
+        }
         _color_map[y][x] = i_color(color, i);
         _z_map[y][x] = p.z;
     }
