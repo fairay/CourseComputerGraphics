@@ -18,6 +18,9 @@ public:
 
     virtual void accept(ObjectVisitor& visitor);
     virtual SceneObject* clone();
+
+    Point get_min_border();
+    Point get_max_border();
 private:
     double _leg_h = 750;
     double _len = 2800;

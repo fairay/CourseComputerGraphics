@@ -22,6 +22,7 @@ void InitUpdVisitor::visit(Rail& obj)
 
 void InitUpdVisitor::visit(Table& obj)
 {
+    _upd->add_borders(obj.get_min_border(), obj.get_max_border());
     for (auto sub_obj: obj)
         sub_obj->accept(*this);
 }

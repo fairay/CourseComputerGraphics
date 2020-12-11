@@ -31,13 +31,15 @@ SceneObject* Table::clone()
     return (new Table(*this));
 }
 
+Point Table::get_max_border() { return Point( _wide/2,  _leg_h+_plate_h,    _len/2); }
+Point Table::get_min_border() { return Point(-_wide/2,  _leg_h+_plate_h,   -_len/2); }
+
 void Table::_init_models()
 {
     _init_legs();
     _init_plates();
     _init_rails();
 }
-
 void Table::_init_legs()
 {
     double x_off = 0.8 * _wide/2;
@@ -47,14 +49,12 @@ void Table::_init_legs()
     add_object(new TableLeg(-x_off, z_off, _leg_h));
     add_object(new TableLeg(x_off, z_off, _leg_h));
 }
-
 void Table::_init_plates()
 {
     add_object(new Plate(_leg_h+_plate_h, _wide, _len, true));
     add_object(new Plate(_leg_h+_plate_h, _wide, _len, false));
     add_object(new Plate(_leg_h, _wide+_rail_w*2+1, _len+_rail_w*2+1));
 }
-
 void Table::_init_rails()
 {
     Point p1(_wide/2, _leg_h+_plate_h, _len/2);

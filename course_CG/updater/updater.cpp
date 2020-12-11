@@ -19,6 +19,8 @@ void Updater::update(double dt)
     for (size_t i=0; i<_active.size(); i++)
         for (size_t j=i+1; j<_active.size(); j++)
             _collide_balls(*_active[i], *_active[j]);
+
+    _detect_scored();
 }
 
 void Updater::_move_ball(shared_ptr<CueBall>& ball, double dt)
@@ -100,6 +102,34 @@ void Updater::_collide_balls(CueBall &ball1, CueBall &ball2)
     // ball2.pos.x -= p1*(1-k);    ball2.pos.z -= p2*(1-k);
     ball1.move(Vector(p1*k, 0, p2*k));
     ball2.move(Vector(p1*(k-1), 0, p2*(k-1)));
+}
+
+void Updater::_detect_scored()
+{
+    for (auto i=_active.begin(); i < _active.end();)
+    {
+        if (_is_out(*i))
+        {
+            _scored.push_back(*i);
+            _active.erase(i);
+        }
+        else
+            i++;
+    }
+}
+
+bool Updater::_is_out(shared_ptr<CueBall>& ball)
+{
+    return (_min_p.x > ball->pos.x || _max_p.x < ball->pos.x) ||
+           (_min_p.z > ball->pos.z || _max_p.z < ball->pos.z);
+}
+
+
+
+void Updater::add_borders(const Point& min_p, const Point& max_p)
+{
+    _min_p = min_p;
+    _max_p = max_p;
 }
 
 void Updater::add_ball(const shared_ptr<CueBall> &ball)
