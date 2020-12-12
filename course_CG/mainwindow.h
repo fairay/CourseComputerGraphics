@@ -36,6 +36,7 @@ public:
 private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent*);
+    void mousePressEvent(QMouseEvent*);
 
     void on_cam_move_f_clicked();
     void on_cam_move_l_clicked();
@@ -86,6 +87,8 @@ private:
 
     void _move_light(double x, double y, double z);
     void _change_light_i(double i);
+
+    void _graphics_click(int x, int y);
 };
 
 #endif // MAINWINDOW_H

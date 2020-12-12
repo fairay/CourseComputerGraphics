@@ -50,6 +50,7 @@ public:
 
     void add_object(SceneObject* obj);
     void add_object(shared_ptr<SceneObject> obj);
+    void add_main_ball(const Point& pos_, double r_, QRgb color_=QColor(130, 0, 0).rgba());
     void add_ball(const Point& pos_, double r_, QRgb color_=QColor(235, 227, 171).rgba());
     void remove_object(scene_iter& iter);
 

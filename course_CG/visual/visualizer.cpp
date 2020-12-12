@@ -176,6 +176,9 @@ void Visualizer::draw_shadow(Model& m)
 }
 
 
+Point Visualizer::proj_point(const Point &p) { return _proj_point(p);}
+Point Visualizer::reproj_point(const Point &p) { return _reproj_point(p); }
+
 void Visualizer::clear()
 {
     _draw->fill_z();
@@ -195,10 +198,10 @@ Point Visualizer::_proj_point(const Point& p)
     res.rotate(cam_pos, _camera.get_dir());
 
     double k;
-    if (cam_pos.z - res.z <= 0)
-        throw 2;
-    else
-        k = CAM_COEF / (cam_pos.z - res.z);
+//    if (cam_pos.z - res.z <= 0)
+//        throw 2;
+//    else
+//        k = CAM_COEF / (cam_pos.z - res.z);
 
     Point p0(0, 0, 0);
     // p0.rotate(cam_pos, _camera.get_dir());

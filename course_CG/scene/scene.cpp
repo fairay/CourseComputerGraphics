@@ -53,6 +53,13 @@ void Scene::add_object(shared_ptr<SceneObject> obj)
 {
     _arr.push_back(obj);
 }
+void Scene::add_main_ball(const Point& pos_, double r_, QRgb color_)
+{
+    CueBall* ball = new CueBall(pos_, r_, color_, true);
+    shared_ptr<CueBall> ball_ptr(ball);
+    ball_ptr->set_ptr(ball_ptr);
+    add_object(ball);
+}
 void Scene::add_ball(const Point& pos_, double r_, QRgb color_)
 {
     CueBall* ball = new CueBall(pos_, r_, color_);
@@ -112,7 +119,7 @@ void Scene::_test1_init()
     add_object(new HeadRail(p1, p13, R));
     add_object(new HeadRail(p2, p24, R));
     */
-    add_ball(Point(0, 910, 0), 57, QColor(130, 0, 0).rgba());
+    add_main_ball(Point(0, 910, 0), 57);
     add_ball(Point(120, 910, 0), 57);
     add_ball(Point(240, 910, 0), 57);
     add_ball(Point(360, 910, 0), 57);

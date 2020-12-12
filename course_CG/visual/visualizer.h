@@ -31,6 +31,9 @@ public:
     void draw_model(Model& m);
     void draw_shadow(Model& m);
 
+    Point proj_point(const Point &p);
+    Point reproj_point(const Point &p);
+
     void clear();
     void show();
 

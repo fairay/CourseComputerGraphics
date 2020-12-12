@@ -27,6 +27,18 @@ public:
     virtual void execute();
 };
 
+class ShotManager: public IManager
+{
+public:
+    ShotManager(weak_ptr<Scene> scene_ptr, const Point& click_p, double power);
+    virtual ~ShotManager();
+
+    virtual void execute();
+private:
+    Point _click_p;
+    double _power;
+};
+
 } // namespace manager
 
 

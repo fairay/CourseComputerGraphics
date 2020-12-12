@@ -178,6 +178,31 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     }
 }
 
+void MainWindow::mousePressEvent(QMouseEvent* event)
+{
+    _graphics_click(event->x(), event->y());
+}
+
+void MainWindow::_graphics_click(int x, int y)
+{
+    static QGraphicsView* gr = ui->graphicsView;
+    static int x_size = gr->x(), y_size = gr->y();
+    x -= x_size;   y -= y_size + 16;
+    if (x > 0 && x < gr->size().width() && y>0 && y<gr->size().height())
+        cout << x << " " << y << endl;
+    else
+        return;
+
+    x -= gr->size().width()/2;    y = -y + gr->size().height()/2;
+    double power = ui->hit_power->value() / 100.0;
+
+    using namespace command;
+    shared_ptr<ICommand> ptr;
+    ptr = shared_ptr<ICommand>(new MakeHit(Point(x, y, 0), power));
+    _scene.execute(*ptr);
+}
+
+
 void MainWindow::mouseMoveEvent(QMouseEvent *eventMove)
 {
     static int pre_x = eventMove->x();

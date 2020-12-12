@@ -23,6 +23,27 @@ void Updater::update(double dt)
     _detect_scored();
 }
 
+void Updater::make_hit(const Point& dest_p, double power)
+{
+    shared_ptr<CueBall> ball;
+    for (size_t i=0; i<_active.size(); i++)
+        if (_active[i]->is_main())
+        {
+            ball = _active[i];
+            break;
+        }
+    if (!ball)
+        return;
+
+    Vector dir(ball->pos, dest_p);
+    dir.y = 0;
+    dir.normalize();
+
+    double speed = power*MAX_SPEED;
+    ball->v.x = dir.x*speed;
+    ball->v.z = dir.z*speed;
+}
+
 void Updater::_move_ball(shared_ptr<CueBall>& ball, double dt)
 {
     Vector& v = ball->v;
@@ -120,11 +141,26 @@ void Updater::_detect_scored()
 
 bool Updater::_is_out(shared_ptr<CueBall>& ball)
 {
-    return (_min_p.x > ball->pos.x || _max_p.x < ball->pos.x) ||
-           (_min_p.z > ball->pos.z || _max_p.z < ball->pos.z);
+//    return (_min_p.x > ball->pos.x || _max_p.x < ball->pos.x) ||
+//           (_min_p.z > ball->pos.z || _max_p.z < ball->pos.z);
+    return _is_out(ball->pos);
+}
+bool Updater::_is_out(const Point& p)
+{
+    return (_min_p.x > p.x || _max_p.x < p.x) ||
+           (_min_p.z > p.z || _max_p.z < p.z);
 }
 
-
+bool Updater::is_out(const Point& p) { return _is_out(p); }
+bool Updater::is_motionless()
+{
+    for (size_t i=0; i<_active.size(); i++)
+        if (_active[i]->v.length() > 1e-5)
+            return false;
+    return true;
+}
+Point Updater::get_min_point() { return _min_p; }
+Point Updater::get_max_point() { return _max_p; }
 
 void Updater::add_borders(const Point& min_p, const Point& max_p)
 {

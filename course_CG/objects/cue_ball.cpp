@@ -1,8 +1,8 @@
 #include "cue_ball.h"
 #include "visitors/object_visitor.h"
 
-CueBall::CueBall(const Point& pos_, double r_, QRgb color_):
-    r(r_), pos(pos_), v(100, 0, 150)
+CueBall::CueBall(const Point& pos_, double r_, QRgb color_, bool is_main):
+    r(r_), pos(pos_), v(100, 0, 150), _is_main(is_main)
 {
     _color = color_;
     Model* m_ptr = new BallModel(_color, r, pos);
@@ -12,6 +12,7 @@ CueBall::CueBall(const CueBall& other):
     VisibleObject(other), r(other.r), pos(other.pos), v(other.v)
 {
     _color = other._color;
+    _is_main = other._is_main;
 }
 CueBall::~CueBall() { _self_ptr.reset(); }
 
@@ -23,6 +24,8 @@ SceneObject* CueBall::clone()
 {
     return (new CueBall(*this));
 }
+
+bool CueBall::is_main() { return _is_main; }
 
 void CueBall::move(const Vector &v)
 {

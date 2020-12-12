@@ -25,6 +25,19 @@ public:
     virtual void execute(weak_ptr<Scene> scene);
 };
 
+class MakeHit: public ICommand
+{
+public:
+    MakeHit(const Point& click_p, double power);
+    virtual ~MakeHit();
+
+    virtual void execute(weak_ptr<Scene> scene);
+
+private:
+    Point _click_p;
+    double _power;
+};
+
 } // command
 
 
