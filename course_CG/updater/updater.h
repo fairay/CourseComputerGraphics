@@ -12,6 +12,7 @@ public:
     Updater();
     ~Updater();
 
+    void reset();
     void update(double dt);
     void make_hit(const Point& dest_p, double power);
 

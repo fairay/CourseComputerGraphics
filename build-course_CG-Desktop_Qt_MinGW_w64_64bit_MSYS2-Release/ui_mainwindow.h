@@ -64,6 +64,7 @@ public:
     QSlider *hit_power;
     QLabel *label_2;
     QPushButton *pushButton;
+    QPushButton *file_button;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -72,7 +73,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1130, 654);
+        MainWindow->resize(1130, 665);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -203,7 +204,7 @@ public:
         line_3->setFrameShadow(QFrame::Sunken);
         hit_frame = new QFrame(centralWidget);
         hit_frame->setObjectName(QString::fromUtf8("hit_frame"));
-        hit_frame->setGeometry(QRect(820, 440, 301, 161));
+        hit_frame->setGeometry(QRect(820, 440, 301, 111));
         hit_frame->setFrameShape(QFrame::StyledPanel);
         hit_frame->setFrameShadow(QFrame::Raised);
         hit_info = new QPushButton(hit_frame);
@@ -214,25 +215,28 @@ public:
         hit_label->setGeometry(QRect(0, 0, 241, 61));
         hit_power = new QSlider(hit_frame);
         hit_power->setObjectName(QString::fromUtf8("hit_power"));
-        hit_power->setGeometry(QRect(10, 120, 271, 31));
+        hit_power->setGeometry(QRect(10, 90, 271, 21));
         hit_power->setMinimum(1);
         hit_power->setValue(50);
         hit_power->setOrientation(Qt::Horizontal);
         label_2 = new QLabel(hit_frame);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(10, 80, 271, 31));
+        label_2->setGeometry(QRect(10, 60, 271, 31));
         QFont font2;
         font2.setPointSize(10);
         label_2->setFont(font2);
         label_2->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(hit_frame);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(0, 0, 301, 161));
+        pushButton->setGeometry(QRect(0, 0, 301, 111));
         QFont font3;
         font3.setPointSize(18);
         font3.setBold(false);
         font3.setWeight(50);
         pushButton->setFont(font3);
+        file_button = new QPushButton(centralWidget);
+        file_button->setObjectName(QString::fromUtf8("file_button"));
+        file_button->setGeometry(QRect(820, 560, 301, 51));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -284,6 +288,7 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "\320\241\320\270\320\273\320\260 \321\203\320\264\320\260\321\200\320\260", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "\320\235\320\260\321\207\320\260\321\202\321\214\n"
 " \321\201\320\270\320\274\321\203\320\273\321\217\321\206\320\270\321\216", nullptr));
+        file_button->setText(QApplication::translate("MainWindow", "\320\227\320\220\320\224\320\220\320\242\320\254 \320\244\320\220\320\231\320\233", nullptr));
     } // retranslateUi
 
 };

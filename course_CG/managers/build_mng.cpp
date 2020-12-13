@@ -1,4 +1,5 @@
 #include "build_mng.h"
+#include "update_mng.h"
 
 using namespace manager;
 
@@ -69,5 +70,7 @@ void BuildManager::execute()
         pos_arr[i].print();
         scene->add_ball(pos_arr[i], R);
     }
+
+    manager::InitUpdaterManager(_scene).execute();
     // new_arr.push_back(shared_ptr<SceneObject>(new CueBall(pos_arr[0], R, )));
 }

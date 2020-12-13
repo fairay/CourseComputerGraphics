@@ -5,6 +5,12 @@ using namespace std;
 Updater::Updater() {}
 Updater::~Updater() {}
 
+void Updater::reset()
+{
+    _active.clear();
+    _scored.clear();
+    _rails.clear();
+}
 void Updater::update(double dt)
 {
     for (size_t i=0; i<_active.size(); i++)

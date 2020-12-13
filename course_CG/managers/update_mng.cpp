@@ -10,6 +10,7 @@ void InitUpdaterManager::execute()
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "Init Updater Manager");
     shared_ptr<Updater> upd = _scene.lock()->get_updater();
+    upd->reset();
 
     shared_ptr<ObjectVisitor> visitor(new InitUpdVisitor(upd));
     for (auto obj: *_scene.lock())

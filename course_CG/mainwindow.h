@@ -7,6 +7,8 @@
 #include <QGraphicsPixmapItem>
 #include <QWidget>
 #include <QKeyEvent>
+#include <QFileDialog>
+#include <QMessageBox>
 
 #include <memory>
 #include <iostream>
@@ -61,6 +63,8 @@ private slots:
     void on_cam_info_clicked();
     void on_lig_info_clicked();
 
+    void on_file_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QGraphicsScene> _qscene;
@@ -73,6 +77,7 @@ private:
     QGraphicsPixmapItem* q_pmap;
     QColor _draw_color = Qt::black;
     RgbMap _rgb_map;
+    bool _on_run = false;
 
     vector<QColor> _color_arr = { Qt::red, Qt::green, Qt::blue, Qt::white, Qt::magenta, Qt::yellow };
     void _fill_img(QColor color);
