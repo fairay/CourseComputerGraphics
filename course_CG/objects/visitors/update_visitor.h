@@ -25,5 +25,25 @@ private:
 };
 
 
+class PostUpdVisitor: public ObjectVisitor
+{
+public:
+    PostUpdVisitor(shared_ptr<Updater>&);
+    virtual ~PostUpdVisitor();
+
+    virtual void visit(Camera& obj);
+    virtual void visit(LightSource& obj);
+
+    virtual void visit(TableLeg& obj);
+    virtual void visit(CueBall& obj);
+    virtual void visit(Plate& obj);
+    virtual void visit(Rail& obj);
+
+    virtual void visit(Table& obj);
+
+private:
+    shared_ptr<Updater> _upd;
+};
+
 
 #endif // UPDATE_VISITOR_H

@@ -23,6 +23,7 @@ public:
 
     bool is_out(const Point& p);
     bool is_motionless();
+    bool is_scored(const CueBall& ball);
 
     Point get_min_point();
     Point get_max_point();

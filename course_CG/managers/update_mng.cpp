@@ -29,6 +29,20 @@ void UpdateManager::execute()
     double dt = _scene.lock()->get_dt();
 
     upd->update(dt);
+
+    shared_ptr<ObjectVisitor> visitor(new PostUpdVisitor(upd));
+
+
+    for (auto i = _scene.lock()->begin(); i < _scene.lock()->end();)
+    {
+        try {
+            (*i)->accept(*visitor);
+        }  catch (int val) {
+            _scene.lock()->remove_object(i);
+            continue;
+        }
+        i++;
+    }
 }
 
 #include "visual/visualizer.h"

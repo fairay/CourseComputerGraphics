@@ -26,3 +26,32 @@ void InitUpdVisitor::visit(Table& obj)
     for (auto sub_obj: obj)
         sub_obj->accept(*this);
 }
+
+
+
+
+
+PostUpdVisitor::PostUpdVisitor(shared_ptr<Updater>& upd):
+    _upd(upd) {}
+PostUpdVisitor::~PostUpdVisitor() {}
+
+void PostUpdVisitor::visit(Camera&) {}
+void PostUpdVisitor::visit(LightSource&) {}
+
+void PostUpdVisitor::visit(TableLeg&) {}
+void PostUpdVisitor::visit(CueBall& obj)
+{
+    // _upd->add_ball(obj.get_ptr());
+    if (_upd->is_scored(obj))
+    {
+        if (obj.is_main())
+            throw 2;
+        else
+            throw 1;
+    }
+}
+void PostUpdVisitor::visit(Plate&) {}
+void PostUpdVisitor::visit(Rail&) {}
+
+void PostUpdVisitor::visit(Table&) {}
+

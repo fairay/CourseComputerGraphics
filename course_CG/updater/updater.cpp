@@ -165,6 +165,14 @@ bool Updater::is_motionless()
             return false;
     return true;
 }
+bool Updater::is_scored(const CueBall& ball)
+{
+    for (auto sc_ball : _scored)
+        if (sc_ball->pos.distance2d(ball.pos) < 1e-3)
+            return true;
+    return false;
+}
+
 Point Updater::get_min_point() { return _min_p; }
 Point Updater::get_max_point() { return _max_p; }
 
