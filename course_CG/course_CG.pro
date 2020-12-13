@@ -69,7 +69,10 @@ SOURCES += \
     updater/updater.cpp \
     managers/update_mng.cpp \
     objects/visitors/update_visitor.cpp \
-    commands/update_cmd.cpp
+    commands/update_cmd.cpp \
+    managers/build_mng.cpp \
+    errors/builder_errors.cpp \
+    commands/builder_cmd.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -119,7 +122,11 @@ HEADERS += \
     updater/rail_contour.h \
     managers/update_mng.h \
     objects/visitors/update_visitor.h \
-    commands/update_cmd.h
+    commands/update_cmd.h \
+    builder/builder.h \
+    managers/build_mng.h \
+    errors/builder_errors.h \
+    commands/builder_cmd.h
 
 FORMS += \
         mainwindow.ui

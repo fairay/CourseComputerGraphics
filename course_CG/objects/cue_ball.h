@@ -1,6 +1,8 @@
 #ifndef CUE_BALL_H
 #define CUE_BALL_H
 
+#define MIN_BALL_R  10
+
 #include "simple_object.h"
 #include "3d_prmitives/ball_model.h"
 

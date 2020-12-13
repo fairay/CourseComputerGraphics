@@ -43,4 +43,7 @@ debug/updater.o
 debug/update_mng.o
 debug/update_visitor.o
 debug/update_cmd.o
+debug/build_mng.o
+debug/builder_errors.o
+debug/builder_cmd.o
 debug/moc_mainwindow.o

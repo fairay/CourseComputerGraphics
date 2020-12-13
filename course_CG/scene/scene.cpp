@@ -10,6 +10,8 @@ Scene::Scene(): _upd(new Updater())
 Scene::~Scene() {}
 
 size_t Scene::get_size() { return _arr.size(); }
+void Scene::clear_obj() { _arr.clear();
+                          cout << _arr.size() << endl; }
 
 shared_ptr<Camera> Scene::get_camera()
 {
@@ -57,6 +59,7 @@ void Scene::add_main_ball(const Point& pos_, double r_, QRgb color_)
 {
     CueBall* ball = new CueBall(pos_, r_, color_, true);
     shared_ptr<CueBall> ball_ptr(ball);
+    _ball_arr.push_back(ball_ptr);
     ball_ptr->set_ptr(ball_ptr);
     add_object(ball);
 }
@@ -64,6 +67,7 @@ void Scene::add_ball(const Point& pos_, double r_, QRgb color_)
 {
     CueBall* ball = new CueBall(pos_, r_, color_);
     shared_ptr<CueBall> ball_ptr(ball);
+    _ball_arr.push_back(ball_ptr);
     ball_ptr->set_ptr(ball_ptr);
     add_object(ball);
 }
@@ -119,15 +123,13 @@ void Scene::_test1_init()
     add_object(new HeadRail(p1, p13, R));
     add_object(new HeadRail(p2, p24, R));
     */
-    add_main_ball(Point(0, 910, 0), 57);
-    add_ball(Point(120, 910, 0), 57);
-    add_ball(Point(240, 910, 0), 57);
-    add_ball(Point(360, 910, 0), 57);
 
-//    add_object(new CueBall(Point(0, 910, 0), 57));
-//    add_object(new CueBall(Point(120, 910, 0), 57));
-//    add_object(new CueBall(Point(240, 910, 0), 57));
-//    add_object(new CueBall(Point(360, 910, 0), 57));
+    add_main_ball(Point(0, 910, 0), 57);
+
+//    add_ball(Point(120, 910, 0), 57);
+//    add_ball(Point(240, 910, 0), 57);
+//    add_ball(Point(360, 910, 0), 57);
+
 }
 
 

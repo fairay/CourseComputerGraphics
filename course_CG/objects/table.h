@@ -1,6 +1,9 @@
 #ifndef TABLE_H
 #define TABLE_H
 
+#define MIN_H_TABLE 100
+#define MIN_LW_TABLE 200
+
 #include "composite_object.h"
 
 #include "leg.h"

@@ -16,6 +16,7 @@
 #include "visual/drawer.h"
 #include "updater/updater.h"
 
+
 using scene_iter = vector<shared_ptr<SceneObject>>::iterator;
 using scene_citer = vector<shared_ptr<SceneObject>>::const_iterator;
 
@@ -28,6 +29,7 @@ public:
     ~Scene();
 
     size_t get_size();
+    void clear_obj();
 
     scene_iter begin()      { return _arr.begin(); }
     scene_iter end()        { return _arr.end(); }
@@ -57,6 +59,7 @@ public:
 private:
     double _cur_t = -1;
     vector<shared_ptr<SceneObject>> _arr;
+    vector<shared_ptr<CueBall>> _ball_arr;
     shared_ptr<Camera> _cam;
     shared_ptr<LightSource> _light;
     shared_ptr<Updater> _upd;

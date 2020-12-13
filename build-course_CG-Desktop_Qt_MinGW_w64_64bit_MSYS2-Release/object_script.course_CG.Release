@@ -43,4 +43,7 @@ release/updater.o
 release/update_mng.o
 release/update_visitor.o
 release/update_cmd.o
+release/build_mng.o
+release/builder_errors.o
+release/builder_cmd.o
 release/moc_mainwindow.o

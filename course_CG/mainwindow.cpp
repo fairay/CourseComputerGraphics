@@ -49,8 +49,12 @@ MainWindow::MainWindow(QWidget *parent) :
     command::InitDraw cmd(_img);
     _scene.execute(cmd);
     _paint();
+
+    command::BuildScene cmd3("config0.txt");
+    _scene.execute(cmd3);
     command::InitUpd cmd2;
     _scene.execute(cmd2);
+
     _paint();
 
 

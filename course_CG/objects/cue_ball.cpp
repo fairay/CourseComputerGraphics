@@ -2,7 +2,7 @@
 #include "visitors/object_visitor.h"
 
 CueBall::CueBall(const Point& pos_, double r_, QRgb color_, bool is_main):
-    r(r_), pos(pos_), v(100, 0, 150), _is_main(is_main)
+    r(r_), pos(pos_), v(0, 0, 0), _is_main(is_main)
 {
     _color = color_;
     Model* m_ptr = new BallModel(_color, r, pos);
@@ -14,7 +14,7 @@ CueBall::CueBall(const CueBall& other):
     _color = other._color;
     _is_main = other._is_main;
 }
-CueBall::~CueBall() { _self_ptr.reset(); }
+CueBall::~CueBall() { cout << _self_ptr.use_count() << endl; _self_ptr.reset(); }
 
 void CueBall::accept(ObjectVisitor& visitor)
 {
