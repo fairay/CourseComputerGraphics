@@ -65,3 +65,13 @@ TransExpired::TransExpired(const string file_, long line_n_): VisitorError(file_
     fill_msg();
 }
 TransExpired::~TransExpired() = default;
+
+
+MainBallScored::MainBallScored(const string file_, long line_n_): VisitorError(file_, line_n_)
+{
+    type += "Main Ball Scored";
+    add_info = "main ball scored, game over";
+    fill_msg();
+}
+MainBallScored::~MainBallScored() = default;
+

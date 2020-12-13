@@ -31,14 +31,14 @@ void UpdateManager::execute()
     upd->update(dt);
 
     shared_ptr<ObjectVisitor> visitor(new PostUpdVisitor(upd));
-
-
     for (auto i = _scene.lock()->begin(); i < _scene.lock()->end();)
     {
         try {
             (*i)->accept(*visitor);
-        }  catch (int val) {
+        } catch (int val) {
             _scene.lock()->remove_object(i);
+            if (val == 2)
+                throw err::MainBallScored(__FILE__, __LINE__-1);
             continue;
         }
         i++;

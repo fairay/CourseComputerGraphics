@@ -125,7 +125,18 @@ void MainWindow::_main_cycle()
     time_t pre_time = time - 1;
     while(clock() - time < 1000*MAX_TIME)
     {
-        _upd();
+        try {
+            _upd();
+        } catch (err::MainBallScored&) {
+            QMessageBox::information(this, "Игра завершена!",
+                                     "Вы забили биток, игра закончена");
+            break;
+        }
+        catch(...)
+        {
+            break;
+        }
+
         _paint();
 
         time_t new_time = clock();

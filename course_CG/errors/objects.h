@@ -59,6 +59,14 @@ public:
     virtual ~TransExpired();
 };
 
+
+class MainBallScored: public VisitorError
+{
+public:
+    MainBallScored(const string file_, long line_n_);
+    virtual ~MainBallScored();
+};
+
 } // namespace err
 
 #endif // OBJECTS_H
