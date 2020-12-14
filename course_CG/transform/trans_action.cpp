@@ -102,7 +102,6 @@ void Rotate::execute(Camera &p)
     v.x += _dir.x;
     v.y += _dir.y;
     v.z += _dir.z;
-    p.get_dir().print();
 }
 
 void Rotate::rotate_x(double&, double& y_, double& z_)

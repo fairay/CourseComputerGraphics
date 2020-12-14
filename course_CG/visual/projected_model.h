@@ -48,11 +48,5 @@ private:
 };
 
 
-class ProjModel
-{
-    ProjModel();
-    ~ProjModel();
-
-};
 
 #endif // PROJECTED_MODEL_H

@@ -30,7 +30,7 @@ public:
 
 private:
     Point _min_p, _max_p;
-    double mu=40;
+    double mu=50;
     std::vector<shared_ptr<CueBall>> _active;
     std::vector<shared_ptr<CueBall>> _scored;
     std::vector<RailContour> _rails;

@@ -129,6 +129,7 @@ void MainWindow::_main_cycle()
         } catch (err::MainBallScored&) {
             QMessageBox::information(this, "Игра завершена!",
                                      "Вы забили биток, игра закончена");
+            _paint();
             break;
         }
         catch(...)
