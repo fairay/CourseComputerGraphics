@@ -237,14 +237,18 @@ class Ball:
 def billiard_start():
     arr = []
     ball = Ball(100, xy_size[1]//2, 0, 0)
+    print(100, xy_size[1]//2)
     ball.set_color((115, 6, 14))
     arr.append(ball)
 
     r = Ball.r
-    st = xy_size[0]//7*5
+    r = 5.9 #
+    st = -62 # st = xy_size[0]//7*5
     for i in range(5):
         for j in range(i+1):
             arr.append(Ball(st+i*sqrt(3)*r, xy_size[1]//2 - i*r + 2*j*r, 0, 0))
+            # print(st-i*sqrt(3)*r, - i*r + 2*j*r)
+            print(-i*r + 2*j*r, st-i*sqrt(3)*r)
             #arr.append(Ball(st+i*sqrt(3)*r + i*5, xy_size[1]//2 - i*r + 2.1*j*r, 0, 0))
 
     # random.shuffle(arr)

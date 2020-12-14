@@ -2,16 +2,15 @@
 
 Scene::Scene(): _upd(new Updater())
 {
-    set_camera(Camera(Point(500, 800, 1000), Vector(-0.5, 0.2, 0)));
-    set_light(LightSource(Point(50, 1200, 110), 500));
+    set_camera(Camera(Point(289.875466, 1467.342781, 942.501446),
+                   Vector(-0.7,   0.0,   0.000)));
 
-     _test1_init();
+    set_light(LightSource(Point(500, 2200, 500), 75));
 }
 Scene::~Scene() {}
 
 size_t Scene::get_size() { return _arr.size(); }
-void Scene::clear_obj() { _arr.clear();
-                          cout << _arr.size() << endl; }
+void Scene::clear_obj() { _arr.clear(); }
 
 shared_ptr<Camera> Scene::get_camera()
 {
@@ -93,10 +92,10 @@ void Scene::_test1_init()
     set_camera(Camera(Point(289.875466, 1467.342781, 942.501446),
                    Vector(-0.7,   0.0,   0.000)));
 
-    set_light(LightSource(Point(0, 2200, 1000), 75));
+    set_light(LightSource(Point(500, 2200, 500), 75));
 
     //add_object(new Table());
-    add_object(new Table(750, 2800, 1530, 57));
+    // add_object(new Table(750, 2800, 1530, 57));
 
     /*
     add_object(new TableLeg(-600, -1300, 750));

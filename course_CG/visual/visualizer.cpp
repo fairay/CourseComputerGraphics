@@ -15,10 +15,18 @@ void Visualizer::set_light(const LightSource &light)
     v.normalize();
     p.x = v.x;  p.y = v.y;  p.z = v.z;
 
-    double beta = atan(p.x / p.z);
+    double alpha=0, beta=0;
+    if (abs(p.z) > 1e-4)
+        beta = atan(p.x / p.z);
+    else
+        beta = copysign(PI/2, p.x);
     p.rotate_oy(Point(0,0,0), beta);
-    double alpha = - atan(p.y/p.z);
-    if (p.z<0) alpha += PI;
+
+    if (abs(p.z) > 1e-4)
+        alpha = -atan(p.y/p.z);
+    else
+        alpha = -copysign(PI/2, p.y);
+    if (p.z < -1e-4) alpha += PI;
 
     _light_dir = Vector(alpha, beta, 0);
 }
@@ -26,16 +34,6 @@ void Visualizer::set_camera(const Camera &camera) { _camera = camera; }
 
 void Visualizer::draw_model(Model &m)
 {
-//    for (auto p : m.v_arr)
-//    {
-//        Point pro1 = _proj_light(*p);
-//        p->print();
-//        Point pro2 = _proj_point(*p);
-//        pro2 = _reproj_point(pro2);
-//        pro2.print();
-//        cout << endl;
-//    }
-//    return;
 
     const int min_x = _draw->get_min_x();
     const int min_y = _draw->get_min_y();

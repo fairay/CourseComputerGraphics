@@ -33,9 +33,12 @@ void UpdateManager::execute()
     shared_ptr<ObjectVisitor> visitor(new PostUpdVisitor(upd));
     for (auto i = _scene.lock()->begin(); i < _scene.lock()->end();)
     {
-        try {
+        try
+        {
             (*i)->accept(*visitor);
-        } catch (int val) {
+        }
+        catch (int val)
+        {
             _scene.lock()->remove_object(i);
             if (val == 2)
                 throw err::MainBallScored(__FILE__, __LINE__-1);
@@ -54,7 +57,6 @@ void ShotManager::execute()
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "Shot Manager");
 
-    cout << "*** IAM HERE" << endl;
     shared_ptr<Scene> scene = _scene.lock();
     shared_ptr<Updater> upd = scene->get_updater();
     if (!upd->is_motionless())
@@ -78,12 +80,5 @@ void ShotManager::execute()
     _click_p.z = -(a*_click_p.x + b*_click_p.y + d)/c;
 
     Point proj = visual->reproj_point(_click_p);
-
-//    if (upd->is_out(proj))
-//    {
-//        cout << "______________ DENIED" << endl;
-//        return;
-//    }
-
     upd->make_hit(proj, _power);
 }

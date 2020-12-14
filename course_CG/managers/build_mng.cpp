@@ -12,7 +12,6 @@ BuildManager::~BuildManager()
 }
 void BuildManager::execute()
 {
-    cout << "ENTER BUILDER" << endl;
     _file.open(_f_name);
     if (!_file)
         throw err::FileOpenFail(__FILE__, __LINE__-2, _f_name);
@@ -59,14 +58,11 @@ void BuildManager::execute()
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "Build Manager");
     shared_ptr<Scene> scene = _scene.lock();
 
-    cout << "&&&" << endl;
     scene->clear_obj();
     scene->add_object(new Table(h, l, w, R));
     scene->add_main_ball(pos_arr[0], R);
-    cout << "&&&" << endl;
     for (size_t i=1; i<pos_arr.size(); i++)
     {
-        cout << "ADD BALL ";
         pos_arr[i].print();
         scene->add_ball(pos_arr[i], R);
     }

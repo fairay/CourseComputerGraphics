@@ -33,7 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {    
     ui->setupUi(this);
     _scene_size = ui->graphicsView->size();
-    cout << "Image size: " << _scene_size.width() << "x" << _scene_size.height() << endl;
 
     // Cоздание матрицы изображения
     _rgb_map = create_rgb_map(_scene_size.width(), _scene_size.height());
@@ -155,8 +154,6 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::keyPressEvent(QKeyEvent* event)
 {
-    cout << event->key() << endl;
-
     using namespace command;
     shared_ptr<ICommand> ptr;
     switch (event->key())
@@ -204,9 +201,7 @@ void MainWindow::_graphics_click(int x, int y)
     static QGraphicsView* gr = ui->graphicsView;
     static int x_size = gr->x(), y_size = gr->y();
     x -= x_size;   y -= y_size + 16;
-    if (x > 0 && x < gr->size().width() && y>0 && y<gr->size().height())
-        cout << x << " " << y << endl;
-    else
+    if (!(x > 0 && x < gr->size().width() && y>0 && y<gr->size().height()))
         return;
 
     x -= gr->size().width()/2;    y = -y + gr->size().height()/2;

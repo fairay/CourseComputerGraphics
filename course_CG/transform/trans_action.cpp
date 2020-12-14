@@ -12,15 +12,9 @@ Move::~Move() {}
 
 void Move::rotate(const Vector& v)
 {
-    cout << "Before";
-    _delta.print();
-
     Vector v_copy{-v.x, -v.y, v.z};
     Rotate act(v_copy);
     act.execute(_delta);
-
-    cout << "After";
-    _delta.print();
 }
 
 void Move::execute(double& x, double& y, double& z)
