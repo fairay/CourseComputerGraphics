@@ -23,6 +23,7 @@ public:
     void normalize_vertexes();
 
     void move(const Vector& v);
+    void rotate_self(const Vector& v);
 
 protected:
     Point _center;

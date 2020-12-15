@@ -18,6 +18,7 @@ public:
 
     bool is_main();
     void move(const Vector& v);
+    void roll_rotate(const Vector& v);
 
     void set_ptr(const shared_ptr<CueBall>& _self_ptr);
     shared_ptr<CueBall> get_ptr();

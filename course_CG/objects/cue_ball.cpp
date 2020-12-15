@@ -33,6 +33,11 @@ void CueBall::move(const Vector &v)
     _model->move(v);
 }
 
+void CueBall::roll_rotate(const Vector& v)
+{
+    _model->rotate_self(v);
+}
+
 
 
 void CueBall::set_ptr(const shared_ptr<CueBall>& self_ptr)

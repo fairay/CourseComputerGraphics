@@ -92,3 +92,11 @@ void Model::move(const Vector& v)
         v_arr[i]->move(v);
 }
 
+#include "transform/trans_action.h"
+void Model::rotate_self(const Vector& v)
+{
+    transform::Rotate rot(_center, v);
+    for (size_t i=0; i<v_arr.size(); i++)
+        rot.execute(*v_arr[i]);
+}
+

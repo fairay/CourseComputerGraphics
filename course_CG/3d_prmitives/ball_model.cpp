@@ -21,6 +21,7 @@ BallModel::BallModel(QRgb color, double r, const Point& center)
     for (size_t i=0; i<poly_n; i++)
     {
         add_side(color, {0, i+1, (i+1) % poly_n + 1});
+        // add_side(qRgb(0, 255, 0), {0, i+1, (i+1) % poly_n + 1});
     }
     h += lvl_step;
     v_count += poly_n;

@@ -83,6 +83,7 @@ void Rotate::execute(Vertex& p)
     rotate_x(p.x, p.y, p.z);
     rotate_y(p.x, p.y, p.z);
     rotate_z(p.x, p.y, p.z);
+    execute(p.n);
 }
 void Rotate::execute(Point& p)
 {
