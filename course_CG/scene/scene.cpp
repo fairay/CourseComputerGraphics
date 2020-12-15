@@ -5,7 +5,7 @@ Scene::Scene(): _upd(new Updater())
     set_camera(Camera(Point(289.875466, 1467.342781, 942.501446),
                    Vector(-0.7,   0.0,   0.000)));
 
-    set_light(LightSource(Point(500, 2200, 500), 75));
+    set_light(LightSource(Point(700, 2200, 500), 75));
 }
 Scene::~Scene() {}
 

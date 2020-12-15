@@ -72,7 +72,10 @@ SOURCES += \
     commands/update_cmd.cpp \
     managers/build_mng.cpp \
     errors/builder_errors.cpp \
-    commands/builder_cmd.cpp
+    commands/builder_cmd.cpp \
+    faq_move.cpp \
+    faq_light.cpp \
+    faq_hit.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -126,10 +129,16 @@ HEADERS += \
     builder/builder.h \
     managers/build_mng.h \
     errors/builder_errors.h \
-    commands/builder_cmd.h
+    commands/builder_cmd.h \
+    faq_move.h \
+    faq_light.h \
+    faq_hit.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    faq_move.ui \
+    faq_light.ui \
+    faq_hit.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

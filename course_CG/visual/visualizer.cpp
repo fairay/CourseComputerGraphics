@@ -180,7 +180,7 @@ Point Visualizer::reproj_point(const Point &p) { return _reproj_point(p); }
 void Visualizer::clear()
 {
     _draw->fill_z();
-    _draw->fill_rgb(QColor(Qt::gray).rgba());
+    _draw->fill_rgb(QColor(44, 50, 66).rgba());
 }
 
 void Visualizer::show()

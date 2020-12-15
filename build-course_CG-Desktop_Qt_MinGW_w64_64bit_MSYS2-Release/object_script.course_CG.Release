@@ -46,4 +46,10 @@ release/update_cmd.o
 release/build_mng.o
 release/builder_errors.o
 release/builder_cmd.o
+release/faq_move.o
+release/faq_light.o
+release/faq_hit.o
 release/moc_mainwindow.o
+release/moc_faq_move.o
+release/moc_faq_light.o
+release/moc_faq_hit.o

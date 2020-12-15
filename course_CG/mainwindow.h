@@ -18,6 +18,10 @@
 
 #include "scene/interface.h"
 #include "commands/all.h"
+
+#include "faq_move.h"
+#include "faq_light.h"
+#include "faq_hit.h"
 using namespace std;
 
 typedef QRgb** RgbMap;
@@ -65,6 +69,8 @@ private slots:
 
     void on_file_button_clicked();
 
+    void on_hit_info_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QGraphicsScene> _qscene;
@@ -78,6 +84,11 @@ private:
     QColor _draw_color = Qt::black;
     RgbMap _rgb_map;
     bool _on_run = false;
+
+    shared_ptr<FAQ_Move> _move_window;
+    shared_ptr<FAQ_Light> _light_window;
+    shared_ptr<FAQ_Hit> _hit_window;
+    shared_ptr<QDialog> _info_window;
 
     vector<QColor> _color_arr = { Qt::red, Qt::green, Qt::blue, Qt::white, Qt::magenta, Qt::yellow };
     void _fill_img(QColor color);

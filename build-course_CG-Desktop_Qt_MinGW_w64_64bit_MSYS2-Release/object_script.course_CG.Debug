@@ -46,4 +46,10 @@ debug/update_cmd.o
 debug/build_mng.o
 debug/builder_errors.o
 debug/builder_cmd.o
+debug/faq_move.o
+debug/faq_light.o
+debug/faq_hit.o
 debug/moc_mainwindow.o
+debug/moc_faq_move.o
+debug/moc_faq_light.o
+debug/moc_faq_hit.o

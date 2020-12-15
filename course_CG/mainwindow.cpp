@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 /// Функции для работы с RgbMap
 RgbMap create_rgb_map(int w, int h)
 {
@@ -116,7 +117,7 @@ void MainWindow::_fill_img(QColor color)
     QCoreApplication::processEvents();
 }
 
-/// Тест FPS
+/// Главный цикл обновления
 void MainWindow::_main_cycle()
 {
     _on_run = true;
@@ -295,12 +296,20 @@ void MainWindow::on_lig_i_valueChanged(int value)
 
 void MainWindow::on_cam_info_clicked()
 {
+    if (_info_window)
+        _info_window->close();
+    _info_window = shared_ptr<QDialog>(new FAQ_Move(this));
 
+    _info_window->show();
 }
 
 void MainWindow::on_lig_info_clicked()
 {
+    if (_info_window)
+        _info_window->close();
+    _info_window = shared_ptr<QDialog>(new FAQ_Light(this));
 
+    _info_window->show();
 }
 
 void MainWindow::on_file_button_clicked()
@@ -319,4 +328,13 @@ void MainWindow::on_file_button_clicked()
     {
         QMessageBox::warning(this, "Ошибка загрузки!", err.what());
     }
+}
+
+void MainWindow::on_hit_info_clicked()
+{
+    if (_info_window)
+        _info_window->close();
+    _info_window = shared_ptr<QDialog>(new FAQ_Hit(this));
+
+    _info_window->show();
 }

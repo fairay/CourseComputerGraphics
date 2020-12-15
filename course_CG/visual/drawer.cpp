@@ -44,20 +44,38 @@ QDrawer::~QDrawer()
 
 void QDrawer::fill_rgb(QRgb color)
 {
-    for (int y=0; y < h; y++)
-    {
-        for (int x=0; x < w; x++)
-            _color_map[y][x] = color;
-    }
+//    for (int y=0; y < h; y++)
+//    {
+//        for (int x=0; x < w; x++)
+//            _color_map[y][x] = color;
+//    }
+    for (int x=0; x < w; x++)
+        _color_map[0][x] = color;
+    size_t row_size = static_cast<size_t>(w) * sizeof(QRgb);
+    for (int y=1; y < h; y++)
+        memcpy(&_color_map[y][0], &_color_map[0][0], row_size);
 }
 void QDrawer::fill_z()
 {
-    for (int y=0; y < h; y++)
-        for (int x=0; x < w; x++)
-        {
-            _z_map[y][x] = _min_depth;
-            _shadow_map[y][x] = _min_depth;
-        }
+//    for (int y=0; y < h; y++)
+//        for (int x=0; x < w; x++)
+//        {
+//            _z_map[y][x] = _min_depth;
+//            _shadow_map[y][x] = _min_depth;
+//        }
+
+    for (int x=0; x < w; x++)
+    {
+        _z_map[0][x] = _min_depth;
+        _shadow_map[0][x] = _min_depth;
+    }
+
+    size_t row_size = static_cast<size_t>(w) * sizeof(double);
+    for (int y=1; y < h; y++)
+    {
+        memcpy(&_z_map[y][0], &_z_map[0][0], row_size);
+        memcpy(&_shadow_map[y][0], &_shadow_map[0][0], row_size);
+    }
 }
 
 void QDrawer::draw_point(const Point &p, QRgb color)
