@@ -324,6 +324,7 @@ void MainWindow::on_file_button_clicked()
     try
     {
         _scene.execute(cmd);
+        _paint();
     } catch (err::SceneError& err)
     {
         QMessageBox::warning(this, "Ошибка загрузки!", err.what());

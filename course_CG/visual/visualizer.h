@@ -13,7 +13,7 @@
 
 
 #define CAM_COEF 500
-#define LIGHT_COEF 0.15
+#define LIGHT_COEF 0.20
 #define TEMP_COEF 600
 
 using namespace std;
