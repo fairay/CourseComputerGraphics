@@ -8,7 +8,7 @@
 #include "3d_prmitives/point.h"
 
 #define BG_LIGHT 0.3
-#define HALF_SHADOW_Z 12.0
+#define HALF_SHADOW_Z 11.0
 #define FULL_SHADOW_Z 20.0
 
 using RgbMap = QRgb**;

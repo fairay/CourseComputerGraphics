@@ -51,9 +51,9 @@ void Table::_init_legs()
 }
 void Table::_init_plates()
 {
+    add_object(new Plate(_leg_h, _wide+_rail_w*2+1, _len+_rail_w*2+1));
     add_object(new Plate(_leg_h+_plate_h, _wide, _len, true));
     add_object(new Plate(_leg_h+_plate_h, _wide, _len, false));
-    add_object(new Plate(_leg_h, _wide+_rail_w*2+1, _len+_rail_w*2+1));
 }
 void Table::_init_rails()
 {

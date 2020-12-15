@@ -37,12 +37,7 @@ LongSkirting::LongSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     add_vertex(Point(mid_p.x + xs*R,         yu, mid_p.z));        // 9
     add_vertex(Point(mid_p.x + xs*w,         yu, mid_p.z));
 
-    add_side(_color, {0, 1, 2, 4});
-    add_side(_color, {2, 4, 5, 3});
 
-    add_side(_color, {3, 5, 7, 6});
-    add_side(_color, {5, 7, 8});
-    add_side(_color, {7, 8, 10, 9});
 
     // Bottom vertexes
     double yd = cor_p.y - hd;
@@ -71,6 +66,13 @@ LongSkirting::LongSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     add_side(_color, {6, 7, 18, 17});
     add_side(_color, {7, 9, 20, 18});
     add_side(_color, {8, 10, 21, 19});
+
+    add_side(_color, {0, 1, 2, 4});
+    add_side(_color, {2, 4, 5, 3});
+
+    add_side(_color, {3, 5, 7, 6});
+    add_side(_color, {5, 7, 8});
+    add_side(_color, {7, 8, 10, 9});
 
     this->normalize_vertexes();
 }
@@ -118,10 +120,6 @@ ShortSkirting::ShortSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     add_vertex(Point(mid_p.x,                   yu, cor_p.z - zs*R/sqrt(2)));
     add_vertex(Point(mid_p.x,                   yu, cor_p.z + zs*w));          // 7
 
-    add_side(_color, {0, 1, 2, 3});
-    add_side(_color, {2, 4, 5, 3});
-    add_side(_color, {4, 5, 7, 6});
-
 
     // Bottom vertexes
     double yd = cor_p.y - hd;
@@ -142,6 +140,11 @@ ShortSkirting::ShortSkirting(QRgb color, const Point& cor_p, const Point& mid_p,
     add_side(_color, {3, 5, 13, 11});
     add_side(_color, {4, 6, 14, 12});
     add_side(_color, {5, 7, 15, 13});
+
+    add_side(_color, {0, 1, 2, 3});
+    add_side(_color, {2, 4, 5, 3});
+    add_side(_color, {4, 5, 7, 6});
+
 
     this->normalize_vertexes();
 }
