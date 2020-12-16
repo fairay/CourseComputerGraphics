@@ -146,7 +146,7 @@ void Scene::_test2_init()
     add_object(new TableLeg(-600, 1300, 750));
     add_object(new TableLeg(600, 1300, 750));
 
-    add_object(new Plate(765, 1530, 2800, true));
+    add_object(new Plate(765, 1530, 2800, 100, true));
     Point p1(1530/2, 865, 1400);
     Point p2(1530/2, 865, 0);
     add_object(new SideRail(p1, p2, 100, 100));

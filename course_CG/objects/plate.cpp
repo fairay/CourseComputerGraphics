@@ -2,7 +2,7 @@
 #include "3d_prmitives/mplate.h"
 #include "visitors/object_visitor.h"
 
-Plate::Plate(double h, double wide, double len, bool is_up)
+Plate::Plate(double h, double wide, double len, double R, bool is_up)
 {
     _color = QColor(Qt::darkGreen).rgba();
     Point p0(-wide/2, h, 0), p1;
@@ -11,7 +11,7 @@ Plate::Plate(double h, double wide, double len, bool is_up)
     else
         p1 = Point(wide/2, h, -len/2);
 
-    Model* m_ptr = new TopPlateModel(_color, p1, p0, 100);
+    Model* m_ptr = new TopPlateModel(_color, p1, p0, R);
     this->_model = shared_ptr<Model>(m_ptr);
 }
 Plate::Plate(double h, double wide, double len)

@@ -10,7 +10,7 @@ Table::Table(double leg_h, double len, double wide, double r)
     _leg_h = leg_h;
     _len = len;
     _wide = wide;
-    _hole_r = 1.3 * r;
+    _hole_r = 1.75 * r;
     _init_models();
 }
 Table::Table(const Table& other): CompositeObject (other)
@@ -52,8 +52,8 @@ void Table::_init_legs()
 void Table::_init_plates()
 {
     add_object(new Plate(_leg_h, _wide+_rail_w*2+1, _len+_rail_w*2+1));
-    add_object(new Plate(_leg_h+_plate_h, _wide, _len, true));
-    add_object(new Plate(_leg_h+_plate_h, _wide, _len, false));
+    add_object(new Plate(_leg_h+_plate_h, _wide, _len, _hole_r, true));
+    add_object(new Plate(_leg_h+_plate_h, _wide, _len, _hole_r, false));
 }
 void Table::_init_rails()
 {

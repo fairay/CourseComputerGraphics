@@ -19,10 +19,13 @@ ProjEdge::ProjEdge(const Point &p_1, double i1,
 
     if (y0)
     {
-        dx = (p2.x - p1.x) / y0;
-        dz = (p2.z - p1.z) / y0;
-        di = (i2 - i1) / y0;
+//        dx = (p2.x - p1.x) / y0;
+//        dz = (p2.z - p1.z) / y0;
+//        di = (i2 - i1) / y0;
 
+        dx = (p2.x - p1.x) / (p1.y-p2.y);
+        dz = (p2.z - p1.z) / (p1.y-p2.y);
+        di = (i2 - i1) / (p1.y-p2.y);
     }
     else
     {
