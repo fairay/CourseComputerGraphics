@@ -66,7 +66,7 @@ void Updater::_move_ball(shared_ptr<CueBall>& ball, double dt)
 
 void Updater::_collide_rail(CueBall &ball, const Point& p)
 {
-    cout << "Collide!" << endl;
+    cout << "Collide\trail!" << endl;
     double d = ball.pos.distance2d(p);
     double a = ball.pos.x - p.x;
     double b = ball.pos.z - p.z;
@@ -98,6 +98,7 @@ void Updater::_collide_balls(CueBall &ball1, CueBall &ball2)
     if (dist > ball1.r*2)
         return;
 
+    cout << "Collide\tballs" << endl;
     double vel1 = ball1.v.length();
     double vel2 = ball2.v.length();
 
