@@ -57,7 +57,7 @@ void Updater::_move_ball(shared_ptr<CueBall>& ball, double dt)
     if (speed > 0)
     {
         ball->move(Vector(v.x*dt, 0, v.z*dt));
-        // ball->roll_rotate(Vector(-v.z*dt/(ball->r), 0, v.x*dt/(ball->r)));
+        ball->roll_rotate(Vector(-v.z*dt/(ball->r), 0, v.x*dt/(ball->r)));
         double slowdown = max<double>(0, 1 - (dt*mu)/speed);
         v.x *= slowdown;
         v.z *= slowdown;
